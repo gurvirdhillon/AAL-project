@@ -1,0 +1,50 @@
+body{
+    background-color: aliceblue;
+}
+
+#headerNavigator{
+    /* put all divs in one line */
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.navChild{
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+
+#startingImg{
+    width: 100%;
+    height: 100%;
+}
+
+.settingsBar{
+    background-color: rgb(183, 176, 176);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#StickyNote{
+    background-color: rgb(225, 225, 27); 
+    padding: 1.25em;
+    width: 18.75em;
+    position: relative;
+}
+
+.note-header {
+    padding: 10%;
+}
+
+.note-header h2 {
+    margin: 0;
+}
+
+#reminderSetter{
+    background-color: grey;
+    padding: 1.25em;
+    width: 50%;
+    display: flex;
+}
