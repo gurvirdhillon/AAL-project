@@ -1,7 +1,7 @@
 // start a server
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = process.env.port || 8080;
 
 // const authConfig = require('./server/auth-config');
 
@@ -15,4 +15,4 @@ app.get('/auth-config', (req, res)=>{
     res.json(authConfig)
 });
 
-
+// app.use(express.static(path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../public')));

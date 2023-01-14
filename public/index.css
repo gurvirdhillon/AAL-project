@@ -4,10 +4,20 @@ body{
 
 .greetingsPage{
     /* find out how to make the buttons smaller than the  h1 */
+    display: flex;
+    align-items: center;
+}
+
+#login, #logout{
+    /* get both buttons on the right of the page */
+    /* position: absolute; */
+    /* right: 0; */
 }
 
 #headerNavigator{
     /* put all divs in one line */
+    background-color: blueviolet;
+    padding: 0.2%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -59,6 +69,5 @@ body{
     padding: 4em;
     position: absolute;
     left: 45%;
-    transform: translate(0%, -140%);
 }
 
