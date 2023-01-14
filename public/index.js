@@ -33,3 +33,32 @@ function prepareHeaders() {
 }
 
 window.addEventListener('load', prepareHeaders);
+
+async function fetchAuthConfig() {
+    const response = await fetch('/auth-config');
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw response;
+    }
+}
+
+let auth0 = null;
+
+async function initialiseAuth0Client() {
+    const config = await fetchAuthConfig();
+    auth0 = await createAuth0Client({
+      domain: config.domain,
+      client_id: config.clientId,
+    });
+}
+
+async function initialise() {
+    await initialiseAuth0Client();
+    console.log('auth0 initialized');
+    console.log({ auth0 });
+}
+  
+window.addEventListener('load', initialise);
+
+

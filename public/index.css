@@ -8,12 +8,6 @@ body{
     align-items: center;
 }
 
-#login, #logout{
-    /* get both buttons on the right of the page */
-    /* position: absolute; */
-    /* right: 0; */
-}
-
 #headerNavigator{
     /* put all divs in one line */
     background-color: blueviolet;
