@@ -4,12 +4,20 @@
     <title>Ambient assisted living</title>
     <script src="reminder.js"></script>
         <script src="index.js"></script>
+        <script src="panic.mjs"></script>
+        <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
             <link rel="stylesheet" href="index.css">
 
 </head>
 <body>
 
-<h1>Welcome</h1>
+<div class="greetingsPage">
+<h1 id="greeting">Welcome</h1>
+<button id="login">Login</button>
+<button id="logout">Logout</button>
+</div>
+
+
 <nav id="headerNavigator">
     <button class="navChild" id="reminder">Remind Me</button>
     <button class="navChild" id="meds">Medication</button>
@@ -22,6 +30,10 @@
 <article>
     
 </article>
+
+<p></p>
+
+<button id="panicBtn">Panic Button</button>
 
 <template id="remindTab">
 <h1>Reminder:</h1>

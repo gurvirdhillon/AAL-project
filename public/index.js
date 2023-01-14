@@ -33,4 +33,3 @@ function prepareHeaders() {
 }
 
 window.addEventListener('load', prepareHeaders);
-

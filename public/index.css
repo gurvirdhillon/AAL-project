@@ -2,6 +2,10 @@ body{
     background-color: aliceblue;
 }
 
+.greetingsPage{
+    /* find out how to make the buttons smaller than the  h1 */
+}
+
 #headerNavigator{
     /* put all divs in one line */
     display: flex;
@@ -48,3 +52,13 @@ body{
     width: 50%;
     display: flex;
 }
+
+#panicBtn{
+    background-color: red;
+    border-radius: 40%;
+    padding: 4em;
+    position: absolute;
+    left: 45%;
+    transform: translate(0%, -140%);
+}
+
