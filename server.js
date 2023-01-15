@@ -1,11 +1,13 @@
 // start a server
 const express = require('express');
 const app = express();
+const path = require('path');
+const url = require('url');
+// const authConfig = require('./server/auth-config.js');
+
+// import authConfig from './server/auth-config.js';
+
 const port = process.env.port || 8080;
-
-// const authConfig = require('./server/auth-config');
-
-
 
 app.use(express.static('public'));
 
