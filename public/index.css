@@ -65,3 +65,27 @@ body{
     left: 45%;
 }
 
+#chat{
+    border: thin solid black;
+    display: grid;
+
+    padding: 1.25em;
+    width: 25%;
+    height: 40%;
+    position: absolute;
+}
+
+
+
+#chatSendBtn{
+    grid-area: btn;
+}
+
+/* #inputMsg{ */
+    /* grid-area: msg; */
+/* } */
+
+/* .comContent{
+
+} */
+

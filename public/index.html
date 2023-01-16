@@ -6,6 +6,7 @@
         <script src="index.js"></script>
         <script src="panic.mjs"></script>
         <script src="app.js"></script>
+        <script src="chat.js"></script>
         <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
             <link rel="stylesheet" href="index.css">
 
@@ -72,8 +73,24 @@
 <!-- then maybe a graph of the users activity - if they've fallen etc -->
 
 <button>Call someone?</button>
+
 <p></p>
-<button>Text someone?</button>
+
+<button id="txtOpen">Text someone?</button>
+
+<div id="PutChatHere">
+
+</div>
+
+<template id="openChat">
+    <div id="chat">
+        <h1>Chat</h1>
+        <input type="text" placeholder="Type your message here" class="comContent" id="inputMsg">
+        <button id="chatSendBtn" class="comContent">Send</button>
+        <!-- add in a microphone option too -->
+    </div>
+</template>
+
 
 </template>
 

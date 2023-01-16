@@ -4,7 +4,7 @@ function prepareHeaders() {
     const article = document.getElementsByTagName('article')[0];
     const template = document.querySelector('#remindTab');
     reminderBtn.addEventListener('click', function() {
-        article.innerHTML = template.innerHTML;
+    article.innerHTML = template.innerHTML;
     const removeImg = document.querySelector('#startingImg');
     removeImg.remove();
     })
