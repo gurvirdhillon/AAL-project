@@ -23,10 +23,9 @@ This project aims to improve the quality of care for elderly using web and smart
 ## Installation dependencies
 
 ```git
-
 npm i jest
 npm i sqlite3
 npm i express
 npm i sqlite
-
 ```
+
