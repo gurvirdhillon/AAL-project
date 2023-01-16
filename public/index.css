@@ -68,7 +68,6 @@ body{
 #chat{
     border: thin solid black;
     display: grid;
-
     padding: 1.25em;
     width: 25%;
     height: 40%;
@@ -79,11 +78,15 @@ body{
 
 #chatSendBtn{
     grid-area: btn;
+    height: 50%;
 }
 
-/* #inputMsg{ */
-    /* grid-area: msg; */
-/* } */
+#inputMsg{
+    
+    height: 50%;
+}
+
+
 
 /* .comContent{
 
