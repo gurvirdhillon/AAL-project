@@ -18,3 +18,5 @@ app.get('/auth-config', (req, res)=>{
 });
 
 app.use(express.static(path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../client')));
+
+
