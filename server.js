@@ -11,7 +11,7 @@ const port = process.env.port || 8080;
 
 app.use(express.static('public'));
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`The application is running on port ${port}!`));
 
 app.get('/auth-config', (req, res)=>{
     res.json(authConfig)
