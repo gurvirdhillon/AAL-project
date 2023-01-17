@@ -9,7 +9,7 @@ const url = require('url');
 
 const port = process.env.port || 8080;
 
-app.use(express.static('public'));
+app.use(express.static('client'));
 
 app.listen(port, () => console.log(`The application is running on port ${port}!`));
 
