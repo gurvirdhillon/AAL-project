@@ -2,15 +2,18 @@
 
 ## About
 
-This project aims to improve the quality of care for elderly using web and smart watch devices. The application aims to give an "all-in-one" application which will be discussed later.
+This project is about ambient assisted living which is where elderly individuals are monitored using unobtrusive technologies such as smart devices.
+
+This project aims to improve the quality of care for elderly using web and smart watch devices. The application aims to give an "all-in-one" application which will be discussed later in the feature set section.
 
 ## Technologies and tools used
 
 * JavaScript
+* NodeJS
 * ExpressJS
 * SQLite
 * FitbitAPI
-* NodeJS
+* HTML & CSS
 
 ## Installation dependencies
 
