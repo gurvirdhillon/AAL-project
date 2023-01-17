@@ -19,7 +19,6 @@
 <button id="logout">Logout</button>
 </div>
 
-
 <nav id="headerNavigator">
     <button class="navChild" id="reminder">Remind Me</button>
     <button class="navChild" id="meds">Medication</button>
@@ -41,7 +40,7 @@
 <h1>Reminder:</h1>
 
 <div id="reminderSetter">
-<input placeholder="remind me" class="" required>
+<input placeholder="remind me" class="" id="reminderInput" required>
 <p></p>
 <input type="date" id="reminderDate" required>
 <button type="submit" id="submitBtn">Submit</button>
@@ -65,11 +64,11 @@
 <h1>Medication:</h1>
 <input type="text" placeholder="Medication name" id="medName">
 <p></p>
-<input type="text" placeholder="Dosage" id="medDosage">
+<input type="text" placeholder="Dosage" id="medDosage"><label>mg</label>
 <p></p>
 <input type="text" placeholder="Time" id="medTime">
 <p></p>
-<button id="medSubmit">Submit</button>
+<button id="medSubmit" type="submit">Submit</button>
 
 </template>
 
