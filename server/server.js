@@ -1,11 +1,11 @@
 // start a server
-const express = require('express');
-const app = express();
-const path = require('path');
-const url = require('url');
-// const authConfig = require('./server/auth-config.js');
 
-// import authConfig from './server/auth-config.js';
+import express from 'express';
+const app = express();
+import path from 'path';
+import url from 'url';
+
+import authConfig from './auth-config.js';
 
 const port = process.env.port || 8080;
 
@@ -17,4 +17,4 @@ app.get('/auth-config', (req, res)=>{
     res.json(authConfig)
 });
 
-// app.use(express.static(path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../public')));
+app.use(express.static(path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../client')));
