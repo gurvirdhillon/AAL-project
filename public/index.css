@@ -1,0 +1,94 @@
+body{
+    background-color: aliceblue;
+}
+
+.greetingsPage{
+    /* find out how to make the buttons smaller than the  h1 */
+    display: flex;
+    align-items: center;
+}
+
+#headerNavigator{
+    /* put all divs in one line */
+    background-color: blueviolet;
+    padding: 0.2%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.navChild{
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+
+#startingImg{
+    width: 100%;
+    height: 100%;
+}
+
+.settingsBar{
+    background-color: rgb(183, 176, 176);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#StickyNote{
+    background-color: rgb(225, 225, 27); 
+    padding: 1.25em;
+    width: 18.75em;
+    position: relative;
+}
+
+.note-header {
+    padding: 10%;
+}
+
+.note-header h2 {
+    margin: 0;
+}
+
+#reminderSetter{
+    background-color: grey;
+    padding: 1.25em;
+    width: 50%;
+    display: flex;
+}
+
+#panicBtn{
+    background-color: red;
+    border-radius: 40%;
+    padding: 4em;
+    position: absolute;
+    left: 45%;
+}
+
+#chat{
+    border: thin solid black;
+    display: grid;
+    padding: 1.25em;
+    width: 25%;
+    height: 40%;
+    position: absolute;
+}
+
+
+
+#chatSendBtn{
+    grid-area: btn;
+    height: 50%;
+}
+
+#inputMsg{
+    
+    height: 50%;
+}
+
+
+
+/* .comContent{
+
+} */
+
