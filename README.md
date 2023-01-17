@@ -15,6 +15,9 @@ This project aims to improve the quality of care for elderly using web and smart
 * FitbitAPI
 * HTML & CSS
 
+I created a HTML page and had used expressJS to start my server. I had used javascript to respond to clicks and to provide responses to
+key tasks. I had used the FitbitAPI to communicate data of the users smart watch device. This had included things such as step count, heart rate, temperature and many other features that help the user in their daily activities.
+
 ## Installation dependencies
 
 This project relies on the use of Node as it has been devevloped as a web project.
