@@ -1,6 +1,6 @@
 {
   "name": "aal-project",
-  "version": "1.2.5",
+  "version": "1.2.7",
   "description": "a project to help the elderly in their day to day living",
   "main": "index.js",
   "type": "module",
