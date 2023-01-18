@@ -27,6 +27,7 @@ npm i jest
 npm i sqlite3
 npm i express
 npm i sqlite
+npm i twilio
 ```
 
 ## Features implemented
