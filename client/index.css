@@ -86,3 +86,7 @@ body{
     height: 50%;
 }
 
+input:required + label:after{
+    content: ' *';
+    color: red;
+}

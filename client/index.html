@@ -40,11 +40,13 @@
 <h1>Reminder:</h1>
 
 <div id="reminderSetter">
+<form>
 <input placeholder="remind me" class="" id="reminderInput" required>
 <p></p>
 <input type="date" id="reminderDate" required>
 <button type="submit" id="submitBtn">Submit</button>
 </div>
+</form>
 
 <p></p>
 
@@ -62,14 +64,15 @@
 <template id="medicationTab">
 
 <h1>Medication:</h1>
+
 <form>
-<input type="text" placeholder="Medication name" id="medName">
+<label for="medName">Medication Name </label><input type="text" placeholder="Medication name" id="medName" required><label></label>
 <p></p>
-<input type="text" placeholder="Dosage" id="medDosage"><label>mg</label>
+<label for="medDosage">Dosage Amount </label><input type="text" placeholder="Dosage" id="medDosage" required type="number" min="0"><label>mg</label>
 <p></p>
-<input type="text" placeholder="Time" id="medTime">
+<label for="medTime">Medication time </label><input type="text" placeholder="Time" id="medTime" required><label></label>
 <p></p>
-<button id="medSubmit" type="submit">Submit</button>
+<input id="medSubmit" type="submit" value="Submit">
 </form>
 
 </template>
