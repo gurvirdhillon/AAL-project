@@ -8,5 +8,6 @@ client.messages
     .create({
         body: 'Testing',
         from : '+447893943882',
+        // twilio trial number above
         to: '+447908632941'
 }).then(message => console.log(message.sid));
