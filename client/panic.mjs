@@ -4,6 +4,6 @@ window.addEventListener('load', function(){
 });
 
 function panicTrigger() {
-    // alert("are you in trouble?")
+    // alert("are you in trouble?");
     
 }
