@@ -1,8 +1,8 @@
-import { sqlite3 } from "sqlite3";
+import * as sqlite3 from "sqlite3";
 import { open } from "sqlite";
 
 export async function openDB() {
-    return open({
+    return db = await open({
         filename: "./db.sqlite",
         verbose: true,
         driver: sqlite3.Database,
@@ -11,4 +11,11 @@ export async function openDB() {
     return db;
 }
 
-const dbConn = await openDB();
+const dbConnect = openDB();
+
+export async function getUser(user_email) {
+    const db = await dbConnect;
+    return db.get("SELECT * FROM users WHERE email = ?", user_email);
+}
+// the user email is the primary key
+
