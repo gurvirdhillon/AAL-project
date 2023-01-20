@@ -3,7 +3,11 @@ window.addEventListener('load', function(){
     getPanicBtn.addEventListener('click', panicTrigger);
 });
 
+// find out how post requests work
+
 function panicTrigger() {
     // alert("are you in trouble?");
     
 }
+
+
