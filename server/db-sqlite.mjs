@@ -12,5 +12,3 @@ export async function openDB() {
 }
 
 const dbConn = await openDB();
-
-
