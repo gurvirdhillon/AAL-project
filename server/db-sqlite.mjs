@@ -1,4 +1,3 @@
-// import * as sqlite3 from "sqlite3";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 
@@ -16,7 +15,8 @@ const dbConnect = openDB();
 
 export async function getUser(user_email) {
     const db = await dbConnect;
-    return db.get("SELECT * FROM users WHERE email = ?", user_email);
+    return db.get("SELECT * FROM user_profile WHERE email = ?", user_email);
 }
+
 // the user email is the primary key
 
