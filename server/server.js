@@ -2,13 +2,10 @@ import express from 'express';
 const app = express();
 import path from 'path';
 import url from 'url';
-
 import authConfig from './auth-config.js';
-
 import { openDB } from './db-sqlite.mjs';
+
 const db = openDB();
-
-
 const port = process.env.port || 8080;
 
 app.use(express.static('client'));
@@ -40,6 +37,14 @@ app.get('/user_profile/:user_email', async (req, res) => {
         res.status(404).send('User not found');
     }
 });
+
+function catchError(catchErr) {
+    return (req, res, next) => {
+      Promise.resolve(catchErr(req, res, next))
+        .catch((e) => next(e || new Error()));
+    };
+}
+app.get('/api/getUser/:user_email', catchError(getUser));
 
 app.use(express.static('client', { extensions: ['html'] }));
 app.use(express.static(path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../client')));
