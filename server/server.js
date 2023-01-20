@@ -41,4 +41,5 @@ app.get('/user_profile/:user_email', async (req, res) => {
     }
 });
 
+app.use(express.static('client', { extensions: ['html'] }));
 app.use(express.static(path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../client')));
