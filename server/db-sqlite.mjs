@@ -1,9 +1,10 @@
-import * as sqlite3 from "sqlite3";
+// import * as sqlite3 from "sqlite3";
+import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 
 export async function openDB() {
     const db = await open({
-        filename: "./db.sqlite",
+        filename: './db.sqlite',
         verbose: true,
         driver: sqlite3.Database,
     });
