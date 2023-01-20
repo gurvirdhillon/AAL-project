@@ -5,7 +5,7 @@ import url from 'url';
 
 import authConfig from './auth-config.js';
 
-import { openDB, getUser } from './db-sqlite.mjs';
+import { openDB } from './db-sqlite.mjs';
 
 const port = process.env.port || 8080;
 
@@ -17,14 +17,16 @@ app.get('/auth-config', (req, res)=>{
     res.json(authConfig)
 });
 
-import function getUser(res, req) {
+async function getUser(req, res) {
     const feedback = db.getUser(req.params.user_email);
     // handdle response
     if(feedback) {
-        res.json(feedback);
-    } else {
         res.status(404).send('User not found');
+        return;
+    } if(!feedback) {
+        res.json(feedback);
     }
+    res.json(feedback);
 }
 
 
