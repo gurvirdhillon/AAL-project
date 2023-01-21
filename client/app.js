@@ -1,4 +1,4 @@
-const access_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzk4MjYiLCJzdWIiOiJCREhSWVkiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd3BybyB3c2xlIHd0ZW0gd3dlaSB3ZWNnIHdjZiB3c2V0IHdhY3Qgd294eSB3cmVzIiwiZXhwIjoxNjczODQyNjI0LCJpYXQiOjE2NzM4MTM4MjR9.ge4JfNNpvXN55qznom5gOUbpilZRse1XupZ-2KMpa-8";
+const access_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzk4SFYiLCJzdWIiOiJCREdNQkoiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd251dCB3cHJvIHd0ZW0gd3NsZSB3d2VpIHdlY2cgd2NmIHdhY3Qgd3JlcyB3b3h5IiwiZXhwIjoxNjc0MzMyNjQ4LCJpYXQiOjE2NzQzMDM4NDh9.g1QM5YsATpxbaAF1duM_meEFxtVQeeHEZWEFn8G7sw8";
 
 fetch('https://api.fitbit.com//1/user/-/profile.json', {
     method: "GET",
@@ -7,16 +7,27 @@ fetch('https://api.fitbit.com//1/user/-/profile.json', {
 .then(response => response.json())
 .then(json => console.log(json));
 
-// fetch('https://api.fitbit.com/1/user/-/br/date/2021-10-04.json', {
-//     method: "GET",
-//     headers: {"Authorization": "Bearer " + access_token}
-// })
-// .then(response => response.json())
-// .then(json => console.log(json));
 
-// fetch('https://api.fitbit.com/1/user/-/devices.json', {
-//     method: "GET",
-//     headers: {"Authorization": "Bearer " + access_token}
-// })
-// .then(response => response.json())
-// .then(json => console.log(json));
+fetch('https://api.fitbit.com/1.2/user/-/sleep.json?date=2023-01-21&startTime=22:00&duration=720000',{
+    method: "GET",
+    headers: {"Authorization": "Bearer " + access_token}
+})
+.then(response => response.json())
+.then(json => console.log(json));
+
+fetch('https://api.fitbit.com/1/user/-/br/date/2023-01-23.json', {
+    method: "GET",
+    headers: {"Authorization": "Bearer " + access_token}
+})
+.then(response => response.json())
+.then(json => console.log(json));
+
+const grabData = fetch('https://api.fitbit.com/1/user/-/activities/heart/date/2023-01-15/2023-01-23.json', {
+    method: "GET",
+    headers: {"Authorization": "Bearer " + access_token}
+})
+.then(response => response.json())
+.then(json => console.log(json));
+
+// display the data on the page
+
