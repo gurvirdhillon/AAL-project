@@ -20,7 +20,17 @@ fetch('https://api.fitbit.com/1/user/-/br/date/2023-01-23.json', {
     headers: {"Authorization": "Bearer " + access_token}
 })
 .then(response => response.json())
-.then(json => console.log(json));
+.then(data => {
+    let usersData = data.map(item => {
+        let target = document.querySelector('#usersData');
+        target.textContent = usersData;
+        return target;
+    })
+    usersData.forEach(usersData => {
+        document.body.appendChild(usersData);
+    });
+})
+// .then(json => console.log(json));
 
 const grabData = fetch('https://api.fitbit.com/1/user/-/activities/heart/date/2023-01-15/2023-01-23.json', {
     method: "GET",
@@ -29,5 +39,4 @@ const grabData = fetch('https://api.fitbit.com/1/user/-/activities/heart/date/20
 .then(response => response.json())
 .then(json => console.log(json));
 
-// display the data on the page
-
+// display the json data on the page
