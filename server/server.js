@@ -1,9 +1,21 @@
 import express from 'express';
 const app = express();
 import path from 'path';
-import url from 'url';
+import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
+import * as http from 'http';
+import * as socketio from 'socket.io';
+// import socketio from 'socket.io';
+
+
+// const server = http.createServer();
+// const io = socketio(server);
+
+// io.on('connection', (socket) => {
+//     console.log('A user connected')
+//     socket.emit('message', 'Welcome to the chat');
+// });
 
 const db = openDB();
 const port = process.env.port || 8080;
@@ -48,3 +60,10 @@ app.get('/api/getUser/:user_email', catchError(getUser));
 
 app.use(express.static('client', { extensions: ['html'] }));
 app.use(express.static(path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../client')));
+
+// const io = socketio(server);
+// io.on('connection', (socket) => {
+//     console.log('A user connected')
+//     // you can add event listeners here
+// });
+
