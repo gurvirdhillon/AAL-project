@@ -6,8 +6,6 @@ import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
 import * as http from 'http';
 import * as socketio from 'socket.io';
-// import socketio from 'socket.io';
-
 
 // const server = http.createServer();
 // const io = socketio(server);
@@ -60,10 +58,4 @@ app.get('/api/getUser/:user_email', catchError(getUser));
 
 app.use(express.static('client', { extensions: ['html'] }));
 app.use(express.static(path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../client')));
-
-// const io = socketio(server);
-// io.on('connection', (socket) => {
-//     console.log('A user connected')
-//     // you can add event listeners here
-// });
 
