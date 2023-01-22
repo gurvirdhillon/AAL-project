@@ -1,16 +1,17 @@
---  CREATE DATABASE aal-db;
+--  CREATE DATABASE aal_db;
 
 -- Up
 
 CREATE TABLE user_profile(
-    user_email VARCHAR(255) PRIMARY KEY,
+    user_email VARCHAR(255),
     first_name varchar(60) NOT NULL,
     last_name varchar(60) NOT NULL,
     telephone_no varchar(20) NOT NULL,
-)
+    PRIMARY KEY(user_email)
+);
 
 CREATE TABLE medication(
-    medication_id SERIAL PRIMARY KEY,
+    medication_id SERIAL,
     medication_name varchar(60) NOT NULL,
     medication_dosage varchar(60) NOT NULL,
     medication_frequency varchar(60) NOT NULL,
@@ -24,7 +25,7 @@ CREATE TABLE medication(
 );
 
 CREATE TABLE nextOfKin(
-    nextOfKin_email VARCHAR(255) PRIMARY KEY,
+    nextOfKin_email VARCHAR(255),
     first_name varchar(60) NOT NULL,
     last_name varchar(60) NOT NULL,
     telephone_no varchar(20) NOT NULL,
@@ -35,7 +36,7 @@ CREATE TABLE nextOfKin(
         REFERENCES "user_profile"("user_email")
 );
 
-CREATE TYPE assistance_need AS ENUM('fall', 'fire', 'medical', 'other');
+CREATE TYPE assistance_need AS ENUM ('fall', 'fire', 'medical', 'other');
 
 CREATE TABLE panic_button(
     panic_id SERIAL PRIMARY KEY,
@@ -60,6 +61,8 @@ CREATE TABLE reminder_set(
         FOREIGN KEY ("user_email")
         REFERENCES "user_profile"("user_email")
 );
+
+INSER INTO user_profile VALUES ('');
 
 -- Down
 
