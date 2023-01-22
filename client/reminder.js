@@ -1,18 +1,13 @@
-const createList = document.querySelector('#createList');
+const reminderInput = document.querySelector('#reminderInput');
+const reminderFrm = document.querySelector('#reminderFrm');
 const reminderDate = document.querySelector('#reminderDate');
-const handleSubmitBtn = document.querySelector('#submitBtn');
+const submitBtn = document.querySelector('#submitBtn');
 
-handleSubmitBtn.addEventListener('click', dateValidator);
+// get the reminderInput and reminderDate to display on the sticky note
 
-// find the list of reminders for that day and add those reminders
+const targetNote = document.querySelector('#createList');
 
-function dateValidator(){
-    const inputDate = new Date(document.querySelector('#reminderDate').value);
-    const today = new Date();
-    if(inputDate < today){
-        return false
-    } else {
-        return true
-    }
-}
+
+
+// get the reminder input to display on the target note
 
