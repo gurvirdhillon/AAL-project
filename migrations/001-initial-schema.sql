@@ -60,8 +60,6 @@ CREATE TABLE reminder_set(
         REFERENCES "user_profile"("user_email")
 );
 
--- INSERT INTO user_profile VALUES ('johndoe@gmail.com', 'John', 'Doe', '07777777777');
-
 -- Down
 
 DROP TABLE user_profile;
