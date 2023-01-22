@@ -85,7 +85,7 @@ async function handleRedirectCallback() {
         try{
             await auth0.handleRedirectCallback();
         } catch(e){
-            window.alert(e.message || 'Not authenticated :/ ');
+            window.alert(e.message || 'Sorry we can not log you in :/ ');
             logout();
         }
         window.history.replaceState({}, document.title, '/');
@@ -99,8 +99,6 @@ function handleCalls(){
 }
 
 async function initialise() {
-    console.log('auth0 initialized');
-    console.log({ auth0 });
     await initialiseAuth0Client();
     await handleCalls();
     await handleRedirectCallback();
