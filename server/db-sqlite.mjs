@@ -18,6 +18,5 @@ export async function getUser(user_email) {
     return db.get("SELECT * FROM user_profile WHERE user_email = ?", user_email);
 }
 
-
 // the user email is the primary key
 
