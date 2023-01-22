@@ -36,11 +36,9 @@ CREATE TABLE nextOfKin(
         REFERENCES "user_profile"("user_email")
 );
 
-CREATE TYPE assistance_need AS ENUM ('fall', 'fire', 'medical', 'other');
-
 CREATE TABLE panic_button(
-    panic_id SERIAL PRIMARY KEY,
-    "assistance_need" assistance_need NOT NULL,
+    panic_id SERIAL,
+    assistance_need varchar(60) NOT NULL,
     user_email VARCHAR(255) NOT NULL,
     PRIMARY KEY(panic_id),
     CONSTRAINT "fk_panic_button.user_email"
@@ -49,7 +47,7 @@ CREATE TABLE panic_button(
 );
 
 CREATE TABLE reminder_set(
-    reminder_id SERIAL PRIMARY KEY,
+    reminder_id SERIAL,
     reminder_name varchar(60) NOT NULL,
     reminder_time varchar(60) NOT NULL,
     reminder_date varchar(60) NOT NULL,
@@ -62,7 +60,7 @@ CREATE TABLE reminder_set(
         REFERENCES "user_profile"("user_email")
 );
 
-INSER INTO user_profile VALUES ('');
+-- INSERT INTO user_profile VALUES ('johndoe@gmail.com', 'John', 'Doe', '07777777777');
 
 -- Down
 
