@@ -5,21 +5,16 @@ import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
 import * as http from 'http';
-// import * as socketio from 'socket.io';
 import io from 'socket.io-client';
-
 
 const server = http.createServer(app);
 
-
-const socket = io('http://localhost:8080');
+export const socket = io('http://localhost:8080');
 socket.on('connect', () => {
     console.log('connected');
+    socket.emit('message', 'Hello users!');
 });
 
-socket.on('message', (data) => {
-    console.log(data);
-});
 
 const db = openDB();
 const port = process.env.port || 8080;
