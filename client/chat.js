@@ -1,6 +1,5 @@
 import io from 'socket.io-client';
-const socket = io('http://localhost:8080');
-
+// const socket = io('http://localhost:8080');
 
 window.addEventListener('click', function(){
     const getbtn = document.querySelector('#txtOpen');
@@ -13,7 +12,6 @@ window.addEventListener('click', function(){
         });
     }
 });
-
 
 // start the chat by getting the input, pressing the send button then it displays it as a message on the page
 
