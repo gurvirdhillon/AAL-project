@@ -6,11 +6,11 @@ const authToken = "3562338dc6f76a2f6a83f6a4eddddec4";
 const client = twilio(accountSid, authToken);
 
 client.messages
-    .create({
-        body: 'Testing',
-        from : '+447893943882',
-        to: '+447908632941'
-}).then(message => console.log(message.sid));
+  .create({
+    body: 'Testing',
+    from : '+447893943882',
+    to: '+447908632941'
+  }).then(message => console.log(message.sid));
 
 // button.addEventListener("click", function () {
 //     client.messages
