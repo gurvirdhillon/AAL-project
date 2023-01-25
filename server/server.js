@@ -4,14 +4,15 @@ import path from 'path';
 import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
+import { Server} from 'socket.io';
 
-// const server = http.createServer(app);
+Server = http.createServer(app);
 
-// export const socket = io('http://localhost:8080');
-// socket.on('connect', () => {
-//     console.log('connected');
-//     socket.emit('message', 'Hello users!');
-// });
+export const socket = io('http://localhost:8080');
+socket.on('connect', () => {
+    console.log('connected');
+    socket.emit('message', 'Hello users!');
+});
 
 const db = openDB();
 const port = process.env.port || 8080;
