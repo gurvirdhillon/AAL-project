@@ -17,7 +17,8 @@
     "sqlite": "^4.1.2",
     "sqlite3": "^5.1.4",
     "twilio": "^3.84.1"
-  }, "eslintConfig": {
+  }, 
+  "eslintConfig": {
     "extends": "portsoc",
     "root": true,
     "env": {
