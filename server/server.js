@@ -4,11 +4,12 @@ import path from 'path';
 import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
+import http from 'http';
 import { Server} from 'socket.io';
 
-Server = http.createServer(app);
+const server = http.createServer(app);
 
-export const socket = io('http://localhost:8080');
+export const socket = new Server('http://localhost:8080');
 socket.on('connect', () => {
     console.log('connected');
     socket.emit('message', 'Hello users!');
