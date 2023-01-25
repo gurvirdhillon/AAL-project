@@ -1,14 +1,14 @@
-{
-    "name": "ambient-assisted-living app",
-    "abb_name": "AAL",
-    "icon": [
-                {
-        "src": "../assets/icons/icon-72x72.png",
-        "size": "72x72"
-        }
-    ],
-    "start_url": "/",
-    "display": "standalone",
-    "orientation": "portrait"
-}
+// {
+//     "name": "ambient-assisted-living app",
+//     "abb_name": "AAL",
+//     "icon": [
+//                 {
+//         "src": "../assets/icons/icon-72x72.png",
+//         "size": "72x72"
+//         }
+//     ],
+//     "start_url": "/",
+//     "display": "standalone",
+//     "orientation": "portrait"
+// }
 
