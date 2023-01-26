@@ -3,12 +3,26 @@
     "abb_name": "AAL",
     "icon": [
                 {
-        "src": "../assets/icons/icon-72x72.png",
+        "src": "./img/icon-72x72.png",
         "size": "72x72"
         }
     ],
     "start_url": "/",
     "display": "standalone",
-    "orientation": "portrait"
+    "orientation": "portrait",
 }
 
+// ,
+// {
+//     "name":"aal app",
+//     "abb_name": "AAL",
+//     "icon": [
+//         {
+//             "src": "./img/elderly-technology.jpg",
+//             "size": ""
+//         }
+//     ],
+//     "start_url": "/",
+//     "display": "standalone",
+//     "orientation": "portrait"
+// }
