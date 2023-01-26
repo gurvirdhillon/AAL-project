@@ -57,7 +57,7 @@ async function updateAuthenticatedUI() {
     const isAuthenticated = await auth0.isAuthenticated();
     document.getElementById('login').disabled = isAuthenticated;
     document.getElementById('logout').disabled = !isAuthenticated;
-    console.log({ isAuthenticated });
+    // console.log({ isAuthenticated });
     if (isAuthenticated) {
       const user = await auth0.getUser();
       const getTag = document.querySelector('#greeting');
