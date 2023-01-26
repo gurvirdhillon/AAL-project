@@ -37,3 +37,4 @@ npm i twilio
 * User activity monitoring and alerting caregivers
 * Medication management
 * User profile
+* Offline compatibility (limited abilities such as not being able to login, not being able to send notifications etc)
