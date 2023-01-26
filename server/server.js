@@ -10,13 +10,12 @@ import { Server } from "socket.io";
 const server = http.createServer();
 const io = new Server(server);
 
-io.on("connection", (socket) => {
-  console.log('connected');
+io.on('connection', socket => {
+  console.log('new user');
   socket.emit('message', 'Hello users!');
 });
 
 server.listen(3000);
-
 
 const db = openDB();
 const port = process.env.port || 8080;
