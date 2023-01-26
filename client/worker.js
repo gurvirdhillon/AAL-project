@@ -8,7 +8,6 @@ const filesHandler = [
   '/img/elderly-technology.png',
 ];
 
-
 async function fetchFromCache(request) {
   const cache = await caches.open('AAL');
   const data = await cache.match(request);
