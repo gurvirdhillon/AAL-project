@@ -36,10 +36,11 @@ body{
 } */
 
 #parentSettings{
-    display: grid;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0.2%;
     /* turn it into a settings look with one button under the other */
-    grid-template-columns: 1fr;
-    place-items: center;
 }
 
 #StickyNote{
