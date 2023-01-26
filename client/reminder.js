@@ -5,6 +5,14 @@ const submitBtn = document.querySelector('#submitBtn');
 
 const reminderContainer = document.querySelector('#createList');
 
-function showReminders() {
-      
+function showReminders(data) {
+    getReminders.value = data;
+    reminderContainer.textContent = data;
+    reminderContainer.append(getReminders);
 };
+
+function init() {
+    showReminders();
+}
+
+window.addEventListener('load', init);
