@@ -1,12 +1,12 @@
-const filesHandler = [
-  '/index.html',
-  '/index.js',
-  '/index.css',
-  '/worker.js',
-  '/offline.js',
-  '/manifest.json',
-  '/img/elderly-technology.png',
-];
+// const filesHandler = [
+//   '/index.html',
+//   '/index.js',
+//   '/index.css',
+//   '/worker.js',
+//   '/offline.js',
+//   '/manifest.json',
+//   '/img/elderly-technology.png',
+// ];
 
 async function fetchFromCache(request) {
   const cache = await caches.open('AAL');
