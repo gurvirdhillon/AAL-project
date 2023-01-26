@@ -64,6 +64,19 @@ body{
     display: flex;
 }
 
+#reminders{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#totalReminders{
+/* position the div right */
+/* in line with the sticky note */
+background-color: rgb(198, 198, 198);
+border: thin solid black;
+
+}
+
 #panicBtn{
     background-color: red;
     border-radius: 40%;
@@ -89,7 +102,6 @@ body{
 }
 
 #inputMsg{
-    
     height: 50%;
 }
 
