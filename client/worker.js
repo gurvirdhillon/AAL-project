@@ -16,7 +16,7 @@ async function fetchFromCache(request) {
     return data;
   } else {
     console.log('Fetching from network', request.url);
-    // await cache.add(request);
+    await cache.add(request);
     return await cache.match(request);
   }
 }
