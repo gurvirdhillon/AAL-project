@@ -40,9 +40,9 @@ export function findReminder(id) {
 export function addReminder(reminder){
     const newReminder = [
         {
-    id: "",
+    id: uuid.v4(),
     reminder: "",
-    date: ""
+    date: Date()
     },
 ];
 
