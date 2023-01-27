@@ -15,7 +15,6 @@ socket.on('connect', () => {
     socket.emit('message', 'Hello users!');
 });
 
-
 const db = openDB();
 const port = process.env.port || 8080;
 
@@ -25,6 +24,11 @@ app.listen(port, () => console.log(`The application is running on port ${port}!`
 
 app.get('/auth-config', (req, res)=>{
     res.json(authConfig)
+});
+
+app.post('/send-message', (req, res) => {
+    console.log(req.body);
+    res.send('Message received');
 });
 
 async function getUser(req, res) {
