@@ -7,6 +7,7 @@ import { openDB } from './db-sqlite.mjs';
 import http from "http";
 import { Server } from "socket.io";
 import * as uuid from 'uuid';
+import *  as eRemind from '../client/reminder.js';
 
 const server = http.createServer();
 const io = new Server(server);
@@ -58,14 +59,6 @@ function catchError(catchErr) {
     };
 }
 
-const reminders = [
-        {
-    id: "",
-    reminder: "",
-    date: ""
-    },
-];
-
 app.get('/api/reminders', (req, res) => {
     res.json(reminders);
 });
@@ -89,6 +82,31 @@ app.post('/api/reminders', express.json(), (req, res) => {
     reminders = [newReminder, ...reminders.slice(0, 9)];
     res.json(newReminder);
 });
+
+function getReminders(req, res) {
+    res.json(eRemind.listReminders());
+}
+
+function getReminder(req, res) {
+    const feedback = eRemind.findReminder(req.params.id);
+    if(feedback) {
+        res.json(feedback);
+        return;
+    } else {
+        res.status(404).send('Sorry we are struggling to find this reminder.');
+        return;
+    }
+    res.json(feedback);
+}
+
+function postReminder(req, res) {
+    const rmndr = eRemind.addReminder(req.body);
+    res.json(rmndr);
+}
+
+app.get('/reminder', getReminders);
+app.get('/reminder/:id', getReminder);
+app.post('/reminder', express.json(), postReminder);
 
 app.get('/api/getUser/:user_email', catchError(getUser));
 
