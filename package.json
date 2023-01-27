@@ -19,7 +19,8 @@
     "socket.io-client": "^4.5.4",
     "sqlite": "^4.1.2",
     "sqlite3": "^5.1.4",
-    "twilio": "^3.84.1"
+    "twilio": "^3.84.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

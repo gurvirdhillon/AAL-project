@@ -6,6 +6,7 @@ import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
 import http from "http";
 import { Server } from "socket.io";
+import * as uuid from 'uuid';
 
 const server = http.createServer();
 const io = new Server(server);
@@ -56,6 +57,39 @@ function catchError(catchErr) {
         .catch((e) => next(e || new Error()));
     };
 }
+
+const reminders = [
+        {
+    id: "",
+    reminder: "",
+    date: ""
+    },
+];
+
+app.get('/api/reminders', (req, res) => {
+    res.json(reminders);
+});
+
+app.get('/api/reminders/:id', (req, res) => {
+    for(const reminder of reminders) {
+        if(reminder.id === req.params.id) {
+            res.json(reminder);
+            return;
+        }
+    }
+    res.status(404).send('Sorry we are struggling to find this reminder.');
+});
+
+app.post('/api/reminders', express.json(), (req, res) => {
+    const newReminder = {
+        id: uuid,
+        reminder: req.body.reminder,
+        date: Date()
+    };
+    reminders = [newReminder, ...reminders.slice(0, 9)];
+    res.json(newReminder);
+});
+
 app.get('/api/getUser/:user_email', catchError(getUser));
 
 app.use(express.static('client', { extensions: ['html'] }));
