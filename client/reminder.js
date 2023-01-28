@@ -54,10 +54,3 @@ export async function updateReminder(id, reminder_name) {
     return listReminders(id);
 }
 
-
-// reminders = [newReminder, ...reminders.slice(0, 9)];
-// return reminders;
-
-// }
-
-
