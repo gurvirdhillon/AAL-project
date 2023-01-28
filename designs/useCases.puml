@@ -1,0 +1,59 @@
+@startuml AAL-living UseCases
+
+:elderly user: as ElderlyUser
+:next of kin: as NextOfKin
+
+rectangle "AAL" as AAL {
+  left to right direction
+
+ElderlyUser --> (Add a reminder)
+ElderlyUser --> (Notify reminder)
+ElderlyUser --> (Get all reminders)
+ElderlyUser --> (Delete Reminder)
+ElderlyUser --> (Add medication)
+ElderlyUser --> (Notify medication)
+ElderlyUser --> (Get All Medications)
+ElderlyUser --> (Delete Medication)
+ElderlyUser ----> (Call point of call)
+ElderlyUser --> (Send message)
+ElderlyUser --> (activate panic button)
+ElderlyUser --> (change user details)
+ElderlyUser --> (Toggle Notifications)
+ElderlyUser --> (Toggle accessibility tools)
+ElderlyUser --> (change point of call)
+ElderlyUser --> (Users Current Fitbit info)
+ElderlyUser --> (Get prior fitbit info)
+
+NextOfKin --> (Send message)
+NextOfKin --> (activate panic button)
+NextOfKin --> (Call point of call)
+
+}
+
+rectangle "Twilio" as TwilioAPI
+rectangle "Fitbit" as FitbitAPI
+database "SQLite" as DB
+rectangle "socket.io" as SocketIO
+
+' Twilio --- (Send message)
+' Twilio --- (acitvate panic button)
+
+(activate panic button) -- TwilioAPI
+(Call point of call) -- TwilioAPI
+(Users Current Fitbit info) -- FitbitAPI
+(Get prior fitbit info) -- FitbitAPI
+
+(Add a reminder) -- DB
+(Get all reminders) -- DB
+(Delete Reminder) -- DB
+(change point of call) -- DB
+(change user details) -- DB
+
+(Add medication) -- DB
+(Delete Medication) -- DB
+(Get All Medications) -- DB
+
+(Send message) -- SocketIO
+
+
+@enduml
