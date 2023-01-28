@@ -45,12 +45,12 @@ export async function findReminder(id) {
 export async function addReminder(reminder_name) {
     const id = uuid();
     await db.run('INSERT INTO reminder_set VALUES(?, ?, ?, ?, ?, ?, ?)', [reminder_id, reminder_name, reminder_time, reminder_date, reminder_set, reminder_notice, user_email]);
-    return listReminders();
+    return listReminders(id);
 }
 
 export async function updateReminder(id, reminder_name) {
     const query = await db.run('UPDATE reminder_set SET reminder_name = ? WHERE reminder_id = ?', [reminder_name, id]);
-    if(statement.changes === 0) throw new Error('Reminder not found');
+    if(query.changes === 0) throw new Error('Reminder not found');
     return listReminders(id);
 }
 
