@@ -22,33 +22,42 @@
 
 // window.addEventListener('load', init);
 
-import * as uuid from 'uuid';
+// import * as uuid from 'uuid-random';
+// import sqlite from 'sqlite';
+
+// async function init() {
+//     const db = await sqlite.open('./db.sqlite', { verbose: true});
+//     await db.migrate({ migrationsPath: './migrations' });
+//     return db;
+// }
+
+// const dbConnection = init();
 
 export function listReminders(){
-    return reminders;
+    // const db = await dbConnection;
+    return db.all('SELECT * FROM reminder_set');
 }
 
-export function findReminder(id) {
-    for(const reminder of reminders) {
-        if(reminder.id === id) {
-            return reminder;
-        }
-    }
-    return null;
+export async function findReminder(id) {
+    return db.get('SELECT * FROM reminder_set WHERE email = ?', id);
 }
 
-export function addReminder(reminder){
-    const newReminder = [
-        {
-    id: uuid.v4(),
-    reminder: "",
-    date: Date()
-    },
-];
-
-reminders = [newReminder, ...reminders.slice(0, 9)];
-return reminders;
-
+export async function addReminder(reminder_name) {
+    const id = uuid();
+    await db.run('INSERT INTO reminder_set VALUES(?, ?, ?, ?, ?, ?, ?)', [reminder_id, reminder_name, reminder_time, reminder_date, reminder_set, reminder_notice, user_email]);
+    return listReminders();
 }
+
+export async function updateReminder(id, reminder_name) {
+    const query = await db.run('UPDATE reminder_set SET reminder_name = ? WHERE reminder_id = ?', [reminder_name, id]);
+    if(statement.changes === 0) throw new Error('Reminder not found');
+    return listReminders(id);
+}
+
+
+// reminders = [newReminder, ...reminders.slice(0, 9)];
+// return reminders;
+
+// }
 
 
