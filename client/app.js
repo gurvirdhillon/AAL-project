@@ -20,3 +20,21 @@ fetch('https://api.fitbit.com//1/user/-/profile.json', {
 // })
 // .then(response => response.json())
 // .then(json => console.log(json));
+
+const getReminders = document.querySelector('#reminderInput');
+const reminderForm = document.querySelector('#reminderFrm');
+const getDate = document.querySelector('#reminderDate');
+const getAllReminders = document.querySelector('#totalReminders');
+
+reminderForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const getRmndrs = getReminders.value;
+    const getDte = getDate.value;
+    const createPin  = document.createElement('li');
+    createPin.classList.add('reminder-list');
+    const reminderText = document.createTextNode(getRmndrs);
+    const dateText = document.createTextNode(getDte);
+    createPin.appendChild(dateText);
+    getAllReminders.appendChild(reminderText);
+});
+

@@ -1,8 +1,3 @@
-// const getReminders = document.querySelector('#reminderInput').value;
-// const getDate = document.querySelector('#reminderDate');
-// const reminderForm = document.querySelector('#reminderFrm');
-// const submitBtn = document.querySelector('#submitBtn');
-
 // const reminderContainer = document.querySelector('#createList');
 
 // submitBtn.addEventListener('click', preventDefaultBehaviour)
@@ -32,6 +27,9 @@
 // }
 
 // const dbConnection = init();
+
+
+
 
 export function listReminders(){
     // const db = await dbConnection;
