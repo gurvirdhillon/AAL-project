@@ -1,16 +1,16 @@
 // add event listener to the button
 
-window.addEventListener('click', function(){
-    const getbtn = document.querySelector('#txtOpen');
-    const template = document.querySelector('#openChat');
-    const divHolder = document.querySelector('#PutChatHere');
-    if(getbtn){
-        getbtn.addEventListener('click', function(){
-            console.log("button clicked");
-            // open the chat window
-            divHolder.innerHTML = template.innerHTML;
-        });
-    }
+window.addEventListener('click', function () {
+  const getbtn = document.querySelector('#txtOpen');
+  const template = document.querySelector('#openChat');
+  const divHolder = document.querySelector('#PutChatHere');
+  if (getbtn) {
+    getbtn.addEventListener('click', function () {
+      console.log('button clicked');
+      // open the chat window
+      divHolder.innerHTML = template.innerHTML;
+    });
+  }
 });
 
 
@@ -21,16 +21,16 @@ const grabSend = document.querySelector('#chatSendBtn');
 const grabInput = document.querySelector('#inputMsg');
 
 function handleChat() {
-    const message = grabInput.value;
-    getChatDisplay.textContent = message;
+  const message = grabInput.value;
+  getChatDisplay.textContent = message;
 }
 
 if (grabSend) {
-    grabSend.addEventListener('click', handleChat);
+  grabSend.addEventListener('click', handleChat);
 }
 
 function initialising() {
-    handleChat();
+  handleChat();
 }
 
 window.addEventListener('load', initialising);
