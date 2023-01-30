@@ -3,11 +3,12 @@ const app = express();
 import path from 'path';
 import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
-import { openDB } from './db-sqlite.mjs';
+// import { openDB } from './db-sqlite.mjs';
+import { openDB } from '../client/reminder.js'
 import http from "http";
 import { Server } from "socket.io";
 import * as uuid from 'uuid';
-import *  as eRemind from '../client/reminder.js';
+// import *  from '../client/reminder.js';
 
 const server = http.createServer();
 const io = new Server(server);
@@ -104,9 +105,9 @@ function postReminder(req, res) {
     res.json(rmndr);
 }
 
-app.get('/reminder', getReminders);
-app.get('/reminder/:id', getReminder);
-app.post('/reminder', express.json(), postReminder);
+app.get('/reminder', catchError(getReminders));
+app.get('/reminder/:id', catchError(getReminder));
+app.post('/reminder', express.json(), catchError(postReminder));
 
 app.get('/api/getUser/:user_email', catchError(getUser));
 
