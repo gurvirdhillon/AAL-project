@@ -28,9 +28,6 @@
 
 // const dbConnection = init();
 
-
-
-
 export function listReminders(){
     // const db = await dbConnection;
     return db.all('SELECT * FROM reminder_set');
