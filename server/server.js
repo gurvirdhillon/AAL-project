@@ -6,6 +6,7 @@ import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
 import * as http from 'http';
 import io from 'socket.io-client';
+import * as client from '../client/send_sms.mjs';
 
 const server = http.createServer(app);
 
@@ -22,8 +23,20 @@ app.use(express.static('client'));
 
 app.listen(port, () => console.log(`The application is running on port ${port}!`));
 
-app.get('/auth-config', (req, res)=>{
+app.get('/auth-config', (req, res)=> {
     res.json(authConfig)
+});
+
+app.get('/send-message', (req, res) => {
+    // const grabPanicBtn = document.querySelector('#panicBtn');
+    // grabPanicBtn.addEventListener('click', () => { 
+    //     client.messages
+    //         .create({
+    //             body: 'Testing',
+    //             from : '+447893943882',
+    //             to: '+447908632941'
+    //             }).then(message => console.log(message.sid));
+    res.json(client)
 });
 
 app.post('/send-message', (req, res) => {
@@ -63,4 +76,3 @@ app.get('/api/getUser/:user_email', catchError(getUser));
 
 app.use(express.static('client', { extensions: ['html'] }));
 app.use(express.static(path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../client')));
-
