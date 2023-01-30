@@ -28,18 +28,15 @@ body{
     height: 100%;
 }
 
-/* .settingsBar{
-    background-color: rgb(183, 176, 176);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
+.settingsBar{
+    padding: 1%;
+}
 
 #parentSettings{
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    padding: 0.2%;
+
     /* turn it into a settings look with one button under the other */
 }
 
