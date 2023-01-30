@@ -10,3 +10,8 @@ client.messages
         from : '+447893943882',
         to: '+447908632941'
 }).then(message => console.log(message.sid));
+
+// const panicBtn = document.querySelector('#panicBtn');
+// panicBtn.addEventListener('click', () => {
+//     fetch('/send-message', {method: 'POST'});
+// });

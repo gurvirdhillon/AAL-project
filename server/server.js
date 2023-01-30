@@ -28,14 +28,6 @@ app.get('/auth-config', (req, res)=> {
 });
 
 app.get('/send-message', (req, res) => {
-    // const grabPanicBtn = document.querySelector('#panicBtn');
-    // grabPanicBtn.addEventListener('click', () => { 
-    //     client.messages
-    //         .create({
-    //             body: 'Testing',
-    //             from : '+447893943882',
-    //             to: '+447908632941'
-    //             }).then(message => console.log(message.sid));
     res.json(client)
 });
 
