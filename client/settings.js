@@ -44,4 +44,8 @@ window.addEventListener('click', function () {
 
 // implement the dark mode/light mode feature
 
+const getCheckBox = document.querySelector('#dark-light');
 
+getCheckBox.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+});

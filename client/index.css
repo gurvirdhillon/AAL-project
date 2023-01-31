@@ -100,3 +100,56 @@ input:required + label:after{
     position: absolute;
     right: 0;
 }
+
+/* dark mode */
+
+body.dark{
+    background-color: black;
+    color: white;
+}
+
+.fa-moon{
+    background-image: url('https://as1.ftcdn.net/jpg/01/13/72/84/500_F_113728476_BBmWp4hJWny4mR2jp9GSL4UvzSUxCROE.jpg');
+    background-size: 120%;
+    height: 100%;
+    width: 30%;
+    color: #f1c40f;
+
+}
+
+.fa-sun{
+    background-image: url('https://i.pinimg.com/originals/66/f9/f2/66f9f2496e22c1cff36aa2f9f1e57754.jpg');
+    background-size: 100%;
+    width: 30%;
+    height: 60%;
+    color: #f39c12;
+}
+
+#dark-light, .darkl{
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox:checked + .DLfeature .ball{
+    transform: translateX(11em);
+}
+
+.DLfeature{
+    background-color: #111;
+    display: flex;
+    border-radius: 5em;
+    align-items: center;
+    justify-content: space-between;
+    height: 5em;
+    width: 15em;
+}
+    
+.ballIcon{
+    background-color: #fff;
+    position: absolute;
+    height: 4em;
+    width: 4em;
+    border-radius: 1em;
+    transition: transform linear 0.2s;
+    
+}
