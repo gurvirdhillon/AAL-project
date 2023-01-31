@@ -19,6 +19,8 @@ export async function getMedication() {
 }
 
 async function initialise() {
+  getMedication();
+  setInterval(getMedication, 400);
   await notify('Medication Reminder');
 }
 
