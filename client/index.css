@@ -130,7 +130,7 @@ body.dark{
     position: absolute;
 }
 
-.checkbox:checked + .DLfeature .ball{
+.darkl:checked + .DLfeature .ball{
     transform: translateX(11em);
 }
 
@@ -144,7 +144,7 @@ body.dark{
     width: 15em;
 }
     
-.ballIcon{
+.ball{
     background-color: #fff;
     position: absolute;
     height: 4em;
