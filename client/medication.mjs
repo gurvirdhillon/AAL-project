@@ -13,11 +13,11 @@ async function notify(medicationName) {
   }
 }
 
-// async function getMedication() {
-//   const medication = await fetch('/api/medication');
-//   const medicationJson = await medication.json();
-//   return medicationJson;
-// }
+async function getMedication() {
+  const medication = await fetch('/api/medication');
+  const medicationJson = await medication.json();
+  return medicationJson;
+}
 
 async function initialise() {
   await notify('Medication Reminder');

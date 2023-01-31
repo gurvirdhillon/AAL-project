@@ -4,6 +4,8 @@ import url from 'url';
 import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
 const app = express();
+// need to import medication.js
+
 
 const db = openDB();
 const port = process.env.port || 8080;
@@ -15,6 +17,11 @@ app.listen(port, () => console.log(`The application is running on port ${port}!`
 app.get('/auth-config', (req, res) => {
   res.json(authConfig);
 });
+
+app.get('/api/medication', (req, res) => {
+  res.json();
+},
+);
 
 async function getUser(req, res) {
   const feedback = await db.getUser(req.params.user_email);
@@ -44,6 +51,7 @@ function catchError(catchErr) {
       .catch((e) => next(e || new Error()));
   };
 }
+
 app.get('/api/getUser/:user_email', catchError(getUser));
 
 app.use(express.static('client', { extensions: ['html'] }));
