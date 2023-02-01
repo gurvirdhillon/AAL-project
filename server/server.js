@@ -6,7 +6,7 @@ import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
 import * as http from 'http';
 import io from 'socket.io-client';
-import * as client from '../client/send_sms.mjs';
+import * as client from './index.js';
 
 const server = http.createServer(app);
 

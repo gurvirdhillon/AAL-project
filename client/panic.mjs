@@ -1,17 +1,17 @@
-// window.addEventListener('load', function(){
-//     const getPanicBtn = document.querySelector('#panicBtn');
-//     getPanicBtn.addEventListener('click', panicTrigger);
-// });
-
-// // find out how post requests work
-
-// function panicTrigger() {
-//     // alert("are you in trouble?");
-    
-// }
-
 const panicBtn = document.querySelector('#panicBtn');
-panicBtn.addEventListener('click', () => {
-    fetch('/send-message', {method: 'POST'});
+panicBtn.addEventListener('click', async () => {
+    const response = await fetch('/send-message', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            body: 'Help me!',
+            from : '+447893943882',
+            to: '+447908632941'
+        })
+    });
+    const data = await response.json();
+    console.log(data);   
 });
 
