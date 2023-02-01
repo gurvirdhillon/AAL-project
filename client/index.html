@@ -176,8 +176,9 @@ https://stackoverflow.com/questions/16699007/regular-expression-to-match-standar
 
 </body>
 
-<!-- <script>
-const panicBtn = document.querySelector('#panicBtn');
+<script>
+    const panicBtn = document.querySelector('#panicBtn');
+
 panicBtn.addEventListener('click', async () => {
     const response = await fetch('/send-message', {
         method: 'POST',
@@ -186,11 +187,12 @@ panicBtn.addEventListener('click', async () => {
         },
         body: JSON.stringify({
             body: 'Help me!',
-            from : '+447893943882',
+            from: '+447893943882',
             to: '+447908632941'
         })
     });
     const data = await response.json();
-    console.log(data);   
+    console.log(data);
 });
-</script> -->
+
+</script>

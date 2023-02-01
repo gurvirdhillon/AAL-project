@@ -27,14 +27,34 @@ app.get('/auth-config', (req, res)=> {
     res.json(authConfig)
 });
 
-app.get('/send-message', (req, res) => {
-    res.json(client)
-});
+// app.post('/send-message', (req, res) => {
+//     const { body, from, to } = req.body;
+
+//     client.messages
+//         .create({
+//             body,
+//             from,
+//             to
+//         })
+//         .then(message => {
+//             console.log(message.sid);
+//             res.send({ message: 'Message sent' });
+//         })
+//         .catch(err => {
+//             console.error(err);
+//             res.status(500).send({ error: 'Failed to send message' });
+//         });
+// });
 
 app.post('/send-message', (req, res) => {
-    console.log(req.body);
-    res.send('Message received');
-});
+    const { message } = req.body;
+    console.log(message);
+  
+    // Perform further actions based on the message
+    // ...
+  
+    res.status(200).send('Message received!');
+});  
 
 async function getUser(req, res) {
     const feedback = await db.getUser(req.params.user_email);
