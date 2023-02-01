@@ -27,34 +27,24 @@ app.get('/auth-config', (req, res)=> {
     res.json(authConfig)
 });
 
-// app.post('/send-message', (req, res) => {
-//     const { body, from, to } = req.body;
-
-//     client.messages
-//         .create({
-//             body,
-//             from,
-//             to
-//         })
-//         .then(message => {
-//             console.log(message.sid);
-//             res.send({ message: 'Message sent' });
-//         })
-//         .catch(err => {
-//             console.error(err);
-//             res.status(500).send({ error: 'Failed to send message' });
-//         });
-// });
-
 app.post('/send-message', (req, res) => {
-    const { message } = req.body;
-    console.log(message);
-  
-    // Perform further actions based on the message
-    // ...
-  
-    res.status(200).send('Message received!');
-});  
+    const { body, from, to } = req.body;
+
+    client.messages
+        .create({
+            body,
+            from,
+            to
+        })
+        .then(message => {
+            console.log(message.sid);
+            res.send({ message: 'Message sent' });
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send({ error: 'Failed to send message' });
+        });
+});
 
 async function getUser(req, res) {
     const feedback = await db.getUser(req.params.user_email);
