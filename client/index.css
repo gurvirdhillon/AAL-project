@@ -131,7 +131,7 @@ body.dark{
 }
 
 .darkl:checked + .DLfeature .ball{
-    transform: translateX(11em);
+    transform: translateX(11%);
 }
 
 .DLfeature{
