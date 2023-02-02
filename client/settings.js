@@ -49,3 +49,18 @@ window.addEventListener('click', function () {
 // getCheckBox.addEventListener('click', () => {
 //   document.body.classList.toggle('dark');
 // });
+
+// implement the user profile page
+
+const imgInput = document.querySelector('#userProfilePicUpload');
+const displayImg = document.querySelector('#userProfilePic');
+
+imgInput.addEventListener('change', function () {
+  const file = imgInput.files[0];
+  const read = new FileReader();
+
+  read.onload = function (e) {
+    displayImg.src = e.target.result;
+  };
+  read.readAsDataURL(file);
+});
