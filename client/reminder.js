@@ -1,5 +1,6 @@
 const dataReminder = {};
 
+// removes the content from the input field
 function removeContent(content) {
     content.textContent = '';
 }
