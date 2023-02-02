@@ -7,6 +7,8 @@ import { openDB } from './db-sqlite.mjs';
 import * as http from 'http';
 import io from 'socket.io-client';
 import * as client from './index.js';
+// import * as response from '../client/panic.mjs';
+
 
 const server = http.createServer(app);
 
@@ -29,8 +31,8 @@ app.get('/auth-config', (req, res)=> {
 });
 
 app.post('/send-message', (req, res) => {
-    const { body, from, to } = req.body;
-
+    const { body, from, to } = res.body;
+    // console.log('Sending message', body, from, to);
     client.messages
         .create({
             body,
