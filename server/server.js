@@ -3,12 +3,11 @@ const app = express();
 import path from 'path';
 import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
-// import { openDB } from './db-sqlite.mjs';
-import { openDB } from '../client/reminder.js'
+// import { openDB } from '../client/reminder.js'
+import { openDB } from './index.js'
 import http from "http";
 import { Server } from "socket.io";
 import * as uuid from 'uuid';
-// import *  from '../client/reminder.js';
 
 const server = http.createServer();
 const io = new Server(server);
