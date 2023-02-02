@@ -11,9 +11,10 @@ import * as client from './index.js';
 const server = http.createServer(app);
 
 export const socket = io('http://localhost:8080');
+
 socket.on('connect', () => {
     console.log('connected');
-    socket.emit('message', 'Hello users!');
+    socket.emit('chat-message', 'Hello users!');
 });
 
 const db = openDB();

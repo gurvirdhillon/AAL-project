@@ -1,12 +1,15 @@
-// (async () => {
-//     const io = await import('socket.io');
-//     const socket = io('http://localhost:8080');
-// })();
+(async () => {
+    const io = await import('socket.io');
+    const socket = io('http://localhost:8080');
 
-import io from 'socket.io-client';
-const socket = io('http://localhost:8080');
+    socket.on('connect', () => {
+        console.log('connected');
+        socket.emit('chat-message', 'Hello users!');
+    });
+})();
 
 
+// opens chat
 window.addEventListener('click', function(){
     const getbtn = document.querySelector('#txtOpen');
     const template = document.querySelector('#openChat');
@@ -21,16 +24,24 @@ window.addEventListener('click', function(){
 
 // start the chat by getting the input, pressing the send button then it displays it as a message on the page
 
-socket.on('message', data => {
-    console.log(data);
-});
-
 const grabDisplay = document.querySelector('#chatDisplay');
 const grabInputBar = document.querySelector('#inputMsg');
 const grabSendBtn = document.querySelector('#chatSendBtn');
+const grabFrm = document.querySelector('#MsgForm');
+
+grabFrm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const msg = grabInputBar.value;
+    socket.emit('send-message', msg);
+    grabInputBar.value = '';
+});
+
+socket.on('chat-message', data => {
+    console.log("Message received: " + data);
+});
 
 function handleMsg() {
-    
+
 }
 
 function init() {
