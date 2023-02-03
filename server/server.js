@@ -26,7 +26,6 @@ app.post('/send-message', (req, res) => {
     if(client){
         console.log('Twilio message has been sent');
     }
-
     client.messages
         .create({
             body: 'Help me!',
