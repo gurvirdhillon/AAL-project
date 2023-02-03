@@ -3,6 +3,8 @@ import path from 'path';
 import url from 'url';
 import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
+
+import twilio from 'twilio';
 const app = express();
 // need to import medication.js
 
@@ -18,10 +20,29 @@ app.get('/auth-config', (req, res) => {
   res.json(authConfig);
 });
 
-app.get('/api/medication', (req, res) => {
-  res.json();
-},
-);
+const accountSid = 'ACf25d4feac6b0fd768188a7f2d54f5583';
+const authToken = '3562338dc6f76a2f6a83f6a4eddddec4';
+const client = twilio(accountSid, authToken);
+
+app.post('/send-message', (req, res) => {
+  if (client) {
+    console.log('Twilio message has been sent');
+  }
+  client.messages
+    .create({
+      body: 'Help me!',
+      from: '+447893943882',
+      to: '+447908632941',
+    })
+    .then(message => {
+      console.log(message.sid);
+      res.send({ message: 'Message sent' });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send({ error: 'Failed to send message' });
+    });
+});
 
 async function getUser(req, res) {
   const feedback = await db.getUser(req.params.user_email);
