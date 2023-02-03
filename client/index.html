@@ -72,10 +72,25 @@
 <form>
 <label for="medName">Medication Name </label><input type="text" placeholder="Medication name" id="medName" required><label></label>
 <p></p>
-<label for="medDosage">Dosage Amount </label><input type="text" placeholder="Dosage" id="medDosage" required type="number" min="0"><label>mg</label>
+
+<!-- medication measurements -->
+<label for="medDosage">Dosage:<input type="number" placeholder="2 pills" min="0" required></label>
+<select id="medDosage">
+<option value="mg">mg</option>
+<option value="ml">ml</option>
+<option value="%">%</option>
+<option value="units">units</option>
+</select>
+<label></label>
+
 <p></p>
 <label for="medTime">Medication time </label><input type="text" placeholder="Time" id="medTime" required><label></label>
 <p></p>
+
+<label for="medStrength">Strength: </label><input type="number" placeholder="e.g 10mg" id="medStrength" required><label></label>
+
+<p></p>
+
 <input id="medSubmit" type="submit" value="Submit">
 </form>
 

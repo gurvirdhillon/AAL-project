@@ -98,3 +98,7 @@ input:required + label:after{
     color: red;
 }
 
+select:required + label:after{
+    content: ' *';
+    color: red;
+}
