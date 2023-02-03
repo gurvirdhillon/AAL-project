@@ -25,6 +25,7 @@ This project relies on the use of Node as it has been devevloped as a web projec
 ```git
 npm i jest
 npm i sqlite3
+npm i sqlite
 npm i express
 npm i sqlite
 npm i twilio

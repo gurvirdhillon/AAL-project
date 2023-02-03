@@ -5,19 +5,6 @@ import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
 // import { openDB } from '../client/reminder.js'
 import { openDB } from './index.js'
-import http from "http";
-import { Server } from "socket.io";
-import * as uuid from 'uuid';
-
-const server = http.createServer();
-const io = new Server(server);
-
-io.on('connection', socket => {
-  console.log('new user');
-  socket.emit('message', 'Hello users!');
-});
-
-server.listen(3000);
 
 const db = openDB();
 const port = process.env.port || 8080;
