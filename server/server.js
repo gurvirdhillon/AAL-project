@@ -8,7 +8,6 @@ import twilio from 'twilio';
 const app = express();
 // need to import medication.js
 
-
 const db = openDB();
 const port = process.env.port || 8080;
 
