@@ -4,17 +4,6 @@ import path from 'path';
 import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
-import * as http from 'http';
-import io from 'socket.io-client';
-
-const server = http.createServer(app);
-
-export const socket = io('http://localhost:8080');
-
-socket.on('connect', () => {
-    console.log('connected');
-    socket.emit('chat-message', 'Hello users!');
-});
 
 const db = openDB();
 const port = process.env.port || 8080;
@@ -34,8 +23,6 @@ const authToken = "3562338dc6f76a2f6a83f6a4eddddec4";
 const client = twilio(accountSid, authToken);
 
 app.post('/send-message', (req, res) => {
-    // const { body, from, to } = res.body;
-    // console.log('Sending message', body, from, to);
     if(client){
         console.log('Twilio message has been sent');
     }
