@@ -94,8 +94,6 @@ border: thin solid black;
     position: absolute;
 }
 
-
-
 #chatSendBtn{
     grid-area: btn;
     height: 50%;
