@@ -6,9 +6,6 @@ import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
 import * as http from 'http';
 import io from 'socket.io-client';
-import * as client from './index.js';
-// import * as response from '../client/panic.mjs';
-
 
 const server = http.createServer(app);
 
@@ -30,14 +27,24 @@ app.get('/auth-config', (req, res)=> {
     res.json(authConfig)
 });
 
+import twilio from 'twilio';
+
+const accountSid = "ACf25d4feac6b0fd768188a7f2d54f5583";
+const authToken = "3562338dc6f76a2f6a83f6a4eddddec4";
+const client = twilio(accountSid, authToken);
+
 app.post('/send-message', (req, res) => {
-    const { body, from, to } = res.body;
+    // const { body, from, to } = res.body;
     // console.log('Sending message', body, from, to);
+    if(client){
+        console.log('Twilio message has been sent');
+    }
+
     client.messages
         .create({
-            body,
-            from,
-            to
+            body: 'Help me!',
+            from: '+447893943882',
+            to: '+447908632941'
         })
         .then(message => {
             console.log(message.sid);
