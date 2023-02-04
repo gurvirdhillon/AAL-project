@@ -12,8 +12,15 @@ import * as uuid from 'uuid';
 const server = http.createServer();
 const io = new Server(server);
 
+app.get('/send-message', function(req, res) {
+    res.sendFile('../client/index.html');
+});
+
 io.on('connection', socket => {
   console.log('new user');
+  socket.on('message', function (msg) {
+    io.emit('message', msg);
+  })
   socket.emit('message', 'Hello users!');
 });
 
