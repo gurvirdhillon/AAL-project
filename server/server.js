@@ -24,8 +24,6 @@ io.on('connection', socket => {
   socket.emit('message', 'Hello users!');
 });
 
-server.listen(3000);
-
 const db = openDB();
 const port = process.env.port || 8080;
 

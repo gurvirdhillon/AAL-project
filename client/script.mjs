@@ -6,7 +6,17 @@
 //     console.log(data);
 // });
 
-let socket = io.connect('http://localhost:3000');
+// const socket = io('http://localhost:3000');
+
+// io.on('connection', socket => {
+//     console.log('new user connected');
+// });
+
+const socket = io('http://localhost:8080');
+
+socket.on('connection', () => {
+    console.log('new user connected');
+});
 
 const form = document.querySelector('#chat-form');
 const chatDisplay = document.querySelector('#chatDisplay');
