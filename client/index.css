@@ -156,6 +156,7 @@ input:required + label:after{
 
 body.dark{
     background-color: #292c35;
+    color: white;
 }
 
 .checkbox{
