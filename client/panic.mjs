@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+// triggers the call of the Twilio API
+
 document.addEventListener('DOMContentLoaded', () => {
   const getTelephoneBtn = document.getElementById('teleBtn');
   if(getTelephoneBtn){
@@ -30,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         url: 'http://demo.twilio.com/docs/voice.xml',
         to: '+447908632941',
         from: '+447893943882'
+        // with this functionality, the user will be able to call their next of kin for things such as a quick chat or to ask for help
       })
     });
     const data = await response.json();
