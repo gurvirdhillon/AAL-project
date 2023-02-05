@@ -1,16 +1,4 @@
-// import { io } from 'socket.io';
-
-// const socket = io('http://localhost:8080');
-
-// socket.on('message', data => {
-//     console.log(data);
-// });
-
-// const socket = io('http://localhost:3000');
-
-// io.on('connection', socket => {
-//     console.log('new user connected');
-// });
+import io from 'socket.io-client';
 
 const socket = io('http://localhost:8080');
 
@@ -29,7 +17,7 @@ form.addEventListener('submit', function (e) {
     input.value = '';
 })
 
-socket.on('message', function (msg) {
+socket.on('new-message', function (msg) {
     let msgElem = document.createElement('p');
     msgElem.textContent = msg;
     chatDisplay.appendChild(msgElem);

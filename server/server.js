@@ -8,21 +8,38 @@ import { openDB } from './index.js'
 import http from "http";
 import { Server } from "socket.io";
 import * as uuid from 'uuid';
+// import * as WebSocket from 'ws';
+import WebSocket from 'websocket';
 
 const server = http.createServer();
 const io = new Server(server);
+
+const newSocket = new WebSocket('http://localhost:8080');
+
+io.onopen = function (socket) {
+    console.log('web socket has been breached', event);
+    socket.send('new user connected');
+}
+
+io.onmessage = function(event){
+    console.log('messge recieved', event.data);
+}
+
+io.onclose = function(event){
+    console.log('connection closed', event);
+}
 
 app.get('/send-message', function(req, res) {
     res.sendFile('../client/index.html');
 });
 
 io.on('connection', socket => {
-  console.log('new user');
-  socket.on('message', function (msg) {
-    io.emit('message', msg);
-  })
-  socket.emit('message', 'Hello users!');
-});
+    console.log('new user');
+    socket.on('message', function (msg) {
+      io.on('message', msg);
+      socket.emit('new-message', msg);
+    });
+});  
 
 const db = openDB();
 const port = process.env.port || 8080;

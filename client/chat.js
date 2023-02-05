@@ -14,18 +14,20 @@ window.addEventListener('click', function(){
 
 const grabDisplay = document.querySelector('#chatDisplay');
 const grabInputBar = document.querySelector('#inputMsg');
+const chatDisplay = document.querySelector('#chatDisplay');
 
 const grabSendBtn = document.querySelector('#chatSendBtn');
-// grabSendBtn.addEventListener('click', handleMsg);
 
+if (grabSendBtn) {
+  grabSendBtn.addEventListener('click', displayMsg);
+}
 
-// function handleMsg(e) {
-//     e.preventDefault();
-// }
-
-// function init() {
-//     handleMsg();
-// }
-
-// window.addEventListener('load', init);
-
+function displayMsg(e) {
+  e.preventDefault();
+  const grabInputBar = document.querySelector('#grabInputBar');
+  const chatDisplay = document.querySelector('#chatDisplay');
+  
+  const newMsg = document.createElement('p');
+  newMsg.innerHTML = grabInputBar.value;
+  chatDisplay.appendChild(newMsg);
+}

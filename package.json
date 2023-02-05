@@ -21,7 +21,8 @@
     "sqlite3": "^5.1.4",
     "twilio": "^3.84.1",
     "uuid": "^9.0.0",
-    "uuid-random": "^1.3.2"
+    "uuid-random": "^1.3.2",
+    "websocket": "^1.0.34"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
