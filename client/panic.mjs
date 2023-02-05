@@ -8,11 +8,33 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         body: JSON.stringify({
           body: 'Help me!',
-          from: '+447893943882',
-          to: '+447908632941'
+          from: '+447908632941',
+          to: '+447893943882'
         })
       });
       const data = await response.json();
       console.log(data);
     });
   });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const getTelephoneBtn = document.getElementById('teleBtn');
+  if(getTelephoneBtn){
+  getTelephoneBtn.addEventListener('click', async () => {
+    const response = await fetch('/call', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({
+        url: 'http://demo.twilio.com/docs/voice.xml',
+        to: '+447908632941',
+        from: '+447893943882'
+      })
+    });
+    const data = await response.json();
+    console.log(data);
+  });
+  };
+});
+
