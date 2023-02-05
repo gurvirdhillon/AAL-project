@@ -127,23 +127,35 @@
 
 <template id="UserProfileReveal">
 
-<h1>User Profile</h1>
+<!-- <h1>User Profile</h1>
 <form id="userProfile">
 <label>Img:</label>
 <input type="file" id="userProfilePicUpload" accept="image/*">
 <p></p>
 <img src="" alt="avatar" id="userProfilePic">
-<label>DOB</label><input type="date">
+<label>DOB</label><input type="date"> -->
 
+<form id="user-profile-form">
+    <div>
+      <label for="user-picture">Profile Picture:</label>
+      <input type="file" id="user-picture" accept="image/*">
+    </div>
+<div>
+    <label for="dob">Date of Birth:</label>
+    <input type="text" id="dob">
+</div>
+
+<div>
+    <label for="description">Description:</label>
+    <textarea id="description"></textarea>
+</div>
 <input type="submit" value="Submit">
-
 </form>
 
 </template>
 
 <button class="settingsBar" id="NotifyBtn">Notifications</button>
 <div id="NotificationsHere"></div>
-
 
 <template id="NotificationsSettings">
 <p>preffered notification setting:</p>

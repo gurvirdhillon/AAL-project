@@ -52,15 +52,46 @@ window.addEventListener('click', function () {
 
 // implement the user profile page
 
-const imgInput = document.querySelector('#userProfilePicUpload');
-const displayImg = document.querySelector('#userProfilePic');
+// const imgInput = document.querySelector('#userProfilePicUpload');
+// const displayImg = document.querySelector('#userProfilePic');
 
-imgInput.addEventListener('change', function () {
-  const file = imgInput.files[0];
-  const read = new FileReader();
+// imgInput.addEventListener('change', function () {
+//   const file = imgInput.files[0];
+//   const read = new FileReader();
 
-  read.onload = function (e) {
-    displayImg.src = e.target.result;
-  };
-  read.readAsDataURL(file);
+//   read.onload = function (e) {
+//     displayImg.src = e.target.result;
+//   };
+//   read.readAsDataURL(file);
+// });
+
+const grabForm = document.querySelector('#user-profile-form');
+const pictureInput = document.querySelector('#user-picture');
+
+grabForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const dob = document.querySelector('#dob').value;
+  const description = document.querySelector('#description').value;
+
+  const formData = new FormData();
+  formData.append('picture', pictureInput.files[0]);
+  fetch('/upload-picture', { method: 'POST', body: formData })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(pictureUrl) {
+      // Update the user profile information in Auth0
+      auth0.users.updateUserMetadata(userId, { pictureUrl, dob, description }, function(err) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        // Store the user profile information in the SQLite database
+        const sqliteInsert = `
+          INSERT INTO user_profiles (user_id, picture_url, dob, description)
+          VALUES (${userId}, ${pictureUrl}, ${dob}, ${description})
+        `;
+      });
+    });
 });
