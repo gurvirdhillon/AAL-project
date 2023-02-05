@@ -41,3 +41,12 @@ window.addEventListener('click', function () {
         });
     }
 })
+
+
+// gets access to microphone
+navigator.mediaDevices.getUserMedia({audio: true, video: false}).then(stream => {
+    const getAudio = new AudioContext();
+    const getMic = getAudio.createMediaStreamSource(stream);
+}).catch(error =>  {
+    console.log('sorry we cannot access the microphone', error);
+});
