@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
           to: '+447893943882'
         })
       });
+      alert('Message sent to next of kin');
       const data = await response.json();
       console.log(data);
     });
