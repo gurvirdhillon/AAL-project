@@ -23,3 +23,24 @@ function pageLoaded() {
 }
 
 window.addEventListener('load', pageLoaded);  
+
+// just putting the list on the page
+
+const form = document.querySelector('#reminderFrm');
+const input = document.querySelector('#reminderInput');
+const list = document.querySelector('#totalList');
+
+if(form) {
+form.addEventListener('submit', function(event){
+    event.preventDefault();
+
+    const value = input.value;
+    if(!value){
+        return;
+    }
+    const item = document.createElement('li');
+    item.textContent = value;
+    list.appendChild(item);
+    input.value = '';
+});
+}
