@@ -26,21 +26,30 @@ window.addEventListener('load', pageLoaded);
 
 // just putting the list on the page
 
-const form = document.querySelector('#reminderFrm');
-const input = document.querySelector('#reminderInput');
-const list = document.querySelector('#totalList');
+const getReminder = document.querySelector('#reminder');
+const reminderTemplate = document.querySelector('');
+const getList = document.querySelector('#totalList');
 
-if(form) {
-form.addEventListener('submit', function(event){
-    event.preventDefault();
+getReminder.addEventListener('click', function(){
+    const templateContent = reminderTemplate.content.cloneNode(true);
+    getList.appendChild(templateContent);
+    
+    const getForm = document.querySelector('#reminderFrm');
+    const input = document.querySelector('#reminderInput');
+    const makeList = document.querySelector('#totalList');
 
-    const value = input.value;
-    if(!value){
-        return;
+    if(form){
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          const value = input.value;
+          if (!value) {
+            return;
+          }
+            const item = document.createElement('li');
+            item.textContent = value;
+            list.appendChild(item);
+              input.value = '';
+        });
     }
-    const item = document.createElement('li');
-    item.textContent = value;
-    list.appendChild(item);
-    input.value = '';
 });
-}
+

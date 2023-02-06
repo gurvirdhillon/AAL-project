@@ -38,10 +38,21 @@
 
 <p></p>
 
-<input id="panicBtn" type="submit" value="PANIC">
-
 <template id="remindTab">
-<h1>Reminder:</h1>
+
+    <h1>Reminder:</h1>
+
+    <div id="reminderSetter">
+    <form id="reminderFrm">
+    <label>Remind me: </label>
+    <input placeholder="Do the shopping" class="" id="reminderInput" required>
+    <p></p>
+    <input type="date" id="reminderDate" required>
+    <button type="submit" id="submitBtn">Add Reminder</button>
+    </div>
+    </form>
+
+<!-- <h1>Reminder:</h1>
 
 <div id="reminderSetter">
 <form id="reminderFrm">
@@ -72,7 +83,7 @@
     </ul>
 </div>
 
-</div>
+</div> -->
 
 </template>
 
@@ -185,5 +196,35 @@ https://stackoverflow.com/questions/16699007/regular-expression-to-match-standar
 
 
 </template>
+
+<article id="extras">
+
+    <p></p>
+    
+    <div id="reminders">
+    
+    <div id="StickyNote">
+    <h2 class="note-header">Sticky notes:</h2>
+    
+    <ul id="createList">
+    
+    </ul>
+    </div>
+    
+    <div id="totalReminders">
+        <h2>All reminders:</h2>
+        <ul id="totalList">
+    
+        </ul>
+    </div>
+    
+    </div>
+    
+
+</article>
+
+<p></p>
+
+<input id="panicBtn" type="submit" value="PANIC">
 
 </body>
