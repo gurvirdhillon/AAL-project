@@ -1,35 +1,37 @@
-const dataReminder = {};
+// const dataReminder = {};
 
-// removes the content from the input field
-function removeContent(content) {
-    content.textContent = '';
-}
+// // removes the content from the input field
+// function removeContent(content) {
+//     content.textContent = '';
+// }
 
-function grabSelectors() {
-    // grab the query selectors for the right things
-    dataReminder.reminderList = document.querySelector('#totalList');
-    dataReminder.reminder = document.querySelector('#reminderInput');
-    dataReminder.send = document.querySelector('#submitBtn');
-}
+// function grabSelectors() {
+//     // grab the query selectors for the right things
+//     dataReminder.reminderList = document.querySelector('#totalList');
+//     dataReminder.reminder = document.querySelector('#reminderInput');
+//     dataReminder.send = document.querySelector('#submitBtn');
+// }
 
-function triggerEventListeners(){
-    dataReminder.send.addEventListener('click', sendReminder);
-};
+// function triggerEventListeners(){
+//     dataReminder.send.addEventListener('click', sendReminder);
+// };
 
-function pageLoaded() {
-    grabSelectors();
-    triggerEventListeners();
-    loadReminders();
-}
+// function pageLoaded() {
+//     grabSelectors();
+//     triggerEventListeners();
+//     loadReminders();
+// }
 
-window.addEventListener('load', pageLoaded);  
+// window.addEventListener('load', pageLoaded);  
 
 // just putting the list on the page
 
 const getReminder = document.querySelector('#reminder');
-const reminderTemplate = document.querySelector('');
+// const reminderTemplate = document.querySelector('');
 const getList = document.querySelector('#totalList');
 
+
+if(getReminder){
 getReminder.addEventListener('click', function(){
     const templateContent = reminderTemplate.content.cloneNode(true);
     getList.appendChild(templateContent);
@@ -52,4 +54,4 @@ getReminder.addEventListener('click', function(){
         });
     }
 });
-
+};
