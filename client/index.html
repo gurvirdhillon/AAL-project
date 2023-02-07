@@ -8,7 +8,7 @@
         <script src="settings.js"></script>
         <script defer src="http://localhost:8080/socket.io/socket.io.js"></script>
         <script defer src="chat.js"></script>
-        <script src="medication.js"></script>
+        <script src="medication.js" type="module"></script>
         <script src="send_sms.mjs"></script>
         <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
         <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
@@ -67,13 +67,13 @@
 
 <template id="medicationTab">
 
-<h1>Medication:</h1>
+    <h1>Medication:</h1>
 
-<form id="medForm">
+<!-- <form id="medForm">
 <label for="medName">Medication Name </label><input type="text" placeholder="Medication name" id="medName" required><label></label>
 <p></p>
 
-<!-- medication measurements -->
+medication measurements
 <label for="medDosage">Dosage:<input type="number" placeholder="2 pills" min="0" required></label>
 <p></p>
 <label for="medStrength">Strength: </label><input type="number" placeholder="e.g 10mg" id="medStrength" required>
@@ -98,7 +98,7 @@
 
 <div id="medicationList">
 
-</div>
+</div> -->
 
 </template>
 
@@ -157,7 +157,7 @@ lorem ipsum
 <div id="accessHere"></div>
 
 <template id="accessSettings">
-     
+
 </template>
 
 <button class="settingsBar" id="detailsBtn">Change contact details</button>
@@ -191,5 +191,18 @@ https://stackoverflow.com/questions/16699007/regular-expression-to-match-standar
 
 
 </template>
+
+<p></p>
+
+<div id="medicationReminder">
+    <form id="medicationFrm">
+      <label>Medication reminder: </label>
+      <input placeholder="Enter medication name" class="" id="medicationInput" required>
+      <p></p>
+      <input type="time" id="medicationTime" required>
+      <button type="submit" id="submitBtn">Set Reminder</button>
+    </form>
+    <ul id="medicationList"></ul>
+  </div>
 
 </body>
