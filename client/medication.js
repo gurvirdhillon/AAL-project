@@ -1,19 +1,18 @@
 const form = document.querySelector('#medicationFrm');
-const input = document.querySelector('#medicationInput');
-const list = document.querySelector('#medicationList');
 
 if(form){
 form.addEventListener('submit', function(event){
     event.preventDefault();
+    const input = document.querySelector('#medicationInput');
+    const list = document.querySelector('#medicationList');
     const value = input.value;
     if(!value){
         return;
       }
-    const medicationTime = document.querySelector('#medicationTime').value;
+    const medTime = document.querySelector('#medicationTime').value;
     const time = new Date();
-    time.setHours(medicationTime.split(':')[0]);
-    time.setMinutes(medicationTime.split(':')[1]);
-
+    time.setHours(medTime.split(':')[0]);
+    time.setMinutes(medTime.split(':')[1]);
     if (Notification.permission !== "granted") {
         Notification.requestPermission();
     }
@@ -21,9 +20,9 @@ form.addEventListener('submit', function(event){
         new Notification(value + " reminder");
     }, 
     time - new Date());
-    const item = document.createElement('li');
-    item.textContent = value + ' at ' + document.querySelector('#medicationTime').value;
-    list.appendChild(item);
+    const makeList = document.createElement('li');
+    makeList.textContent = value + ' at ' + document.querySelector('#medicationTime').value;
+    list.appendChild(makeList);
     input.value = '';
   });
 };
