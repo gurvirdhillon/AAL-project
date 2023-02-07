@@ -1,1 +1,3 @@
-const form = document.querySelector()
+const form = document.querySelector('#medForm');
+const input = document.querySelector('#medName');
+
