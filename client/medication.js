@@ -2,6 +2,7 @@ const form = document.querySelector('#medForm');
 const input = document.querySelector('#medName');
 const list = document.querySelector('#medicationList');
 
+if(form){
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const value = input.value;
@@ -23,3 +24,4 @@ form.addEventListener('submit', (e) => {
     list.appendChild(item);
     input.value = '';
 });
+}
