@@ -74,19 +74,22 @@
 
 <!-- medication measurements -->
 <label for="medDosage">Dosage:<input type="number" placeholder="2 pills" min="0" required></label>
-<select id="medDosage">
-<option value="mg">mg</option>
-<option value="ml">ml</option>
-<option value="%">%</option>
-<option value="units">units</option>
-</select>
-<label></label>
-
 <p></p>
-<label for="medTime">Medication time </label><input type="text" placeholder="Time" id="medTime" required><label></label>
-<p></p>
-
 <label for="medStrength">Strength: </label><input type="number" placeholder="e.g 10mg" id="medStrength" required><label></label>
+<p></p>
+<select id="medDosage">
+    <option value="mg">mg</option>
+    <option value="ml">ml</option>
+    <option value="%">%</option>
+    <option value="units">units</option>
+    </select>
+<label></label>    
+
+<p></p>
+<label for="medTime">Medication time </label><input type="time" placeholder="Time" id="medTime" required><label></label>
+<p></p>
+
+<label for="currentQuantity">Quantity: <input type="number" min="1"></label>
 
 <p></p>
 
