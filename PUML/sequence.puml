@@ -1,0 +1,11 @@
+@startuml sequenceDiagram
+
+' the panic button
+
+participant User
+participant WebApp
+participant Server
+participant DB
+participant twilioAPI
+
+@enduml
