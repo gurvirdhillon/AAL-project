@@ -12,7 +12,14 @@ form.addEventListener('submit', function(event){
     const value = input.value;
     if(!value){
         return;
-      }
+    }
+    const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
+    reminders.push({
+        medication: value,
+        dosage: dosage.value,
+        strength: strength.value,
+        time: document.querySelector('#medicationTime').value
+    });
     localStorage.setItem('medicationInput', value);
     localStorage.setItem('medicationDosage', dosage.value);
     localStorage.setItem('medicationStrength', strength.value);
@@ -38,5 +45,11 @@ window.addEventListener('load', function () {
   input.value = localStorage.getItem('medicationInput') || ' ';
   dosage.value = localStorage.getItem('medicationDosage') || ' ';
   strength.value = localStorage.getItem('medicationStrength') || ' ';
+  // stores the users reminders in local storage
+  const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
+  reminders.forEach(function(reminder){
+    const item = document.createElement('li');
+    item.textContent = reminder.medication + ' at ' + reminder.time;
+    medicationList.appendChild(item);
+  });
 });
-
