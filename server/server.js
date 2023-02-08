@@ -44,10 +44,11 @@ app.post('/send-message', (req, res) => {
 
 app.post('/call', (req, res) => {
     client.calls.create({
-        url: 'http://demo.twilio.com/docs/voice.xml',
+        // url: 'http://demo.twilio.com/docs/voice.xml',
+        url: 'http://localhost:8080',
         to: '+447908632941',
         from: '+447893943882'
-    
+        // with this functionality, the user will be able to call their next of kin for things such as a quick chat or to ask for help
     }), function(error, call) {
         if(error === true){
             console.log(error);
@@ -58,8 +59,6 @@ app.post('/call', (req, res) => {
             }
         };    
 });
-
-
 
 async function getUser(req, res) {
     const feedback = await db.getUser(req.params.user_email);

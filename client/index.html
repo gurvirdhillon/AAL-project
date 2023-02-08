@@ -8,6 +8,7 @@
         <script src="settings.js"></script>
         <script defer src="http://localhost:8080/socket.io/socket.io.js"></script>
         <script defer src="chat.js"></script>
+        <script src="medication.js" type="module"></script>
         <script src="send_sms.mjs"></script>
         <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
         <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
@@ -29,15 +30,50 @@
     <button class="navChild" id="settings">Settings</button>
 </nav>
 
-<img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingImg">
+<!-- <img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingImg"> -->
+
+<div id="startingPage">
+
+<div id="medicationReminder">
+
+<h1>Medication reminder:</h1>
+
+<form id="medicationFrm">
+      <label>Medication reminder: </label>
+      <input placeholder="Enter medication name" id="medicationInput" required>
+      <p></p>
+      <label>Dosage: </label>
+      <input placeholder="e.g 2 pills" id="medicationDosage" required>
+      <p></p>
+      <label>Strength: </label>
+        <input placeholder="40mg" id="medicationStrength" type="number" required>
+        <select id="medicationDosage">
+            <option value="mg">mg</option>
+            <option value="ml">ml</option>
+            <option value="%">%</option>
+            <option value="units">units</option>
+        </select>
+        <label></label>
+      <p></p>
+        <label>Time reminder: </label>
+      <input type="time" id="medicationTime" required>
+        <p></p>
+      <button type="submit" id="submitBtn">Set Reminder</button>
+    </form>
+    <ul id="medicationList"></ul>
+  </div>
+
+</div>
 
 <article>
     
 </article>
 
-<p></p>
+<p id="targetBdy"></p>
 
+<footer>
 <input id="panicBtn" type="submit" value="PANIC">
+</footer>
 
 <template id="remindTab">
 <h1>Reminder:</h1>
@@ -66,40 +102,37 @@
 
 <template id="medicationTab">
 
-<h1>Medication:</h1>
+    <h1>Medication reminder:</h1>
 
-<form>
-<label for="medName">Medication Name </label><input type="text" placeholder="Medication name" id="medName" required><label></label>
-<p></p>
-
-<!-- medication measurements -->
-<label for="medDosage">Dosage:<input type="number" placeholder="2 pills" min="0" required></label>
-<select id="medDosage">
-<option value="mg">mg</option>
-<option value="ml">ml</option>
-<option value="%">%</option>
-<option value="units">units</option>
-</select>
-<label></label>
-
-<p></p>
-<label for="medTime">Medication time </label><input type="text" placeholder="Time" id="medTime" required><label></label>
-<p></p>
-
-<label for="medStrength">Strength: </label><input type="number" placeholder="e.g 10mg" id="medStrength" required><label></label>
-
-<p></p>
-
-<input id="medSubmit" type="submit" value="Submit">
-</form>
+    <form id="medicationFrm">
+        <label>Medication reminder: </label>
+        <input placeholder="Enter medication name" id="medicationInput" required>
+        <p></p>
+        <label>Dosage: </label>
+        <input placeholder="e.g 2 pills" id="medicationDosage" required>
+        <p></p>
+        <label>Strength: </label>
+          <input placeholder="40mg" id="medicationStrength" type="number" required>
+          <select id="medicationDosage">
+              <option value="mg">mg</option>
+              <option value="ml">ml</option>
+              <option value="%">%</option>
+              <option value="units">units</option>
+          </select>
+          <label></label>
+        <p></p>
+          <label>Time reminder: </label>
+        <input type="time" id="medicationTime" required>
+          <p></p>
+        <button type="submit" id="submitBtn">Set Reminder</button>
+      </form>
+      <ul id="medicationList"></ul>
+    </div>  
 
 </template>
 
 <template id="UserActivityTab">
 <h1>User activity:</h1>
-<!-- i reckon add in emergency call -->
-<!-- add emergency text where you have a web plugin where you can text someone on the application and sends a notification to email or SMS -->
-<!-- then maybe a graph of the users activity - if they've fallen etc -->
 
 <button id="teleBtn">Call someone?</button>
 
@@ -123,6 +156,13 @@
     </div>
 </template>
 
+<article class="displayUsersData">
+    <h1>Users Data</h1>
+    <p></p>
+    <div id="usersData">
+        <p></p>
+    </div>
+</article>
 
 </template>
 
@@ -135,12 +175,36 @@
 <div id="userProfileHere"></div>
 
 <template id="UserProfileReveal">
-lorem ipsum
+
+<!-- <h1>User Profile</h1>
+<form id="userProfile">
+<label>Img:</label>
+<input type="file" id="userProfilePicUpload" accept="image/*">
+<p></p>
+<img src="" alt="avatar" id="userProfilePic">
+<label>DOB</label><input type="date"> -->
+
+<form id="user-profile-form">
+    <div>
+      <label for="user-picture">Profile Picture:</label>
+      <input type="file" id="user-picture" accept="image/*">
+    </div>
+<div>
+    <label for="dob">Date of Birth:</label>
+    <input type="text" id="dob">
+</div>
+
+<div>
+    <label for="description">Description:</label>
+    <textarea id="description"></textarea>
+</div>
+<input type="submit" value="Submit">
+</form>
+
 </template>
 
 <button class="settingsBar" id="NotifyBtn">Notifications</button>
 <div id="NotificationsHere"></div>
-
 
 <template id="NotificationsSettings">
 <p>preffered notification setting:</p>
@@ -153,7 +217,17 @@ lorem ipsum
 <div id="accessHere"></div>
 
 <template id="accessSettings">
-     
+<p>preffered accessibility setting:</p>
+
+<div>
+	<input type="checkbox" id="chk" class="checkbox" />
+	<label class="label" for="chk">
+		<i class="moon"></i>
+		<i class="sun"></i>
+		<div class="ballIcon"></div>
+	</label>
+</div>
+
 </template>
 
 <button class="settingsBar" id="detailsBtn">Change contact details</button>
@@ -184,8 +258,22 @@ https://stackoverflow.com/questions/16699007/regular-expression-to-match-standar
 
 </template>
 </div>
-
+<p id="placeContent"></p>
 
 </template>
 
 </body>
+
+<script>
+
+window.addEventListener("load", function() {
+    const chk = document.getElementById('chk');
+    if (chk) {
+        chk.addEventListener('change', () => {
+            const getBody = document.querySelector('body');
+            getBody.classList.toggle('dark');
+        });
+    }
+});
+
+</script>
