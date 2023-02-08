@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon ./server/server.js",
     "start": "node ./server/server.js"
   },
   "author": "up2016988@myport.ac.uk",
@@ -17,15 +18,8 @@
     "sqlite": "^4.1.2",
     "sqlite3": "^5.1.4",
     "twilio": "^3.84.1"
-  }, "eslintConfig": {
-    "extends": "portsoc",
-    "root": true,
-    "env": {
-      "browser": true
-    }
-  }, 
+  },
   "devDependencies": {
-    "eslint": "^8.32.0",
-    "eslint-config-portsoc": "^1.0.1"
-  } 
+    "nodemon": "^2.0.20"
+  }
 }

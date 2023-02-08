@@ -6,12 +6,14 @@
         <script src="panic.mjs"></script>
         <script src="app.js"></script>
         <script src="settings.js"></script>
-        <script src="chat.js"></script>
-        <script src="send_sms.js" type="module"></script>
+        <script defer src="http://localhost:8080/socket.io/socket.io.js"></script>
+        <script defer src="chat.js"></script>
+        <script src="medication.js" type="module"></script>
+        <script src="send_sms.mjs"></script>
         <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
         <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
             <link rel="stylesheet" href="index.css">
-
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.0/socket.io.js"></script> -->
 </head>
 <body>
 
@@ -28,7 +30,40 @@
     <button class="navChild" id="settings">Settings</button>
 </nav>
 
-<img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingImg">
+<!-- <img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingImg"> -->
+
+<div id="startingPage">
+
+<div id="medicationReminder">
+
+<h1>Medication reminder:</h1>
+
+<form id="medicationFrm">
+      <label>Medication reminder: </label>
+      <input placeholder="Enter medication name" id="medicationInput" required>
+      <p></p>
+      <label>Dosage: </label>
+      <input placeholder="e.g 2 pills" id="medicationDosage" required>
+      <p></p>
+      <label>Strength: </label>
+        <input placeholder="40mg" id="medicationStrength" type="number" required>
+        <select id="medicationDosage">
+            <option value="mg">mg</option>
+            <option value="ml">ml</option>
+            <option value="%">%</option>
+            <option value="units">units</option>
+        </select>
+        <label></label>
+      <p></p>
+        <label>Time reminder: </label>
+      <input type="time" id="medicationTime" required>
+        <p></p>
+      <button type="submit" id="submitBtn">Set Reminder</button>
+    </form>
+    <ul id="medicationList"></ul>
+  </div>
+
+</div>
 
 <article>
     
@@ -44,7 +79,7 @@
 <h1>Reminder:</h1>
 
 <div id="reminderSetter">
-<form>
+<form id="reminderFrm">
 <input placeholder="remind me" class="" id="reminderInput" required>
 <p></p>
 <input type="date" id="reminderDate" required>
@@ -67,27 +102,39 @@
 
 <template id="medicationTab">
 
-<h1>Medication:</h1>
+    <h1>Medication reminder:</h1>
 
-<form>
-<label for="medName">Medication Name </label><input type="text" placeholder="Medication name" id="medName" required><label></label>
-<p></p>
-<label for="medDosage">Dosage Amount </label><input type="text" placeholder="Dosage" id="medDosage" required type="number" min="0"><label>mg</label>
-<p></p>
-<label for="medTime">Medication time </label><input type="text" placeholder="Time" id="medTime" required><label></label>
-<p></p>
-<input id="medSubmit" type="submit" value="Submit">
-</form>
+    <form id="medicationFrm">
+        <label>Medication reminder: </label>
+        <input placeholder="Enter medication name" id="medicationInput" required>
+        <p></p>
+        <label>Dosage: </label>
+        <input placeholder="e.g 2 pills" id="medicationDosage" required>
+        <p></p>
+        <label>Strength: </label>
+          <input placeholder="40mg" id="medicationStrength" type="number" required>
+          <select id="medicationDosage">
+              <option value="mg">mg</option>
+              <option value="ml">ml</option>
+              <option value="%">%</option>
+              <option value="units">units</option>
+          </select>
+          <label></label>
+        <p></p>
+          <label>Time reminder: </label>
+        <input type="time" id="medicationTime" required>
+          <p></p>
+        <button type="submit" id="submitBtn">Set Reminder</button>
+      </form>
+      <ul id="medicationList"></ul>
+    </div>  
 
 </template>
 
 <template id="UserActivityTab">
 <h1>User activity:</h1>
-<!-- i reckon add in emergency call -->
-<!-- add emergency text where you have a web plugin where you can text someone on the application and sends a notification to email or SMS -->
-<!-- then maybe a graph of the users activity - if they've fallen etc -->
 
-<button>Call someone?</button>
+<button id="teleBtn">Call someone?</button>
 
 <p></p>
 
@@ -100,9 +147,11 @@
 <template id="openChat">
     <div id="chat">
         <h1>Chat</h1>
-        <p></p>
-        <input type="text" placeholder="Type your message here" class="comContent" id="inputMsg">
-        <button id="chatSendBtn" class="comContent">Send</button>
+        <p id="chatDisplay"></p>
+            <form id="MsgForm">
+                <input type="text" placeholder="Type your message here" class="comContent" id="inputMsg">
+                <button id="chatSendBtn" class="comContent" type="submit">Send</button>
+            </form>
         <!-- add in a microphone option too -->
     </div>
 </template>
@@ -169,16 +218,6 @@
 
 <template id="accessSettings">
 <p>preffered accessibility setting:</p>
-
-<!-- <div>
-    <input type="checkbox" id="dark-light" class="darkl"/>
-<label class="DLfeature" for="chk">
-    <i class="fa-moon"></i>
-    <i class="fa-sun"></i>
-    <div class="ball"></div>
-</label>
-
-</div> -->
 
 <div>
 	<input type="checkbox" id="chk" class="checkbox" />

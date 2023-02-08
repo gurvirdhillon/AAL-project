@@ -1,11 +1,13 @@
 import express from 'express';
 import path from 'path';
-import url from 'url';
+import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
 const app = express();
 // need to import medication.js
 
+import twilio from 'twilio';
+// import twilio from 'twilio'.twiml.voiceResponse;
 
 const db = openDB();
 const port = process.env.port || 8080;
@@ -14,14 +16,52 @@ app.use(express.static('client'));
 
 app.listen(port, () => console.log(`The application is running on port ${port}!`));
 
-app.get('/auth-config', (req, res) => {
-  res.json(authConfig);
+app.get('/auth-config', (req, res)=> {
+    res.json(authConfig)
 });
 
-app.get('/api/medication', (req, res) => {
-  res.json();
-},
-);
+const accountSid = "ACf25d4feac6b0fd768188a7f2d54f5583";
+const authToken = "3562338dc6f76a2f6a83f6a4eddddec4";
+const client = twilio(accountSid, authToken);
+
+app.post('/send-message', (req, res) => {
+    if(client){
+        console.log('Twilio message has been sent');
+    }
+    client.messages
+        .create({
+            body: 'Help me!',
+            from: '+447893943882',
+            to: '+447908632941'
+        })
+        .then(message => {
+            console.log(message.sid);
+            res.send({ message: 'Message sent' });
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send({ error: 'Failed to send message' });
+        });
+});
+
+app.post('/call', (req, res) => {
+    client.calls.create({
+        url: 'http://demo.twilio.com/docs/voice.xml',
+        to: '+447908632941',
+        from: '+447893943882'
+    
+    }), function(error, call) {
+        if(error === true){
+            console.log(error);
+            res.send({ message: 'Call failed' });
+        } else {
+            console.log(call.sid);
+            res.send({ message: 'Call sent' });
+            }
+        };    
+});
+
+
 
 async function getUser(req, res) {
   const feedback = await db.getUser(req.params.user_email);
