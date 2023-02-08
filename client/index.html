@@ -30,7 +30,40 @@
     <button class="navChild" id="settings">Settings</button>
 </nav>
 
-<img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingImg">
+<!-- <img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingImg"> -->
+
+<div id="startingImg">
+
+<div id="medicationReminder">
+
+<h1>Medication reminder:</h1>
+
+<form id="medicationFrm">
+      <label>Medication reminder: </label>
+      <input placeholder="Enter medication name" id="medicationInput" required>
+      <p></p>
+      <label>Dosage: </label>
+      <input placeholder="e.g 2 pills" id="medicationDosage" required>
+      <p></p>
+      <label>Strength: </label>
+        <input placeholder="40mg" id="medicationStrength" type="number" required>
+        <select id="medicationDosage">
+            <option value="mg">mg</option>
+            <option value="ml">ml</option>
+            <option value="%">%</option>
+            <option value="units">units</option>
+        </select>
+        <label></label>
+      <p></p>
+        <label>Time reminder: </label>
+      <input type="time" id="medicationTime" required>
+        <p></p>
+      <button type="submit" id="submitBtn">Set Reminder</button>
+    </form>
+    <ul id="medicationList"></ul>
+  </div>
+
+</div>
 
 <article>
     
@@ -193,31 +226,5 @@ https://stackoverflow.com/questions/16699007/regular-expression-to-match-standar
 </template>
 
 <p></p>
-
-<div id="medicationReminder">
-    <form id="medicationFrm">
-      <label>Medication reminder: </label>
-      <input placeholder="Enter medication name" id="medicationInput" required>
-      <p></p>
-      <label>Dosage: </label>
-      <input placeholder="e.g 2 pills" id="medicationDosage" required>
-      <p></p>
-      <label>Strength: </label>
-        <input placeholder="40mg" id="medicationStrength" type="number" required>
-        <select id="medicationDosage">
-            <option value="mg">mg</option>
-            <option value="ml">ml</option>
-            <option value="%">%</option>
-            <option value="units">units</option>
-        </select>
-        <label></label>
-      <p></p>
-        <label>Time reminder: </label>
-      <input type="time" id="medicationTime" required>
-        <p></p>
-      <button type="submit" id="submitBtn">Set Reminder</button>
-    </form>
-    <ul id="medicationList"></ul>
-  </div>
 
 </body>
