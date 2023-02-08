@@ -32,7 +32,7 @@
 
 <!-- <img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingImg"> -->
 
-<div id="startingImg">
+<div id="startingPage">
 
 <div id="medicationReminder">
 
@@ -100,38 +100,32 @@
 
 <template id="medicationTab">
 
-    <h1>Medication:</h1>
+    <h1>Medication reminder:</h1>
 
-<!-- <form id="medForm">
-<label for="medName">Medication Name </label><input type="text" placeholder="Medication name" id="medName" required><label></label>
-<p></p>
-
-medication measurements
-<label for="medDosage">Dosage:<input type="number" placeholder="2 pills" min="0" required></label>
-<p></p>
-<label for="medStrength">Strength: </label><input type="number" placeholder="e.g 10mg" id="medStrength" required>
-<select id="medDosage">
-    <option value="mg">mg</option>
-    <option value="ml">ml</option>
-    <option value="%">%</option>
-    <option value="units">units</option>
-    </select>
-<label></label>    
-
-<p></p>
-<label for="medTime">Medication time </label><input type="time" placeholder="Time" id="medTime" required><label></label>
-<p></p>
-
-<label for="currentQuantity">Quantity: <input type="number" min="1"></label>
-
-<p></p>
-
-<input id="medSubmit" type="submit" value="Submit">
-</form>
-
-<div id="medicationList">
-
-</div> -->
+    <form id="medicationFrm">
+        <label>Medication reminder: </label>
+        <input placeholder="Enter medication name" id="medicationInput" required>
+        <p></p>
+        <label>Dosage: </label>
+        <input placeholder="e.g 2 pills" id="medicationDosage" required>
+        <p></p>
+        <label>Strength: </label>
+          <input placeholder="40mg" id="medicationStrength" type="number" required>
+          <select id="medicationDosage">
+              <option value="mg">mg</option>
+              <option value="ml">ml</option>
+              <option value="%">%</option>
+              <option value="units">units</option>
+          </select>
+          <label></label>
+        <p></p>
+          <label>Time reminder: </label>
+        <input type="time" id="medicationTime" required>
+          <p></p>
+        <button type="submit" id="submitBtn">Set Reminder</button>
+      </form>
+      <ul id="medicationList"></ul>
+    </div>  
 
 </template>
 
