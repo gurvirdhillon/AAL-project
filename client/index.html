@@ -9,7 +9,6 @@
         <script defer src="http://localhost:8080/socket.io/socket.io.js"></script>
         <script defer src="chat.js"></script>
         <script src="medication.js" type="module"></script>
-        <script src="send_sms.mjs"></script>
         <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
         <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
             <link rel="stylesheet" href="index.css">
@@ -17,20 +16,26 @@
 </head>
 <body>
 
-<div class="greetingsPage">
-<h1 id="greeting">Welcome</h1>
+<div>
+<h1>ElderAAL</h1>
+<input type="search" placeholder="search" class="searchEngine"><input type="submit" value="🔎" class="searchEngine">
 <button id="login">Login</button>
 <button id="logout">Logout</button>
+</div>
+
+<div class="greetingsPage">
+<h3 id="greeting">Welcome</h3>
 </div>
 
 <nav id="headerNavigator">
     <button class="navChild" id="reminder">Remind Me</button>
     <button class="navChild" id="meds">Medication</button>
     <button class="navChild" id="UA">User Activity</button>
+    <button class="navChild" id="chatSystem">Chat</button>
     <button class="navChild" id="settings">Settings</button>
 </nav>
 
-<!-- <img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingImg"> -->
+<img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingPage">
 
 <div id="startingPage">
 
@@ -89,6 +94,7 @@
 
 <p></p>
 
+<template>
 <div id="StickyNote">
 <h2 class="note-header">Sticky notes:</h2>
 
@@ -96,6 +102,7 @@
 
 </ul>
 </div>
+</template>
 
 </template>
 
