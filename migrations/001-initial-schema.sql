@@ -45,18 +45,16 @@ CREATE TABLE panic_button(
         REFERENCES "user_profile"("user_email")
 );
 
-CREATE TABLE reminder_set(
+CREATE TABLE reminder(
     reminder_id SERIAL,
-    reminder_name varchar(60) NOT NULL,
-    reminder_time varchar(60) NOT NULL,
-    reminder_date varchar(60) NOT NULL,
-    reminder_set BOOLEAN NOT NULL,
-    reminder_notice varchar(60) NOT NULL,
+    reminder_desc varchar(60) NOT NULL,
+    reminder_date DATE NOT NULL,
     user_email VARCHAR(255) NOT NULL,
     PRIMARY KEY(reminder_id),
     CONSTRAINT "fk_reminder_set.user_email"
         FOREIGN KEY ("user_email")
         REFERENCES "user_profile"("user_email")
+
 );
 
 -- Down
