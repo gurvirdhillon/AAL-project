@@ -1,3 +1,5 @@
+-- if exists DROP DATABASE aal_db;
+
 --  CREATE DATABASE aal_db;
 
 -- Up
