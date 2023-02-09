@@ -46,10 +46,13 @@ window.addEventListener('load', function () {
   dosage.value = localStorage.getItem('medicationDosage') || ' ';
   strength.value = localStorage.getItem('medicationStrength') || ' ';
   // stores the users reminders in local storage
+  // stores the id of medication list in local storage
+
   const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
   reminders.forEach(function(reminder){
     const item = document.createElement('li');
     item.textContent = reminder.medication + ' at ' + reminder.time;
     medicationList.appendChild(item);
+    localStorage.setItem('medicationList', medicationList.id);
   });
 });
