@@ -22,7 +22,28 @@ h1{
 .navChild{
     padding: 1% 7%;
     display: inline-block;
+    font-size: 80%;
+    font-weight: bolder;
+}
 
+#reminder:hover{
+    background-color: rgb(217, 217, 40);
+}
+
+#meds:hover{
+    background-color: rgb(230, 153, 230);
+}
+
+#UA:hover{
+    background-color: orange;
+}
+
+#chatSystem:hover{
+    background-color: lime;
+}
+
+#settings:hover{
+    background-color: rgb(44, 192, 242);
 }
 
 #panicBtn{
