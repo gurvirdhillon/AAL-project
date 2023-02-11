@@ -47,13 +47,3 @@ if (grabSend) {
 function initialising() {
   handleChat();
 }
-
-
-const searchEngine = document.querySelector('#searchEngine');
-const searchSubmit = document.querySelector('#searchSubmit');
-
-searchSubmit.addEventListener('click', function (e) {
-  e.preventDefault();
-  const searchValue = searchEngine.value;
-  console.log(searchValue);
-});

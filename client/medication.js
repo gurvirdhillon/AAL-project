@@ -8,7 +8,6 @@ const medicationList = document.querySelector('#medicationList');
 if(form){
 form.addEventListener('submit', function(event){
     event.preventDefault();
-    const list = document.querySelector('#medicationList');
     const value = input.value;
     if(!value){
         return;
@@ -36,8 +35,9 @@ form.addEventListener('submit', function(event){
     time - new Date());
     const makeList = document.createElement('li');
     makeList.textContent = "medication reminder: " + value + ' to be consumed at ' + document.querySelector('#medicationTime').value;
-    list.appendChild(makeList);
+    medicationList.appendChild(makeList);
     input.value = '';
+
   });
 };
 

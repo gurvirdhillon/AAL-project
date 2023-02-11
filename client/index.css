@@ -27,6 +27,12 @@ h1{
     font-size: x-large;
 }
 
+#searchInput, #searchSubmit{
+    padding: 0.25%;
+    font-size: large;
+    
+}
+
 #reminder:hover{
     background-color: rgb(217, 217, 40);
 }

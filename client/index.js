@@ -34,6 +34,23 @@ function prepareHeaders() {
 
 window.addEventListener('load', prepareHeaders);
 
+const searchEngine = document.querySelector('#searchEngine');
+const searchSubmit = document.querySelector('#searchSubmit');
+
+// when someone types in reminder and clicks the submit it will take them over to the reminder template page
+if(searchSubmit){
+searchSubmit.addEventListener('click', function () {
+  const search = searchEngine.value;
+  if (search === 'reminder') {
+    const template = document.querySelector('#remindTab');
+    const article = document.getElementsByTagName('article')[0];
+    article.innerHTML = template.innerHTML;
+    const removeImg = document.querySelector('#startingPage');
+    removeImg.remove(); 
+  }
+});
+};
+
 async function fetchAuthConfig() {
   const response = await fetch('/auth-config');
   if (response.ok) {
