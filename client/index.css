@@ -30,7 +30,7 @@ h1{
 #searchInput, #searchSubmit{
     padding: 0.25%;
     font-size: large;
-    
+
 }
 
 #reminder:hover{
@@ -53,8 +53,13 @@ h1{
     background-color: rgb(44, 192, 242);
 }
 
+#pageStart{
+    display: flex;
+
+}
+
 .startingImg{
-    width: 100%;
+    width: 60%;
     height: 100%;
 }
 

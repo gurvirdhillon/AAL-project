@@ -5,6 +5,7 @@ function prepareHeaders() {
   const template = document.querySelector('#remindTab');
   reminderBtn.addEventListener('click', function () {
     article.innerHTML = template.innerHTML;
+    // window.location.href = './reminder.html';
     const removeImg = document.querySelector('#startingPage');
     removeImg.remove();
     })

@@ -35,7 +35,57 @@
     <button class="navChild" id="settings">Settings</button>
 </nav>
 
+<div id="pageStart">
 <img src="./img/elderly-technology.jpg" alt="elderly people using technology" id="startingPage" class="startingImg">
+
+<div id="medicationReminder">
+
+  <h1>Medication reminder:</h1>
+  
+  <form id="medicationFrm">
+        <label>Medication reminder: </label>
+        <input placeholder="Enter medication name" id="medicationInput" required>
+        <p></p>
+        <label>Amount: </label>
+        <input placeholder="e.g 2 pills" id="medicationDosage" required>
+        <p></p>
+        <label>Consumption method: </label>
+        <select id="consumptionMethod">
+          <option>Pills</option>
+          <option>Drops</option>
+          <option>Injection</option>
+          <option>Inhaler</option>
+          <option>Spray</option>
+          <option>Cream</option>
+          <option>Patch</option>
+          <option>Other</option>
+        </select>
+        <p></p>
+        <label>Dosage: </label>
+          <input placeholder="40mg" id="medicationStrength" type="number" required>
+          <select id="medicationDosage">
+              <option value="mg">mg</option>
+              <option value="ml">ml</option>
+              <option value="%">%</option>
+              <option value="units">units</option>
+          </select>
+          <p></p>
+          <label>Frequency: </label>
+          <select id="">
+            <option>Once a day</option>
+            <option>Twice a day</option>
+ <!-- need to review how i would handle this  -->
+          </select>
+        <p></p>
+          <label>Time reminder: </label>
+        <input type="time" id="medicationTime" required>
+          <p></p>
+        <button type="submit" id="submitBtn">Set Reminder</button>
+      </form>
+      <ul id="medicationList"></ul>
+    </div>
+
+</div>
 
 <div id="startingPage">
 
@@ -80,7 +130,7 @@
 
 <template id="medicationTab">
 
-    <div id="medicationReminder">
+    <!-- <div id="medicationReminder">
 
       <h1>Medication reminder:</h1>
       
@@ -116,7 +166,7 @@
               <select id="">
                 <option>Once a day</option>
                 <option>Twice a day</option>
-      <!-- need to review how i would handle this -->
+     need to review how i would handle this 
               </select>
             <p></p>
               <label>Time reminder: </label>
@@ -127,7 +177,7 @@
           <ul id="medicationList"></ul>
         </div>
 
-</template>
+</template> -->
 
 <template id="UserActivityTab">
 <h1>User activity:</h1>
