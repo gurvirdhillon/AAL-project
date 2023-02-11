@@ -12,6 +12,9 @@ form.addEventListener('submit', function(event){
     if(!value){
         return;
     }
+  localStorage.setItem('medicationInput', value);
+  localStorage.setItem('medicationDosage', dosage.value);
+  localStorage.setItem('medicationStrength', strength.value);
     const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
     reminders.push({
         medication: value,
@@ -19,9 +22,6 @@ form.addEventListener('submit', function(event){
         strength: strength.value,
         time: document.querySelector('#medicationTime').value
     });
-    localStorage.setItem('medicationInput', value);
-    localStorage.setItem('medicationDosage', dosage.value);
-    localStorage.setItem('medicationStrength', strength.value);
     const medTime = document.querySelector('#medicationTime').value;
     const time = new Date();
     time.setHours(medTime.split(':')[0]);
@@ -46,8 +46,7 @@ window.addEventListener('load', function () {
   dosage.value = localStorage.getItem('medicationDosage') || ' ';
   strength.value = localStorage.getItem('medicationStrength') || ' ';
   // stores the users reminders in local storage
-  // stores the id of medication list in local storage
-
+  
   const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
   reminders.forEach(function(reminder){
     const item = document.createElement('li');
