@@ -35,7 +35,7 @@ form.addEventListener('submit', function(event){
     }, 
     time - new Date());
     const makeList = document.createElement('li');
-    makeList.textContent = value + ' at ' + document.querySelector('#medicationTime').value;
+    makeList.textContent = "medication reminder: " + value + ' to be consumed at ' + document.querySelector('#medicationTime').value;
     list.appendChild(makeList);
     input.value = '';
   });

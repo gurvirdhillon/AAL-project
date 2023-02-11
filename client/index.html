@@ -17,13 +17,13 @@
 
 <div>
 <h1>ElderAAL</h1>
-<input type="search" placeholder="search" class="searchEngine" x-webkit-speech><input type="submit" value="🔎" class="searchEngine">
+<input type="search" placeholder="search" class="searchEngine" id="searchInput"><input type="submit" value="🔎" class="searchEngine" id="searchSubmit">
 <button id="login">Login</button>
 <button id="logout">Logout</button>
 </div>
 
 <div class="greetingsPage">
-<h3 id="greeting">Welcome</h3>
+<h2 id="greeting">Welcome</h2>
 </div>
 
 <nav id="headerNavigator">
@@ -34,7 +34,7 @@
     <button class="navChild" id="settings">Settings</button>
 </nav>
 
-<img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingPage">
+<img src="./img/elderly-technology.jpg" alt="elderly people using technology" id="startingPage" class="startingImg">
 
 <div id="startingPage">
 
@@ -46,10 +46,22 @@
       <label>Medication reminder: </label>
       <input placeholder="Enter medication name" id="medicationInput" required>
       <p></p>
-      <label>Dosage: </label>
+      <label>Amount: </label>
       <input placeholder="e.g 2 pills" id="medicationDosage" required>
       <p></p>
-      <label>Strength: </label>
+      <label>Consumption method: </label>
+      <select id="consumptionMethod">
+        <option>Pills</option>
+        <option>Drops</option>
+        <option>Injection</option>
+        <option>Inhaler</option>
+        <option>Spray</option>
+        <option>Cream</option>
+        <option>Patch</option>
+        <option>Other</option>
+      </select>
+      <p></p>
+      <label>Dosage: </label>
         <input placeholder="40mg" id="medicationStrength" type="number" required>
         <select id="medicationDosage">
             <option value="mg">mg</option>
@@ -57,7 +69,13 @@
             <option value="%">%</option>
             <option value="units">units</option>
         </select>
-        <label></label>
+        <p></p>
+        <label>Frequency: </label>
+        <select id="">
+          <option>Once a day</option>
+          <option>Twice a day</option>
+<!-- need to review how i would handle this -->
+        </select>
       <p></p>
         <label>Time reminder: </label>
       <input type="time" id="medicationTime" required>
