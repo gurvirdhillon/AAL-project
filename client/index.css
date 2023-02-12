@@ -21,7 +21,7 @@ h1{
 }
 
 .navChild{
-    padding: 1% 7%;
+    padding: 1% 5%;
     display: inline-block;
     font-weight: bolder;
     font-size: x-large;
@@ -55,12 +55,16 @@ h1{
 
 #pageStart{
     display: flex;
-
 }
 
 .startingImg{
     width: 60%;
     height: 100%;
+}
+
+#medicationReminder{
+    border: thick solid black;
+    width: 100%;
 }
 
 #panicBtn{

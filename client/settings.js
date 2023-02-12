@@ -68,6 +68,7 @@ window.addEventListener('click', function () {
 const grabForm = document.querySelector('#user-profile-form');
 const pictureInput = document.querySelector('#user-picture');
 
+if(grabForm){
 grabForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
@@ -95,3 +96,9 @@ grabForm.addEventListener('submit', function(event) {
       });
     });
 });
+}
+
+// speech api
+
+
+

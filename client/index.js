@@ -26,12 +26,24 @@ function prepareHeaders() {
     const settingsBtn = document.querySelector('#settings');
     settingsBtn.addEventListener('click', function(){
         const template4 = document.querySelector('#settingsTab');
-        article.innerHTML = template4.innerHTML
-        const removeImg = document.querySelector('#startingPage');
-        removeImg.remove();
-    })
-    ;
+        if(template4){
+          article.innerHTML = template4.innerHTML
+          const removeImg = document.querySelector('#startingPage');
+          removeImg.remove();
+        }
+    });
 }
+
+// if(article){
+//   const settingsBtn = document.querySelector('#settings');
+//   settingsBtn.addEventListener('click', function(){
+//       const template4 = document.querySelector('#settingsTab');
+//       article.innerHTML = template4.innerHTML
+//       const removeImg = document.querySelector('#startingPage');
+//       removeImg.remove();
+//   })
+//   ;
+// }
 
 window.addEventListener('load', prepareHeaders);
 
