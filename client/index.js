@@ -1,33 +1,25 @@
 function prepareHeaders() {
   const reminderBtn = document.querySelector('#reminder');
+  const settingsBtn = document.querySelector('settings');
+  const userActivity = document.querySelector('#UA');
   const article = document.getElementsByTagName('article')[0];
-  const template = document.querySelector('#remindTab');
   const removeImg = document.querySelector('#startingPage');
+  const template = document.querySelector('#remindTab');
   reminderBtn.addEventListener('click', function () {
     article.innerHTML = template.innerHTML;
     removeImg.remove();
     });
     const medicationBtn = document.querySelector('#meds');
     medicationBtn.addEventListener('click', function(){
+      const template = document.querySelector('#remindTab');
         const template2 = document.querySelector('#medicationTab');
         article.innerHTML = template2.innerHTML;
         const removeImg = document.querySelector('#startingPage');
         removeImg.remove();
     });
-  const settingsBtn = document.querySelector('#settings');
-  settingsBtn.addEventListener('click', function(){
-    const openSettings = document.querySelector('#settingsTab');
-    if(openSettings){
-    article.innerHTML = openSettings.innerHTML;
-    const removeImg = document.querySelector('#startingPage');
-    removeImg.remove();
-    }
-  });
 };
 
-
-  window.addEventListener('load', prepareHeaders);
-
+window.addEventListener('load', prepareHeaders);
 
 const searchEngine = document.querySelector('#searchEngine');
 const searchSubmit = document.querySelector('#searchSubmit');
