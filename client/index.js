@@ -1,51 +1,33 @@
-// prepare page when the buttons are pressed
 function prepareHeaders() {
   const reminderBtn = document.querySelector('#reminder');
   const article = document.getElementsByTagName('article')[0];
   const template = document.querySelector('#remindTab');
+  const removeImg = document.querySelector('#startingPage');
   reminderBtn.addEventListener('click', function () {
     article.innerHTML = template.innerHTML;
-    // window.location.href = './reminder.html';
-    const removeImg = document.querySelector('#startingPage');
     removeImg.remove();
-    })
+    });
     const medicationBtn = document.querySelector('#meds');
     medicationBtn.addEventListener('click', function(){
         const template2 = document.querySelector('#medicationTab');
         article.innerHTML = template2.innerHTML;
         const removeImg = document.querySelector('#startingPage');
         removeImg.remove();
-    })
-    const userActivityBtn = document.querySelector('#UA');
-    userActivityBtn.addEventListener('click', function(){
-        const template3 = document.querySelector('#UserActivityTab');
-        article.innerHTML = template3.innerHTML
-        const removeImg = document.querySelector('#startingPage');
-        removeImg.remove();
-    })
-    const settingsBtn = document.querySelector('#settings');
-    settingsBtn.addEventListener('click', function(){
-        const template4 = document.querySelector('#settingsTab');
-        if(template4){
-          article.innerHTML = template4.innerHTML
-          const removeImg = document.querySelector('#startingPage');
-          removeImg.remove();
-        }
     });
-}
+  const settingsBtn = document.querySelector('#settings');
+  settingsBtn.addEventListener('click', function(){
+    const openSettings = document.querySelector('#settingsTab');
+    if(openSettings){
+    article.innerHTML = openSettings.innerHTML;
+    const removeImg = document.querySelector('#startingPage');
+    removeImg.remove();
+    }
+  });
+};
 
-// if(article){
-//   const settingsBtn = document.querySelector('#settings');
-//   settingsBtn.addEventListener('click', function(){
-//       const template4 = document.querySelector('#settingsTab');
-//       article.innerHTML = template4.innerHTML
-//       const removeImg = document.querySelector('#startingPage');
-//       removeImg.remove();
-//   })
-//   ;
-// }
 
-window.addEventListener('load', prepareHeaders);
+  window.addEventListener('load', prepareHeaders);
+
 
 const searchEngine = document.querySelector('#searchEngine');
 const searchSubmit = document.querySelector('#searchSubmit');
