@@ -12,7 +12,7 @@ function prepareHeaders() {
     const article = document.getElementsByTagName('article')[0];
     article.innerHTML = template.innerHTML;
     const removeImg = document.querySelector('#startingPage');
-    grabPageStart.remove();
+    // grabPageStart.remove();
     removeImg.remove();
   });
   // open the template on click for the medication button
