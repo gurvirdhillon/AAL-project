@@ -1,23 +1,53 @@
 function prepareHeaders() {
+  // all the buttons on the header bar
   const reminderBtn = document.querySelector('#reminder');
-  const settingsBtn = document.querySelector('settings');
-  const userActivity = document.querySelector('#UA');
-  const article = document.getElementsByTagName('article')[0];
-  const removeImg = document.querySelector('#startingPage');
-  const template = document.querySelector('#remindTab');
+  const medicationBtn = document.querySelector('#meds');
+  const userActivityBtn = document.querySelector('#UA');
+  const chatBtn = document.querySelector('#chatSystem');
+  const settingsBtn = document.querySelector('#settings');
+
+  // open the template on click for the reminder button
   reminderBtn.addEventListener('click', function () {
+    const template = document.querySelector('#remindTab');
+    const article = document.getElementsByTagName('article')[0];
     article.innerHTML = template.innerHTML;
+    const removeImg = document.querySelector('#startingPage');
     removeImg.remove();
-    });
-    const medicationBtn = document.querySelector('#meds');
-    medicationBtn.addEventListener('click', function(){
-      const template = document.querySelector('#remindTab');
-        const template2 = document.querySelector('#medicationTab');
-        article.innerHTML = template2.innerHTML;
-        const removeImg = document.querySelector('#startingPage');
-        removeImg.remove();
-    });
-};
+  });
+  // open the template on click for the medication button
+  medicationBtn.addEventListener('click', function () {
+    const template = document.querySelector('#medTab');
+    const article = document.getElementsByTagName('article')[0];
+    const removeImg = document.querySelector('#startingPage');
+    removeImg.remove();
+    article.innerHTML = template.innerHTML;
+  });
+  // open the template on click for the user activity button
+  userActivityBtn.addEventListener('click', function () {
+    const template = document.querySelector('#user-activity');
+    const article = document.getElementsByTagName('article')[0];
+    article.innerHTML = template.innerHTML;
+    const removeImg = document.querySelector('#startingPage');
+    removeImg.remove();
+  });
+  // open the template on click for the chat button
+  chatBtn.addEventListener('click', function () {
+    const template = document.querySelector('#chat');
+    const article = document.getElementsByTagName('article')[0];
+    article.innerHTML = template.innerHTML;
+    const removeImg = document.querySelector('#startingPage');
+    removeImg.remove();
+  });
+  // open the template on click for the settings button
+  settingsBtn.addEventListener('click', function () {
+    const template = document.querySelector('#settingsTab');
+    const article = document.getElementsByTagName('article')[0];
+    article.innerHTML = template.innerHTML;
+    const removeImg = document.querySelector('#startingPage');
+    removeImg.remove();
+  });
+}
+
 
 window.addEventListener('load', prepareHeaders);
 
