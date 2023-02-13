@@ -116,13 +116,9 @@ recognition.addEventListener('result', (e) => {
     .join('');
   console.log(voiceInput);
   if(voiceInput === 'help me'){
-    // trigger the panic button functionality
-    alert('panic button triggered');
+    alert('panic button activated');
   }
-
   // get the input bar to display whatever is being said
-
-
 });
 
 recognition.addEventListener('end', recognition.start);
