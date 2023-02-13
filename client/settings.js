@@ -100,5 +100,32 @@ grabForm.addEventListener('submit', function(event) {
 
 // speech api
 
+window.speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
 
+const recognition = new window.speechRecognition();
+recognition.interimResults = true;
+
+// let transcript = document.createElement('p');
+
+const getInput = document.querySelector('#searchInput');
+
+recognition.addEventListener('result', (e) => {
+  const voiceInput = Array.from(e.results)
+    .map((result) => result[0])
+    .map((result) => result.transcript)
+    .join('');
+  console.log(voiceInput);
+  if(voiceInput === 'help me'){
+    // trigger the panic button functionality
+    alert('panic button triggered');
+  }
+
+  // get the input bar to display whatever is being said
+
+
+});
+
+recognition.addEventListener('end', recognition.start);
+
+recognition.start();
 
