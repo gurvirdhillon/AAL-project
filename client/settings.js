@@ -100,6 +100,10 @@ grabForm.addEventListener('submit', function(event) {
 
 // speech api
 
+// Speech recognition app using Vanilla JavaScript. YouTube. (2020, August 27). 
+// Retrieved from https://youtu.be/-k-PgvbktX4 
+
+
 window.speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new window.speechRecognition();
