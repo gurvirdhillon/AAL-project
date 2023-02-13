@@ -1,4 +1,4 @@
-@startuml the panic button feature
+@startuml sequence101
 
 participant User
 participant Application
