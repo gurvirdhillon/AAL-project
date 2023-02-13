@@ -1,11 +1,15 @@
-@startuml sequenceDiagram
-
-' the panic button
+@startuml the panic button feature
 
 participant User
-participant WebApp
+participant Application
 participant Server
-participant DB
 participant twilioAPI
+
+User --> Application : press panic button
+Application --> Server : panic button pressed
+Server --> twilioAPI : sends request of the body of the message
+twilioAPI --> Server : responds to the request with the payload
+Server --> Application: Sends alert to the app to tell user the message has been sent
+Application --> User : Recieves alert
 
 @enduml
