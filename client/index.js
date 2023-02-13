@@ -5,13 +5,14 @@ function prepareHeaders() {
   const userActivityBtn = document.querySelector('#UA');
   const chatBtn = document.querySelector('#chatSystem');
   const settingsBtn = document.querySelector('#settings');
-
   // open the template on click for the reminder button
+  const grabPageStart = document.querySelector('#pageStart');
   reminderBtn.addEventListener('click', function () {
     const template = document.querySelector('#remindTab');
     const article = document.getElementsByTagName('article')[0];
     article.innerHTML = template.innerHTML;
     const removeImg = document.querySelector('#startingPage');
+    grabPageStart.remove();
     removeImg.remove();
   });
   // open the template on click for the medication button
@@ -19,7 +20,12 @@ function prepareHeaders() {
     const template = document.querySelector('#medTab');
     const article = document.getElementsByTagName('article')[0];
     const removeImg = document.querySelector('#startingPage');
-    removeImg.remove();
+    // if (grabPageStart === null) {
+    //   const addForm = document.querySelector('#medForm');
+    //   addForm.innerHTML = template.innerHTML;
+    //   article.appendChild(addForm);
+    // }
+    // removeImg.remove();
     article.innerHTML = template.innerHTML;
   });
   // open the template on click for the user activity button
@@ -28,6 +34,7 @@ function prepareHeaders() {
     const article = document.getElementsByTagName('article')[0];
     article.innerHTML = template.innerHTML;
     const removeImg = document.querySelector('#startingPage');
+    // grabPageStart.remove();
     removeImg.remove();
   });
   // open the template on click for the chat button
@@ -36,6 +43,7 @@ function prepareHeaders() {
     const article = document.getElementsByTagName('article')[0];
     article.innerHTML = template.innerHTML;
     const removeImg = document.querySelector('#startingPage');
+    // grabPageStart.remove();
     removeImg.remove();
   });
   // open the template on click for the settings button
