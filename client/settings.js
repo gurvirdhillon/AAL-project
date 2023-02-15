@@ -104,6 +104,7 @@ grabForm.addEventListener('submit', function(event) {
 // Retrieved from https://youtu.be/-k-PgvbktX4 
 
 
+document.addEventListener('DOMContentLoaded', () => {
 window.speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new window.speechRecognition();
@@ -112,20 +113,30 @@ recognition.interimResults = true;
 // let transcript = document.createElement('p');
 
 const getInput = document.querySelector('#searchInput');
+const microphoneButton = document.querySelector('#microphone');
 
 recognition.addEventListener('result', (e) => {
   const voiceInput = Array.from(e.results)
     .map((result) => result[0])
     .map((result) => result.transcript)
     .join('');
-  console.log(voiceInput);
+    getInput.value = voiceInput;
+  // console.log(voiceInput);
   if(voiceInput === 'help me'){
     alert('panic button activated');
   }
   // get the input bar to display whatever is being said
 });
 
-recognition.addEventListener('end', recognition.start);
+  if(microphoneButton !== null) {
+    microphoneButton.addEventListener('click', () =>{
+    recognition.start();
+  });
+}
 
-recognition.start();
+recognition.addEventListener('end', () => {
+  recognition.start();
+});
+});
+
 
