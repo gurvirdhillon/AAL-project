@@ -25,8 +25,8 @@ function prepareHeaders() {
     //   addForm.innerHTML = template.innerHTML;
     //   article.appendChild(addForm);
     // }
-    removeImg.remove();
     article.innerHTML = template.innerHTML;
+    removeImg.remove();
   });
   // open the template on click for the user activity button
   userActivityBtn.addEventListener('click', function () {
