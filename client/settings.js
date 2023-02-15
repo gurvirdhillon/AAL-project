@@ -123,7 +123,6 @@ recognition.addEventListener('result', async (e) => {
     getInput.value = voiceInput;
   // console.log(voiceInput);
   if(voiceInput === 'help me'){
-    alert('panic button activated');
     // get the panic button to send a message to the next of kin
     await fetch('/send-message', {
       method: 'POST',
@@ -136,6 +135,7 @@ recognition.addEventListener('result', async (e) => {
         to: '+447893943882'
       })
     });
+    alert('panic button activated');
   }
   // get the input bar to display whatever is being said
 });
