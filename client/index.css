@@ -27,10 +27,9 @@ h1{
     font-size: x-large;
 }
 
-#searchInput, #searchSubmit{
+#searchInput, #searchSubmit, #microphone{
     padding: 0.25%;
     font-size: large;
-
 }
 
 #reminder:hover{
