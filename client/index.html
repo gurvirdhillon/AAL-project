@@ -65,7 +65,7 @@
         </select>
         <p></p>
         <label>Dosage: </label>
-          <input placeholder="40mg" id="medicationStrength" type="number" required>
+          <input placeholder="40mg" id="medicationStrength" type="number" min="0" required>
           <select id="medicationDosage">
               <option value="mg">mg</option>
               <option value="ml">ml</option>
@@ -74,7 +74,7 @@
           </select>
           <p></p>
           <label>Frequency: </label>
-          <select id="">
+          <select>
             <option>Once a day</option>
             <option>Twice a day</option>
  <!-- need to review how i would handle this  -->
@@ -95,7 +95,7 @@
 <p id="targetBdy"></p>
 
 <footer>
-<input id="panicBtn" type="submit" value="PANIC">
+  <input id="panicBtn" type="submit" value="PANIC">
 </footer>
 
 <template id="remindTab">
@@ -168,7 +168,18 @@
 </template>
 
 <template id="chat">
-testing
+
+<div id="chatSection">
+
+  <div id="messageSection">
+    <form>
+      <input type="input" placeholder="type something...">
+      <input type="submit" value="send">
+    </form>
+  </div>
+
+</div>
+
 </template>
 
 
