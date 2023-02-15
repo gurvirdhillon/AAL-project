@@ -125,7 +125,7 @@ recognition.addEventListener('result', async (e) => {
   if(voiceInput === 'help me'){
     alert('panic button activated');
     // get the panic button to send a message to the next of kin
-    const response = await fetch('/send-message', {
+    await fetch('/send-message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
