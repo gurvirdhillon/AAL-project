@@ -76,5 +76,7 @@ h1{
 }
 
 #StickyNote{
-    
+    background-color: rgb(225, 225, 27); 
+    padding: 1.25em;
+    position: relative;
 }
