@@ -115,7 +115,7 @@ recognition.interimResults = true;
 const getInput = document.querySelector('#searchInput');
 const microphoneButton = document.querySelector('#microphone');
 
-recognition.addEventListener('result', (e) => {
+recognition.addEventListener('result', async (e) => {
   const voiceInput = Array.from(e.results)
     .map((result) => result[0])
     .map((result) => result.transcript)
@@ -124,12 +124,24 @@ recognition.addEventListener('result', (e) => {
   // console.log(voiceInput);
   if(voiceInput === 'help me'){
     alert('panic button activated');
+    // get the panic button to send a message to the next of kin
+    const response = await fetch('/send-message', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        body: 'Help me!',
+        from: '+447908632941',
+        to: '+447893943882'
+      })
+    });
   }
   // get the input bar to display whatever is being said
 });
 
-  if(microphoneButton !== null) {
-    microphoneButton.addEventListener('click', () =>{
+if(microphoneButton !== null) {
+    microphoneButton.addEventListener('click', () => {
     recognition.start();
   });
 }
