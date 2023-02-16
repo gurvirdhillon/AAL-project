@@ -49,7 +49,7 @@ function prepareHeaders() {
   // open the template on click for the settings button
   settingsBtn.addEventListener('click', function () {
     const confirm = prompt("Are you sure you want to go to the settings page? Type yes for access. Type No for staying on the current page.");
-    if (confirm === 'yes') {
+    if (confirm === 'yes' || confirm === 'YES' || confirm === 'Y' || confirm === 'y') {
     const template = document.querySelector('#settingsTab');
     const article = document.getElementsByTagName('article')[0];
     article.innerHTML = template.innerHTML;
