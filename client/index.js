@@ -48,11 +48,17 @@ function prepareHeaders() {
   });
   // open the template on click for the settings button
   settingsBtn.addEventListener('click', function () {
+    const confirm = prompt("Are you sure you want to go to the settings page? Type yes for access. Type No for staying on the current page.");
+    if (confirm === 'yes') {
     const template = document.querySelector('#settingsTab');
     const article = document.getElementsByTagName('article')[0];
     article.innerHTML = template.innerHTML;
     const removeImg = document.querySelector('#startingPage');
     removeImg.remove();
+    } if(confirm === 'no') {
+      alert('You have not been taken to the settings page');
+    }
+
   });
 }
 
