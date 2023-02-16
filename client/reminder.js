@@ -1,5 +1,3 @@
-// 
-
 // const getInput = document.querySelector('#reminderInput');
 // const reminderDate = document.querySelector('#reminderDate');
 // const getSubmit = document.querySelector('#submitBtn');

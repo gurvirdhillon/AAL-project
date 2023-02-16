@@ -78,12 +78,14 @@ h1{
 
 .reminderFeature{
     margin: 0;
+    width: 75%;
     position: left;
+    border:  thin solid black;
 }
 
 #StickyNote{
     background-color: rgb(225, 225, 27); 
-    width: 30%;
+    width: 80%;
     position: relative;
     /* padding: 1.25em; */
 }
