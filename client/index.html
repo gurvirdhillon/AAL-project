@@ -87,8 +87,50 @@
       </form>
       <ul id="medicationList"></ul>
     </div>
-
 </div>
+
+<!-- put reminder section here -->
+
+<!-- <div class="reminderFeature">
+<h1>Reminder:</h1>
+  
+<div id="reminderSetter">
+<form id="reminderFrm">
+<input placeholder="remind me" class="" id="reminderInput" required>
+<p></p>
+<input type="date" id="reminderDate" required>
+<button type="submit" id="submitBtn">Submit</button>
+</div>
+</form> -->
+
+
+
+<!-- <div id="StickyNote">
+<h2 class="note-header">Sticky notes:</h2>
+
+<ul id="createList">
+  
+</ul>
+</div>
+</div> -->
+
+<div class="reminderFeature">
+  <h1>Reminder:</h1>
+  <form id="reminderFrm">
+    <input placeholder="remind me" class="" id="reminderInput" required>
+    <p></p>
+    <input type="date" id="reminderDate" required>
+    <button type="submit" id="submitBtn">Submit</button>
+  </form>
+
+  <div id="StickyNote">
+    <h2 class="note-header">Sticky notes:</h2>
+    <ul id="createList">
+      You are up to date!
+    </ul>
+  </div>
+</div>
+
 
 </article>
 
@@ -99,25 +141,7 @@
 </footer>
 
 <template id="remindTab">
-  <h1>Reminder:</h1>
-  
-  <div id="reminderSetter">
-<form id="reminderFrm">
-  <input placeholder="remind me" class="" id="reminderInput" required>
-  <p></p>
-  <input type="date" id="reminderDate" required>
-  <button type="submit" id="submitBtn">Submit</button>
-  </div>
-</form>
-  
-<div id="StickyNote">
-  <h2 class="note-header">Sticky notes:</h2>
-    
-  <ul id="createList">
-    
-  </ul>
-</div>
-
+hello
 </template>
 
 <template id="medTab">
@@ -249,14 +273,38 @@ hello does this work?
 
 <script>
 
-window.addEventListener("load", function() {
-    const chk = document.getElementById('chk');
-    if (chk) {
-        chk.addEventListener('change', () => {
-            const getBody = document.querySelector('body');
-            getBody.classList.toggle('dark');
-        });
-    }
-});
+// window.addEventListener("load", function() {
+//     const chk = document.getElementById('chk');
+//     if (chk) {
+//         chk.addEventListener('change', () => {
+//             const getBody = document.querySelector('body');
+//             getBody.classList.toggle('dark');
+//         });
+//     }
+// });
+
+const getInput = document.querySelector('#reminderInput');
+const reminderDate = document.querySelector('#reminderDate');
+const getSubmit = document.querySelector('#submitBtn');
+const targetContent = document.querySelector('#createList');
+const getForm = document.querySelector('#reminderFrm');
+
+if(getForm) {
+  getForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const context = getInput.value;
+    const date = reminderDate.value;
+    reminderInput.value = '';
+    reminderDate.value = '';
+
+    const giveList = document.createElement('li');
+    giveList.className = 'list-group-item';
+    giveList.textContent = `reminder to: ${context} at ${date}`;
+    targetContent.appendChild(giveList);
+    const getDate = document.createElement('span');
+    getDate.classList.add('reminderDate');
+    giveList.appendChild(getDate);
+  });
+}
 
 </script>

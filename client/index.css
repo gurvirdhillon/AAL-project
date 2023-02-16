@@ -64,6 +64,7 @@ h1{
 #medicationReminder{
     border: thick solid black;
     width: 100%;
+    padding: 4% 20%;
 }
 
 #panicBtn{
@@ -75,8 +76,18 @@ h1{
     left: 45%;
 }
 
+.reminderFeature{
+    margin: 0;
+    position: left;
+}
+
 #StickyNote{
     background-color: rgb(225, 225, 27); 
-    padding: 1.25em;
+    width: 30%;
     position: relative;
+    /* padding: 1.25em; */
+}
+
+#createList{
+    height: 10%;
 }
