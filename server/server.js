@@ -92,6 +92,14 @@ function catchError(catchErr) {
   };
 }
 
+app.post('/reminder', (req, res) => {
+  const sqlite = { reminder_desc, reminder_date} = req.body;
+  const reminder = {
+    reminder_desc: reminder.reminder_desc,
+    reminder_date: reminder.reminder_date
+  };
+});
+
 app.get('/api/getUser/:user_email', catchError(getUser));
 
 app.use(express.static('client', { extensions: ['html'] }));

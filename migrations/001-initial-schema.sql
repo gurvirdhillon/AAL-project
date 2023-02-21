@@ -37,16 +37,6 @@ CREATE TABLE nextOfKin(
         REFERENCES "user_profile"("user_email")
 );
 
-CREATE TABLE panic_button(
-    panic_id SERIAL,
-    assistance_need varchar(60) NOT NULL,
-    user_email VARCHAR(255) NOT NULL,
-    PRIMARY KEY(panic_id),
-    CONSTRAINT "fk_panic_button.user_email"
-        FOREIGN KEY ("user_email")
-        REFERENCES "user_profile"("user_email")
-);
-
 CREATE TABLE reminder(
     reminder_id SERIAL,
     reminder_desc varchar(60) NOT NULL,
@@ -56,7 +46,6 @@ CREATE TABLE reminder(
     CONSTRAINT "fk_reminder_set.user_email"
         FOREIGN KEY ("user_email")
         REFERENCES "user_profile"("user_email")
-
 );
 
 -- Down
@@ -64,7 +53,6 @@ CREATE TABLE reminder(
 DROP TABLE user_profile;
 DROP TABLE medication;
 DROP TABLE nextOfKin;
-DROP TABLE panic_button;
 DROP TABLE reminder_set;
 
 -- drop database if exists aal_db;
