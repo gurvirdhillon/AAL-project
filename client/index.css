@@ -94,3 +94,22 @@ h1{
 #createList{
     height: 10%;
 }
+
+#messageSection{
+    border: thin solid black;
+    width: 50%;
+}
+
+#showMessages{
+    padding: 10%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.userMsg{
+    background-color: lightblue;
+    color: black;
+    width: 50%;
+    padding: 4%;
+    border-radius: 20%;
+}

@@ -6,7 +6,8 @@
         <script src="panic.mjs"></script>
         <script src="app.js"></script>
         <script src="settings.js"></script>
-        <script defer src="chat.js"></script>
+        <!-- <script defer src="chat.js"></script> -->
+        <script src="chat.js"></script>
         <script src="medication.js" type="module"></script>
         <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
         <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
@@ -137,10 +138,6 @@
 
 <p id="targetBdy"></p>
 
-<footer>
-  <input id="panicBtn" type="submit" value="PANIC">
-</footer>
-
 <template id="remindTab">
 hello
 </template>
@@ -193,8 +190,8 @@ hello
 </template>
 
 <template id="chat">
-
-<div id="chatSection">
+hiiii
+<!-- <div id="chatSection">
 
   <div id="messageSection">
     <form>
@@ -203,7 +200,7 @@ hello
     </form>
   </div>
 
-</div>
+</div> -->
 
 </template>
 
@@ -274,7 +271,22 @@ hello
 
 </template>
 
+<div id="chatSection">
+  <div id="messageSection">
+    <h1>Chat:</h1>
+    <form id="msgForm">
+      <div id="showMessages"></div>
+      <input type="input" placeholder="type something..." id="inputBar">
+      <input type="submit" value="send" id="sendMsg">
+      <input type="button" value="🎙️" id="mic">
+    </form>
+  </div>
 
+</div>
+
+<footer>
+  <input id="panicBtn" type="submit" value="PANIC">
+</footer>
 
 </body>
 
@@ -313,4 +325,24 @@ if(getForm) {
     giveList.appendChild(getDate);
   });
 }
+
+const getMsgForm = document.querySelector('#msgForm');
+const input = document.querySelector('#inputBar');
+const sendMsg = document.querySelector('#sendMsg');
+const displayMessages = document.querySelector('#showMessages');
+
+// prevent the default of the event
+
+function getMessageOnScreen(e) {
+  e.preventDefault();
+  const msg = input.value;
+  const makeMsg = document.createElement('p');
+  makeMsg.classList.add('userMsg');
+  makeMsg.textContent = msg;
+  displayMessages.appendChild(makeMsg);
+  input.value = '';
+}
+
+getMsgForm.addEventListener('submit', getMessageOnScreen);
+
 </script>
