@@ -101,7 +101,7 @@ h1{
 }
 
 #showMessages{
-    padding: 10%;
+    /* padding: 10%; */
     font-size: larger;
     font-weight: bolder;
 }
