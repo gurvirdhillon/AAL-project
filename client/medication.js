@@ -36,6 +36,9 @@ form.addEventListener('submit', function(event){
     const makeList = document.createElement('li');
     makeList.textContent = "medication reminder: " + value + ' to be consumed at ' + document.querySelector('#medicationTime').value;
     medicationList.appendChild(makeList);
+    // get the id of medicationlist to stay on the page after it refreshes
+    // localStorage.setItem('medicationList', medicationList.id);
+    localStorage.setItem('reminders', JSON.stringify(reminders));
     input.value = '';
 
   });
