@@ -307,6 +307,11 @@ const getSubmit = document.querySelector('#submitBtn');
 const targetContent = document.querySelector('#createList');
 const getForm = document.querySelector('#reminderFrm');
 
+let savedReminders = localStorage.getItem('reminders');
+if(savedReminders){
+  targetContent.textContent = savedReminders;
+}
+
 if(getForm) {
   getForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -317,11 +322,21 @@ if(getForm) {
 
     const giveList = document.createElement('li');
     giveList.className = 'list-group-item';
-    giveList.textContent = `reminder to: ${context} at ${date}`;
+    giveList.textContent = `Reminder to: ${context} at ${date}`;
     targetContent.appendChild(giveList);
     const getDate = document.createElement('span');
     getDate.classList.add('reminderDate');
     giveList.appendChild(getDate);
+    localStorage.setItem('reminders', targetContent.textContent);
+  
+    const del = document.createElement('button');
+    del.classList.add('delete');
+    del.textContent = '-';
+    giveList.appendChild(del);
+    del.addEventListener('click', (e) => {
+      e.target.parentNode.remove();
+      localStorage.setItem('reminders', targetContent.textContent);
+    });
   });
 }
 
