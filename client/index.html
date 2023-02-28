@@ -54,6 +54,13 @@
 
 <script>
 
+const reminderBtn = document.querySelector('#reminder');
+      if (reminderBtn) {
+        reminderBtn.addEventListener('click', function() {
+          window.location.href = 'reminder.html';
+    });
+}
+
 // window.addEventListener("load", function() {
 //     const chk = document.getElementById('chk');
 //     if (chk) {
