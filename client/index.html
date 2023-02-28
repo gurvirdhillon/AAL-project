@@ -30,10 +30,10 @@
 </div>
 
 <nav id="headerNavigator">
-    <button class="navChild" id="reminder">Remind Me</button>
+    <button class="navChild" id="home">Home</button>
+    <button class="navChild" id="reminder">Reminders</button>
     <button class="navChild" id="meds">Medication</button>
-    <!-- <button class="navChild" id="home">Home</button> -->
-    <button class="navChild" id="UA">User Activity</button>
+    <button class="navChild" id="UA">Activity</button>
     <button class="navChild" id="chatSystem">Chat</button>
     <button class="navChild" id="settings">Settings</button>
 </nav>
@@ -61,15 +61,42 @@ const reminderBtn = document.querySelector('#reminder');
     });
 }
 
-// window.addEventListener("load", function() {
-//     const chk = document.getElementById('chk');
-//     if (chk) {
-//         chk.addEventListener('change', () => {
-//             const getBody = document.querySelector('body');
-//             getBody.classList.toggle('dark');
-//         });
-//     }
-// });
+const medsBtn = document.querySelector('#meds');
+      if (medsBtn) {
+        medsBtn.addEventListener('click', function() {
+          window.location.href = 'medication.html';
+    });
+}
+
+const chatClicked = document.querySelector('#chatSystem');
+if(chatClicked) {
+  chatClicked.addEventListener('click', function() {
+    window.location.href = 'chat.html';
+  });
+}
+
+const buttonStngs = document.querySelector('#settings');
+if(buttonStngs) {
+  buttonStngs.addEventListener('click', function() {
+    window.location.href = 'settings.html';
+  });
+}
+
+const homeBtn = document.querySelector('#home');
+      if (homeBtn) {
+        homeBtn.addEventListener('click', function() {
+          window.location.href = 'index.html';
+    });
+}
+
+const UAbtn = document.querySelector('#UA');
+      if (UAbtn) {
+        UAbtn.addEventListener('click', function() {
+          window.location.href = 'activity.html';
+    });
+}
+
+// reminder stuff
 
 const getInput = document.querySelector('#reminderInput');
 const reminderDate = document.querySelector('#reminderDate');

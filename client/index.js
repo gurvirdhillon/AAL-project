@@ -1,9 +1,9 @@
-const reminderBtn = document.querySelector('#reminder');
-if(reminderBtn){
-reminderBtn.addEventListener('click', function () {
-  window.location.href = './reminder.html';
-  });
-};
+// const reminderBtn = document.querySelector('#reminder');
+// if(reminderBtn){
+// reminderBtn.addEventListener('click', function () {
+//   window.location.href = './reminder.html';
+//   });
+// };
 
 const medicationBtn = document.querySelector('#meds');
 
