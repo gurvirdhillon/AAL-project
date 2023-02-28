@@ -45,6 +45,8 @@ app.post('/send-message', (req, res) => {
         });
 });
 
+// accept the reminder.html page as a url parameter when type in localhost:8080/reminder.html
+
 app.post('/call', (req, res) =>{
   if(client){
     console.log('Call has been requested');

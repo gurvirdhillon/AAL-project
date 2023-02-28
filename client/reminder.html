@@ -38,53 +38,84 @@
     <button class="navChild" id="settings">Settings</button>
 </nav>
 
-<div id="medicationReminder">
+<div class="reminderFeature">
+  <h1>Reminder:</h1>
+  <form id="reminderFrm">
+    <input placeholder="remind me" class="" name="reminder" id="reminderInput" required method="POST">
+    <p></p>
+    <input type="date" id="reminderDate" min="" required>
+    <button type="submit" id="submitBtn">Submit</button>
+</form>
 
-    <h1>Medication reminder:</h1>
-    
-    <form id="medicationFrm">
-          <label>Medication reminder: </label>
-          <input placeholder="Enter medication name" id="medicationInput" required>
-          <p></p>
-          <label>Amount: </label>
-          <input placeholder="e.g 2 pills" id="medicationDosage" required>
-          <p></p>
-          <label>Consumption method: </label>
-          <select id="consumptionMethod">
-            <option>Pills</option>
-            <option>Drops</option>
-            <option>Injection</option>
-            <option>Inhaler</option>
-            <option>Spray</option>
-            <option>Cream</option>
-            <option>Patch</option>
-            <option>Other</option>
-          </select>
-          <p></p>
-          <label>Dosage: </label>
-            <input placeholder="40mg" id="medicationStrength" type="number" required>
-            <select id="medicationDosage">
-                <option value="mg">mg</option>
-                <option value="ml">ml</option>
-                <option value="%">%</option>
-                <option value="units">units</option>
-            </select>
-            <p></p>
-            <label>Frequency: </label>
-            <select id="">
-              <option>Once a day</option>
-              <option>Twice a day</option>
-    <!-- need to review how i would handle this -->
-            </select>
-          <p></p>
-            <label>Time reminder: </label>
-          <input type="time" id="medicationTime" required>
-            <p></p>
-          <button type="submit" id="submitBtn">Set Reminder</button>
-        </form>
-        <ul id="medicationList"></ul>
-      </div>
-
+  <div id="StickyNote">
+    <h2 class="note-header">Sticky notes:</h2>
+    <ul id="createList">
+      <p id="update">You are up to date!</p>
+    </ul>
+  </div>
+</div>
 
 <input id="panicBtn" type="submit" value="PANIC">
+
 </body>
+
+<script>
+  const getInput = document.querySelector('#reminderInput');
+const reminderDate = document.querySelector('#reminderDate');
+const getSubmit = document.querySelector('#submitBtn');
+const targetContent = document.querySelector('#createList');
+const getForm = document.querySelector('#reminderFrm');
+
+let savedReminders = localStorage.getItem('reminders');
+if(savedReminders){
+  targetContent.textContent = savedReminders;
+}
+
+if(getForm) {
+  getForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const context = getInput.value;
+    const date = reminderDate.value;
+    reminderInput.value = '';
+    reminderDate.value = '';
+
+    const giveList = document.createElement('li');
+    giveList.className = 'list-group-item';
+    giveList.textContent = `Reminder to: ${context} at ${date}`;
+    targetContent.appendChild(giveList);
+    const getDate = document.createElement('span');
+    getDate.classList.add('reminderDate');
+    giveList.appendChild(getDate);
+    localStorage.setItem('reminders', targetContent.textContent);
+  
+    const del = document.createElement('button');
+    del.classList.add('delete');
+    del.textContent = '-';
+    giveList.appendChild(del);
+    del.addEventListener('click', (e) => {
+      e.target.parentNode.remove();
+      localStorage.setItem('reminders', targetContent.textContent);
+    });
+  });
+}
+
+const getMsgForm = document.querySelector('#msgForm');
+const input = document.querySelector('#inputBar');
+const sendMsg = document.querySelector('#sendMsg');
+const displayMessages = document.querySelector('#showMessages');
+
+// prevent the default of the event
+
+function getMessageOnScreen(e) {
+  e.preventDefault();
+  const msg = input.value;
+  const makeMsg = document.createElement('p');
+  makeMsg.classList.add('userMsg');
+  makeMsg.textContent = msg;
+  displayMessages.appendChild(makeMsg);
+  input.value = '';
+}
+
+getMsgForm.addEventListener('submit', getMessageOnScreen);
+
+</script>
