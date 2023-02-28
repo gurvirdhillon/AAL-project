@@ -1,86 +1,19 @@
-function prepareHeaders() {
-  // all the buttons on the header bar
-  const reminderBtn = document.querySelector('#reminder');
-  const medicationBtn = document.querySelector('#meds');
-  const userActivityBtn = document.querySelector('#UA');
-  const chatBtn = document.querySelector('#chatSystem');
-  const settingsBtn = document.querySelector('#settings');
-  // open the template on click for the reminder button
-  const grabPageStart = document.querySelector('#pageStart');
-  reminderBtn.addEventListener('click', function () {
-    const template = document.querySelector('#remindTab');
-    const article = document.getElementsByTagName('article')[0];
-    article.innerHTML = template.innerHTML;
-    const removeImg = document.querySelector('#startingPage');
-    // grabPageStart.remove();
-    removeImg.remove();
+const reminderBtn = document.querySelector('#reminder');
+if(reminderBtn){
+reminderBtn.addEventListener('click', function () {
+  window.location.href = './reminder.html';
   });
-  // open the template on click for the medication button
-  medicationBtn.addEventListener('click', function () {
-    const template = document.querySelector('#medTab');
-    const article = document.getElementsByTagName('article')[0];
-    const removeImg = document.querySelector('#startingPage');
-    // if (grabPageStart === null) {
-    //   const addForm = document.querySelector('#medForm');
-    //   addForm.innerHTML = template.innerHTML;
-    //   article.appendChild(addForm);
-    // }
-    article.innerHTML = template.innerHTML;
-    removeImg.remove();
-  });
-  // open the template on click for the user activity button
-  userActivityBtn.addEventListener('click', function () {
-    const template = document.querySelector('#user-activity');
-    const article = document.getElementsByTagName('article')[0];
-    article.innerHTML = template.innerHTML;
-    const removeImg = document.querySelector('#startingPage');
-    // grabPageStart.remove();
-    removeImg.remove();
-  });
-  // open the template on click for the chat button
-  chatBtn.addEventListener('click', function () {
-    const template = document.querySelector('#chat');
-    const article = document.getElementsByTagName('article')[0];
-    article.innerHTML = template.innerHTML;
-    const removeImg = document.querySelector('#startingPage');
-    // grabPageStart.remove();
-    removeImg.remove();
-  });
-  // open the template on click for the settings button
-  settingsBtn.addEventListener('click', function () {
-    const confirm = prompt("Are you sure you want to go to the settings page? Type yes for access. Type No for staying on the current page.");
-    if (confirm === 'yes' || confirm === 'YES' || confirm === 'Y' || confirm === 'y') {
-    const template = document.querySelector('#settingsTab');
-    const article = document.getElementsByTagName('article')[0];
-    article.innerHTML = template.innerHTML;
-    const removeImg = document.querySelector('#startingPage');
-    removeImg.remove();
-    } if(confirm === 'no') {
-      alert('You have not been taken to the settings page');
-    }
-
-  });
-}
-
-
-window.addEventListener('load', prepareHeaders);
-
-const searchEngine = document.querySelector('#searchEngine');
-const searchSubmit = document.querySelector('#searchSubmit');
-
-// when someone types in reminder and clicks the submit it will take them over to the reminder template page
-if(searchSubmit){
-searchSubmit.addEventListener('click', function () {
-  const search = searchEngine.value;
-  if (search === 'reminder') {
-    const template = document.querySelector('#remindTab');
-    const article = document.getElementsByTagName('article')[0];
-    article.innerHTML = template.innerHTML;
-    const removeImg = document.querySelector('#startingPage');
-    removeImg.remove(); 
-  }
-});
 };
+
+const medicationBtn = document.querySelector('#meds');
+
+
+const userActivityBtn = document.querySelector('#UA');
+
+const chatBtn = document.querySelector('#chatSystem');
+
+const settingsBtn = document.querySelector('#settings');
+
 
 async function fetchAuthConfig() {
   const response = await fetch('/auth-config');
