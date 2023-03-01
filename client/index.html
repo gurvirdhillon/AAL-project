@@ -77,6 +77,8 @@ if(chatClicked) {
 const buttonStngs = document.querySelector('#settings');
 if(buttonStngs) {
   buttonStngs.addEventListener('click', function() {
+    // get a prompt that asks them to type "yes" that they want to go onto settings otherwise keep them on the page
+    prompt("Are you sure you want to go to settings? Type 'yes' to continue");
     window.location.href = 'settings.html';
   });
 }
