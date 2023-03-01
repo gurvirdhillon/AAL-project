@@ -116,7 +116,13 @@ if(chatClicked) {
 const buttonStngs = document.querySelector('#settings');
 if(buttonStngs) {
   buttonStngs.addEventListener('click', function() {
-    window.location.href = 'settings.html';
+    // get a prompt that asks them to type "yes" that they want to go onto settings otherwise keep them on the page
+    const confirm = window.prompt("Are you sure you want to go to settings? Type 'yes' to confirm");
+    if (confirm === 'yes' || confirm === 'Yes' || confirm === 'YES' || confirm === 'y' || confirm === 'Y'){
+      window.location.href = 'settings.html';
+    } else {
+      alert("You have not been redirected to settings");
+    }
   });
 }
 
