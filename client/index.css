@@ -33,6 +33,10 @@ h1{
     font-size: large;
 }
 
+#home:hover{
+    background-color: yellow;
+}
+
 #reminder:hover{
     background-color: rgb(217, 217, 40);
 }
@@ -72,8 +76,12 @@ h1{
     border-radius: 40%;
     padding: 4em;
     float: right;
-    /* position: absolute; */
+    font-weight: bolder;
     left: 45%;
+}
+
+#panicBtn:hover{
+    background-color: orangered;
 }
 
 .reminderFeature{
@@ -97,6 +105,7 @@ h1{
 #messageSection{
     border: thin solid black;
     width: 50%;
+    padding: 10% 1%;
 }
 
 #showMessages{

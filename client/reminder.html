@@ -21,7 +21,9 @@
 <div>
     <h1>ElderAAL</h1>
     <input type="search" placeholder="search" class="searchEngine" id="searchInput">
+    <input type="button" value="🎙️" class="searchEngine" id="microphone">
     <input type="submit" value="🔎" class="searchEngine" id="searchSubmit">
+
     <button id="login">Login</button>
     <button id="logout">Logout</button>
 </div>
@@ -162,7 +164,7 @@ const displayMessages = document.querySelector('#showMessages');
 function getMessageOnScreen(e) {
   e.preventDefault();
   const msg = input.value;
-  const makeMsg = document.createElement('p');
+  const makeMsg = document.createElement('li');
   makeMsg.classList.add('userMsg');
   makeMsg.textContent = msg;
   displayMessages.appendChild(makeMsg);
