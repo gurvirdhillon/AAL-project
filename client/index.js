@@ -1,11 +1,11 @@
-const medicationBtn = document.querySelector('#meds');
+// const medicationBtn = document.querySelector('#meds');
 
 
-const userActivityBtn = document.querySelector('#UA');
+// const userActivityBtn = document.querySelector('#UA');
 
-const chatBtn = document.querySelector('#chatSystem');
+// const chatBtn = document.querySelector('#chatSystem');
 
-const settingsBtn = document.querySelector('#settings');
+// const settingsBtn = document.querySelector('#settings');
 
 
 async function fetchAuthConfig() {
