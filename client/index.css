@@ -68,7 +68,9 @@ h1{
 
 #medicationReminder{
     border: thick solid black;
+    display: flex;
     padding: 4% 10%;
+    justify-content: space-between;
 }
 
 #panicBtn{

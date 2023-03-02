@@ -40,9 +40,9 @@
 </nav>
 
 <div id="medicationReminder">
-
-    <h1>Medication reminder:</h1>
     <form id="medicationFrm">
+      <h1 id="medHeader">Medication reminder:</h1>
+      <p></p>
           <label>Medication reminder: </label>
           <input placeholder="Enter medication name" id="medicationInput" required>
           <p></p>
@@ -82,8 +82,12 @@
             <p></p>
           <button type="submit" id="submitBtn">Set Reminder</button>
         </form>
-        <ul id="medicationList"></ul>
-      </div>
+    <div id="medParentOutput">
+        <h2>Medication List:</h2>
+        <ul id="medicationList">
+        </ul>
+    </div>
+  </div>
 
 <footer>
     <input id="panicBtn" type="submit" value="PANIC">
