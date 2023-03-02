@@ -118,15 +118,11 @@ const targetContent = document.querySelector('#createList');
 const getForm = document.querySelector('#reminderFrm');
 
 let savedReminders = localStorage.getItem('reminders');
-if(savedReminders){
-  targetContent.textContent = savedReminders;
+if (savedReminders) {
+  targetContent.innerHTML = savedReminders;
 }
 
-// if(savedReminders){
-//  targetContent.textContent = savedReminders;
-// }
-
-if(getForm) {
+if (getForm) {
   getForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const context = getInput.value;
@@ -141,36 +137,40 @@ if(getForm) {
     const getDate = document.createElement('span');
     getDate.classList.add('reminderDate');
     giveList.appendChild(getDate);
-    localStorage.setItem('reminders', targetContent.textContent);
-  
+    localStorage.setItem('reminders', targetContent.innerHTML);
+    const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
+    reminders.push({
+      reminder: context,
+      date: date
+    });
     const del = document.createElement('button');
     del.classList.add('delete');
     del.textContent = '-';
     giveList.appendChild(del);
     del.addEventListener('click', (e) => {
       e.target.parentNode.remove();
-      localStorage.setItem('reminders', targetContent.textContent);
+      localStorage.setItem('reminders', targetContent.innerHTML);
     });
   });
 }
 
-const getMsgForm = document.querySelector('#msgForm');
-const input = document.querySelector('#inputBar');
-const sendMsg = document.querySelector('#sendMsg');
-const displayMessages = document.querySelector('#showMessages');
+// const getMsgForm = document.querySelector('#msgForm');
+// const input = document.querySelector('#inputBar');
+// const sendMsg = document.querySelector('#sendMsg');
+// const displayMessages = document.querySelector('#showMessages');
 
-// prevent the default of the event
+// // prevent the default of the event
 
-function getMessageOnScreen(e) {
-  e.preventDefault();
-  const msg = input.value;
-  const makeMsg = document.createElement('li');
-  makeMsg.classList.add('userMsg');
-  makeMsg.textContent = msg;
-  displayMessages.appendChild(makeMsg);
-  input.value = '';
-}
+// function getMessageOnScreen(e) {
+//   e.preventDefault();
+//   const msg = input.value;
+//   const makeMsg = document.createElement('li');
+//   makeMsg.classList.add('userMsg');
+//   makeMsg.textContent = msg;
+//   displayMessages.appendChild(makeMsg);
+//   input.value = '';
+// }
 
-getMsgForm.addEventListener('submit', getMessageOnScreen);
+// getMsgForm.addEventListener('submit', getMessageOnScreen);
 
 </script>

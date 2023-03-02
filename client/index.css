@@ -121,3 +121,14 @@ h1{
     padding: 4%;
     border-radius: 20%;
 }
+
+.list-group-item{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: larger;
+    /* background-color: grey; */
+    /* border-radius: 40%; */
+    /* width: 50%; */
+    /* padding: 4%; */
+}
+
