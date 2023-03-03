@@ -40,13 +40,52 @@
 </nav>
 
 <h1>Settings: </h1>
+<div id="settingsBar">
+<h3>User Settings:</h3>
 <p>
-<button>Edit Profile</button>
+<button id="editUserBtn">Edit Profile</button>
 </p>
-<button>Accessibility</button>
+<button id="UserAccess">Accessibility</button>
 <p>
-<button>Contact Details</button>
+<button id="ContactInfoBtn">Contact Details</button>
 </p>
+</div>
+
+<template>
+  <form>
+    <label>Image: </label>
+    <input type="file" accept="image/*">
+    <!-- find out what info i can store and what i cannot -->
+  </form>
+</template>
+
+<template>
+  <form>
+    <label>Dark/light mode:</label>
+    <input type="checkbox" id="darkMode"><button>i</button>
+    <p>
+      <label>Text size:</label>
+      <input type="range">
+    </p>
+  </form>
+</template>
+
+<template>
+  <form>
+    <label>Contact Name:</label><input type="text">
+    <label>Relation to user:</label>
+    <select id="relation">
+      <option>Mother</option>
+      <option>Father</option>
+      <option>Sister</option>
+      <option>Brother</option>
+      <option>Friend</option>
+      <option>Carer</option>
+      <option>Other/prefer not to specify</option>
+    <label></label>
+    </select>
+  </form>
+</template>
 
 </body>
 <script>

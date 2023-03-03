@@ -134,3 +134,8 @@ h1{
     /* padding: 4%; */
 }
 
+
+#settingsBar{
+    border: black thick solid;
+    width: 20%;
+}
