@@ -1,0 +1,16 @@
+@startuml sequence2.puml
+
+' get fitbit API data
+
+participant "user" as user
+participant "application" as app
+participant "server" as server
+participant "Fitbit API" as fitbit
+
+user --> app: connects fitbit account
+app --> server: makes request to the server
+server --> fitbit: server requests data from Fitbit API
+fitbit --> server: Fitbit API returns data
+server --> app: displays fitbit data to the user
+
+@enduml

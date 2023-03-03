@@ -1,106 +1,136 @@
 body{
-    background-color: aliceblue;
+    /* background-color: white; */
+    background-color: #F5F5DC;
+    color: black;
 }
 
-.greetingsPage{
-    /* find out how to make the buttons smaller than the  h1 */
-    display: flex;
-    align-items: center;
+h1{
+    display:inline-block;
+    vertical-align: middle;
+}
+
+
+#login, #logout{
+    float: right;
+    font-size: larger;
 }
 
 #headerNavigator{
-    /* put all divs in one line */
-    background-color: blueviolet;
-    padding: 0.2%;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
+    /*  */
+    text-align: center;
+    
 }
 
 .navChild{
+    padding: 1% 3%;
     display: inline-block;
-    padding: 10px 20px;
+    font-weight: bolder;
+    font-size: x-large;
 }
 
+#searchInput, #searchSubmit, #microphone{
+    padding: 0.25%;
+    font-size: large;
+}
 
-#startingImg{
-    width: 100%;
+#home:hover{
+    background-color: yellow;
+}
+
+#reminder:hover{
+    background-color: rgb(217, 217, 40);
+}
+
+#meds:hover{
+    background-color: rgb(230, 153, 230);
+}
+
+#UA:hover{
+    background-color: orange;
+}
+
+#chatSystem:hover{
+    background-color: lime;
+}
+
+#settings:hover{
+    background-color: rgb(44, 192, 242);
+}
+
+#pageStart{
+    display: flex;
+}
+
+.startingImg{
+    width: 80%;
     height: 100%;
 }
 
-/* .settingsBar{
-    background-color: rgb(183, 176, 176);
+#medicationReminder{
+    border: thick solid black;
     display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-
-#parentSettings{
-    display: grid;
-    /* turn it into a settings look with one button under the other */
-    grid-template-columns: 1fr;
-    place-items: center;
-}
-
-#StickyNote{
-    background-color: rgb(225, 225, 27); 
-    padding: 1.25em;
-    width: 18.75em;
-    position: relative;
-}
-
-.note-header {
-    padding: 10%;
-}
-
-.note-header h2 {
-    margin: 0;
-}
-
-#reminderSetter{
-    background-color: grey;
-    padding: 1.25em;
-    width: 50%;
-    display: flex;
+    padding: 4% 10%;
+    justify-content: space-between;
 }
 
 #panicBtn{
     background-color: red;
     border-radius: 40%;
     padding: 4em;
-    position: absolute;
+    float: right;
+    font-weight: bolder;
     left: 45%;
 }
 
-#chat{
+#panicBtn:hover{
+    background-color: orangered;
+}
+
+.reminderFeature{
+    margin: 0;
+    width: 75%;
+    position: left;
+    border:  thin solid black;
+}
+
+#StickyNote{
+    background-color: rgb(225, 225, 27); 
+    width: 80%;
+    position: relative;
+    /* padding: 1.25em; */
+}
+
+#createList{
+    height: 10%;
+}
+
+#messageSection{
     border: thin solid black;
-    display: grid;
-    padding: 1.25em;
-    width: 25%;
-    height: 40%;
-    position: absolute;
+    width: 50%;
+    padding: 10% 1%;
 }
 
-
-
-#chatSendBtn{
-    grid-area: btn;
-    height: 50%;
+#showMessages{
+    /* padding: 10%; */
+    font-size: larger;
+    font-weight: bolder;
 }
 
-#inputMsg{
-    
-    height: 50%;
+.userMsg{
+    background-color: lightblue;
+    color: black;
+    width: 50%;
+    padding: 4%;
+    border-radius: 20%;
 }
 
-input:required + label:after{
-    content: ' *';
-    color: red;
+.list-group-item{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: larger;
+    /* background-color: grey; */
+    /* border-radius: 40%; */
+    /* width: 50%; */
+    /* padding: 4%; */
 }
 
-.displayUsersData{
-    display: flex;
-    /* put this on the right of the page */
-    position: absolute;
-    right: 0;
-}

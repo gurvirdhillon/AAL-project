@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <title>Ambient assisted living</title>
+    <script src="reminder.js"></script>
+        <script src="index.js"></script>
+        <script src="panic.mjs"></script>
+        <script src="app.js"></script>
+        <script src="settings.js"></script>
+        <!-- <script defer src="chat.js"></script> -->
+        <script src="chat.js"></script>
+        <script src="medication.js" type="module"></script>
+        <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
+        <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+          <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div>
+<h1>ElderAAL</h1>
+<input type="search" placeholder="search" class="searchEngine" id="searchInput">
+<input type="button" value="🎙️" class="searchEngine" id="microphone">
+<input type="submit" value="🔎" class="searchEngine" id="searchSubmit">
+
+<button id="login">Login</button>
+<button id="logout">Logout</button>
+</div>
+
+<div class="greetingsPage">
+<h2 id="greeting">Welcome</h2>
+</div>
+
+<nav id="headerNavigator">
+  <button class="navChild" id="home">Home</button>
+  <button class="navChild" id="reminder">Remind Me</button>
+  <button class="navChild" id="meds">Medication</button>
+  <!-- <button class="navChild" id="home">Home</button> -->
+  <button class="navChild" id="UA">My Activity</button>
+  <button class="navChild" id="chatSystem">Chat</button>
+  <button class="navChild" id="settings">Settings</button>
+</nav>
+
+<h1>Settings: </h1>
+<p>
+<button>Edit Profile</button>
+</p>
+<button>Accessibility</button>
+<p>
+<button>Contact Details</button>
+</p>
+
+</body>
+<script>
+  const reminderBtn = document.querySelector('#reminder');
+      if (reminderBtn) {
+        reminderBtn.addEventListener('click', function() {
+          window.location.href = 'reminder.html';
+    });
+}
+
+const medsBtn = document.querySelector('#meds');
+      if (medsBtn) {
+        medsBtn.addEventListener('click', function() {
+          window.location.href = 'medication.html';
+    });
+}
+
+const chatClicked = document.querySelector('#chatSystem');
+if(chatClicked) {
+  chatClicked.addEventListener('click', function() {
+    window.location.href = 'chat.html';
+  });
+}
+
+const buttonStngs = document.querySelector('#settings');
+if(buttonStngs) {
+  buttonStngs.addEventListener('click', function() {
+    window.location.href = 'settings.html';
+  });
+}
+
+const homeBtn = document.querySelector('#home');
+      if (homeBtn) {
+        homeBtn.addEventListener('click', function() {
+          window.location.href = 'index.html';
+    });
+}
+
+const UAbtn = document.querySelector('#UA');
+      if (UAbtn) {
+        UAbtn.addEventListener('click', function() {
+          window.location.href = 'activity.html';
+    });
+}
+
+</script>

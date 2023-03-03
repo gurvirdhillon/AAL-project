@@ -1,17 +1,12 @@
-const createList = document.querySelector('#createList');
-const reminderDate = document.querySelector('#reminderDate');
-const handleSubmitBtn = document.querySelector('#submitBtn');
+// const updateContent = document.querySelector('#update');
+// const currentDate = document.querySelector('#reminderDate');
+// const todos_los_dias = new Date().toISOString().split('T')[0];
+// currentDate.setAttribute('min', todos_los_dias);
 
-handleSubmitBtn.addEventListener('click', dateValidator);
+setInterval(() => {
+  const myDate = document.querySelector('#reminderDate');
+  const todos_los_dias = new Date().toISOString().split('T')[0];
+  myDate.setAttribute('min', todos_los_dias);
+}, 86400000);
 
-// find the list of reminders for that day and add those reminders
-
-function dateValidator() {
-  const inputDate = new Date(document.querySelector('#reminderDate').value);
-  const today = new Date();
-  if (inputDate < today) {
-    return false;
-  } else {
-    return true;
-  }
-}
+// 86400000 as that is how many milliseconds are in a day
