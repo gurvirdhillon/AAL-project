@@ -78,6 +78,12 @@ h1{
     border-radius: 1%;
 }
 
+.checkedMedInfo{
+    width: 50%;
+    background-color: lightskyblue;
+    border: thin solid black;
+}
+
 #panicBtn{
     background-color: red;
     border-radius: 40%;

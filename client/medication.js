@@ -53,7 +53,7 @@ window.addEventListener('load', function () {
   const medications = JSON.parse(localStorage.getItem('medications')) || [];
   medications.forEach(function(reminder){
     const item = document.createElement('li');
-    item.textContent = 'reminder to take ' + reminder.medication + ' at ' + reminder.time;
+    item.textContent = 'medication reminder: ' + reminder.medication + ' to be consumed at ' + reminder.time;
     medicationList.appendChild(item);
     localStorage.setItem('medicationList', medicationList.id);
   });
@@ -66,5 +66,12 @@ const grabTemplate = document.querySelector('#furtherMedInfo');
 const textInfo = document.querySelector('#articleMed');
 
 function assistanceQuestion() {
-  
-}
+  const template = grabTemplate.innerHTML;
+  const div = document.createElement('div');
+  div.classList.add('checkedMedInfo');
+  div.innerHTML = template;
+  textInfo.appendChild(div);
+  helpButton.addEventListener('click', function(){
+    textInfo.removeChild(div);
+  });
+};
