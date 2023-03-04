@@ -23,7 +23,10 @@
     "extends": "portsoc",
     "root": true,
     "env": {
-      "browser": true
+      "browser": true,
+        "globals": {
+          "TimestampTrigger": true
+      }
     }
   }, 
   "devDependencies": {
