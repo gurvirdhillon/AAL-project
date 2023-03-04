@@ -58,3 +58,13 @@ window.addEventListener('load', function () {
     localStorage.setItem('medicationList', medicationList.id);
   });
 });
+
+const helpButton = document.querySelector('#medInfo');
+helpButton.addEventListener('click', assistanceQuestion);
+
+const grabTemplate = document.querySelector('#furtherMedInfo');
+const textInfo = document.querySelector('#articleMed');
+
+function assistanceQuestion() {
+  
+}

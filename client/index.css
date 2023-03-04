@@ -73,6 +73,11 @@ h1{
     justify-content: space-between;
 }
 
+#medInfo{
+    background-color: lightblue;
+    border-radius: 1%;
+}
+
 #panicBtn{
     background-color: red;
     border-radius: 40%;
@@ -91,6 +96,27 @@ h1{
     width: 75%;
     position: left;
     border:  thin solid black;
+}
+
+#reminderInput{
+    width: 40%;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+#reminderDate{
+    padding: 1em;
+    border-radius: 1em;
+}
+
+#reminderTime{
+    padding: 1em;
+    border-radius: 1em;
+}
+
+#submitBtn{
+    padding: 1em;
+    border-radius: 1em;
 }
 
 #StickyNote{

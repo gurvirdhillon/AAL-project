@@ -42,6 +42,13 @@
 <div id="medicationReminder">
     <form id="medicationFrm">
       <h1 id="medHeader">Medication reminder:</h1>
+      <input type="button" id="medInfo" value="?">
+        <template id="furtherMedInfo">
+          <article id="articleMed">
+            This section provides you with the opportunity of logging medicine that must be consumed throughout a day to day basis.
+            <li>The amount refers to the quantity of medication. For example, 2 sprays of an asthma pump.</li>
+          </article>
+        </template>
       <p></p>
           <label>Medication reminder: </label>
           <input placeholder="Enter medication name" id="medicationInput" required>
@@ -73,7 +80,12 @@
             <label>Frequency: </label>
             <select>
               <option>Once a day</option>
-              <option>Twice a day</option>
+              <option>Every 2 hour</option>
+              <option>Every 4 hours</option>
+              <option>Every 6 hours</option>
+              <option>Every 8 hours</option>
+              <option>Every 12 hours</option>
+              <option>Other...</option>
   <!-- need to review how i would handle this  -->
             </select>
           <p></p>
@@ -89,9 +101,6 @@
     </div>
   </div>
 
-
-  <!-- change user activity to my activity -->
-<!-- write panic button instead of panic -->
 <!-- description for the med reminder -->
 
 
