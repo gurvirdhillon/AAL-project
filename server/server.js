@@ -3,10 +3,27 @@ import path from 'path';
 import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
+import passport from 'passport';
 const app = express();
-// need to import medication.js
-
 import twilio from 'twilio';
+
+import { FitbitOAuth2Strategy as FitbitStrategy } from 'passport-fitbit-oauth2';
+
+passport.use(new FitbitStrategy({
+  clientID: '2398HV',
+  clientSecret: '229f30978777f329164493cc79491671',
+  callbackURL: 'http://localhost:8080/auth/fitbit/callback'
+  },
+  function(accessToken, refreshToken, profile, complete) {
+    User.findOrCreate({ fitbitId: profile.id }, function (err, user) {
+      return complete(err, user);
+    });
+  }
+));
+
+// npm. (2016). Passport-fitbit-oauth2. https://www.npmjs.com/. Retrieved from https://www.npmjs.com/package/passport-fitbit-oauth2 
+
+// need to import medication.js
 // import twilio from 'twilio'.twiml.voiceResponse;
 
 const db = openDB();
@@ -86,6 +103,12 @@ app.get('/user_profile/:user_email', async (req, res) => {
   } else {
     res.status(404).send('User not found');
   }
+});
+
+app.get('/auth/fitbit', passport.authenticate('fitbit', { scope: ['activity', 'heartrate', 'sleep', 'weight'] }));
+
+app.get('/auth/fitbit/callback', passport.authenticate('fitbit', { failureRedirect: '/login' }), (req, res) => {
+  res.redirect('/');
 });
 
 function catchError(catchErr) {

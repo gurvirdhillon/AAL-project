@@ -9,7 +9,10 @@ CREATE TABLE user_profile(
     first_name varchar(60) NOT NULL,
     last_name varchar(60) NOT NULL,
     telephone_no varchar(20) NOT NULL,
-    PRIMARY KEY(user_email)
+    id INTEGER PRIMARY KEY,
+    fitbit_id TEXT NOT NULL,
+    access_token TEXT NOT NULL,
+    refresh_token TEXT NOT NULL
 );
 
 CREATE TABLE medication(
