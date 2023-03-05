@@ -107,7 +107,7 @@ app.get('/user/:email', async (req, res) => {
   }
 })
 
-app.get('/auth/fitbit', passport.authenticate('fitbit', { scope: ['activity', 'heartrate', 'sleep', 'weight'] }));
+app.get('/auth/fitbit', passport.authenticate('fitbit', { scope: ['activity', 'heartrate', 'sleep', 'weight', 'distance', 'calories'] }));
 
 app.get('/auth/fitbit/callback', passport.authenticate('fitbit', { failureRedirect: '/login' }), (req, res) => {
   res.redirect('/');
