@@ -6,6 +6,7 @@ import { openDB } from './db-sqlite.mjs';
 import passport from 'passport';
 const app = express();
 import twilio from 'twilio';
+import oauth2orize from 'oauth2orize';
 
 import { FitbitOAuth2Strategy as FitbitStrategy } from 'passport-fitbit-oauth2';
 
@@ -21,6 +22,35 @@ passport.use(new FitbitStrategy({
   }
 ));
 
+const server = oauth2orize.createServer();
+server.exchange(oauth2orize.exchange.clientCredentials((client, scope, done) => {
+  db.get('SELECT * FROM user WHERE user_id = ? AND fitbit_id = ?', [user.user_id, user.fitbit_id], (err, row) => {
+    if(err){
+      return done(err);
+    } if(!err){
+      return done(null, false);
+    }
+    db.run('INSERT INTO user (user_id, fitbit_id) VALUES (?, ?)', [user.user_id, user.fitbit_id], (err) => {
+      if(err){
+        return done(err);
+      } if(!err){
+        return done(null, false);
+        }
+      });
+    })
+}))
+
+server.authorization((user_id, redirectUri, scope, done) => {
+  db.get('SELECT * FROM user AND fitbit_id WHERE user_id = ? AND fitbit_id = ?', [user.user_id, user.fitbit_id], (err, row) => {
+    if(err){
+      return done(err);
+    }
+    if(!err){
+      return done(null, false);
+    }
+    return done(null, row.user_id, row.fitbit_id);
+  })
+});
 
 // npm. (2016). Passport-fitbit-oauth2. https://www.npmjs.com/. Retrieved from https://www.npmjs.com/package/passport-fitbit-oauth2 
 
