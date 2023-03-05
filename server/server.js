@@ -7,6 +7,7 @@ import passport from 'passport';
 const app = express();
 import twilio from 'twilio';
 import oauth2orize from 'oauth2orize';
+import bearerStrategy from 'passport-http-bearer';
 
 import { FitbitOAuth2Strategy as FitbitStrategy } from 'passport-fitbit-oauth2';
 
@@ -51,6 +52,23 @@ server.authorization((user_id, redirectUri, scope, done) => {
     return done(null, row.user_id, row.fitbit_id);
   })
 });
+
+passport.use(new bearerStrategy((accessToken, done) => {
+  db.get('SELECT * FROM user WHERE user_id = ?', [user.user_id], (err, row) => {
+    if(err){
+      return done(err);
+    } if(!err){
+      return done(null, false);
+    }
+    return done(null, row.user_id, { scope: '*' });
+  })
+}));
+
+app.use(passport.initialize());
+
+app.get('/authorize', server.authorize((clientId, redirectUri, done) => {
+  req.session.clientId = clientId;
+}));
 
 // npm. (2016). Passport-fitbit-oauth2. https://www.npmjs.com/. Retrieved from https://www.npmjs.com/package/passport-fitbit-oauth2 
 
