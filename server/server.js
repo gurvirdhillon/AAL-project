@@ -21,6 +21,8 @@ passport.use(new FitbitStrategy({
   }
 ));
 
+
+
 // npm. (2016). Passport-fitbit-oauth2. https://www.npmjs.com/. Retrieved from https://www.npmjs.com/package/passport-fitbit-oauth2 
 
 // need to import medication.js
@@ -95,15 +97,15 @@ async function getUser(req, res) {
   res.json(feedback);
 }
 
-app.get('/user_profile/:user_email', async (req, res) => {
-  const feedback = await getUser(req.params.user_email);
+app.get('/user/:email', async (req, res) => {
+  const feedback = await db.getUser(req.params.email);
   // handle response
   if (feedback) {
     res.json(feedback);
   } else {
     res.status(404).send('User not found');
   }
-});
+})
 
 app.get('/auth/fitbit', passport.authenticate('fitbit', { scope: ['activity', 'heartrate', 'sleep', 'weight'] }));
 
