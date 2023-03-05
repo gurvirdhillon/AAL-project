@@ -22,7 +22,6 @@ passport.use(new FitbitStrategy({
 ));
 
 
-
 // npm. (2016). Passport-fitbit-oauth2. https://www.npmjs.com/. Retrieved from https://www.npmjs.com/package/passport-fitbit-oauth2 
 
 // need to import medication.js
