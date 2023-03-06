@@ -14,14 +14,42 @@ import { FitbitOAuth2Strategy as FitbitStrategy } from 'passport-fitbit-oauth2';
 passport.use(new FitbitStrategy({
   clientID: '2398HV',
   clientSecret: '229f30978777f329164493cc79491671',
-  callbackURL: 'http://localhost:8080/auth/fitbit/callback'
+  callbackURL: 'http://localhost:8080/auth/fitbit/callback',
+  authorizationURL: 'https://www.fitbit.com/oauth2/authorize',
+  tokenURL: 'https://api.fitbit.com/oauth2/token',
+  userProfileURL: 'https://api.fitbit.com/1/user/-/profile.json'
   },
   function(accessToken, refreshToken, profile, complete) {
-    User.findOrCreate({ fitbitId: profile.id }, function (err, user) {
-      return complete(err, user);
+    const options = {
+      url: 'https://api.fitbit.com/1/user/-/profile.json',
+      headers: {
+        'Authorization': 'Bearer ' + accessToken
+      }
+    };
+    request.get(options, function(err, response, body) {
+      if (err) {
+        return done(err);
+      }
+      const data = JSON.parse(body);
+      User.findOrCreate({ fitbitId: data.user.encodedId }, function (err, user) {
+        return complete(err, user);
+      });
     });
-  }
+  }  
 ));
+
+passport.serializeUser((user, done) => {
+  done(null, user.user_id);
+});
+
+passport.deserializeUser((id, done) => {
+  db.get('SELECT * FROM user WHERE user_id = ?', [id], (err, row) => {
+    if (err) {
+      return done(err);
+    }
+    done(null, row);
+  });
+});
 
 const server = oauth2orize.createServer();
 server.exchange(oauth2orize.exchange.clientCredentials((client, scope, done) => {
@@ -31,42 +59,43 @@ server.exchange(oauth2orize.exchange.clientCredentials((client, scope, done) => 
     } if(!err){
       return done(null, false);
     }
-    db.run('INSERT INTO user (user_id, fitbit_id) VALUES (?, ?)', [user.user_id, user.fitbit_id], (err) => {
+    const token = generateToken();
+    db.run('INSERT INTO tokens (user_id, access_token, refresh_token) VALUES (?, ?, ?)', [tokens.user_id, tokens.access_token, tokens.refresh_token], (err) => {
       if(err){
         return done(err);
       } if(!err){
         return done(null, false);
         }
       });
-    })
-}))
+    });
+}));
 
-server.authorization((user_id, redirectUri, scope, done) => {
-  db.get('SELECT * FROM user AND fitbit_id WHERE user_id = ? AND fitbit_id = ?', [user.user_id, user.fitbit_id], (err, row) => {
+server.authorization((user_id, refresh_token, scope, done) => {
+  db.get('SELECT * FROM user WHERE user_id = ? AND refresh_token = ?', [user.user_id, user.refresh_token], (err, row) => {
     if(err){
       return done(err);
     }
     if(!err){
       return done(null, false);
     }
-    return done(null, row.user_id, row.fitbit_id);
-  })
+    return done(null, row.user_id, row.refresh_token);
+  });
 });
 
 passport.use(new bearerStrategy((accessToken, done) => {
-  db.get('SELECT * FROM user WHERE user_id = ?', [user.user_id], (err, row) => {
+  db.get('SELECT * FROM user WHERE user_id = ?', [accessToken], (err, row) => {
     if(err){
       return done(err);
     } if(!err){
       return done(null, false);
     }
-    return done(null, row.user_id, { scope: '*' });
+    return done(null, row.user_id);
   })
 }));
 
 app.use(passport.initialize());
 
-app.get('/authorize', server.authorize((clientId, redirectUri, done) => {
+app.get('/authorize', server.authorize((clientId, refresh_token, done) => {
   req.session.clientId = clientId;
 }));
 
@@ -154,10 +183,14 @@ app.get('/user/:email', async (req, res) => {
   }
 })
 
-app.get('/auth/fitbit', passport.authenticate('fitbit', { scope: ['activity', 'heartrate', 'sleep', 'weight', 'distance', 'calories'] }));
+app.get('/auth/fitbit', passport.authenticate('fitbit', { scope: ['activity', 'heartrate', 'sleep', 'weight'] }));
 
-app.get('/auth/fitbit/callback', passport.authenticate('fitbit', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect('/');
+app.get('/auth/fitbit/callback',
+  passport.authenticate('fitbit', { failureRedirect: '/login' }),
+  (req, res) => {
+    const clientId = req.session.clientId;
+    delete req.session.clientId;
+    res.redirect(`/authorize?client_id=${clientId}&user_id=${req.user.user_id}`);
 });
 
 function catchError(catchErr) {
