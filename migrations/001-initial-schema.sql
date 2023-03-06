@@ -10,7 +10,19 @@ CREATE TABLE users(
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     access_token VARCHAR(255) NOT NULL,
-    refresh_token VARCHAR(255) NOT NULL
+    refresh_token VARCHAR(255) NOT NULL,
+    CONSTRAINT "fk_users.access_token"
+    FOREIGN KEY ("access_token")
+    REFERENCES tokens("access_token")
+);
+
+CREATE TABLE tokens(
+    user_id INTEGER NOT NULL,
+    access_token TEXT PRIMARY KEY,
+    refresh_token VARCHAR(255) NOT NULL,
+    CONSTRAINT "fk_tokens.user_id"
+    FOREIGN KEY ("user_id")
+    REFERENCES users("user_id")
 );
 
 CREATE TABLE steps(
