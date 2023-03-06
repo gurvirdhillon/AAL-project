@@ -37,3 +37,5 @@ npm i twilio
 * User activity monitoring and alerting caregivers
 * Medication management
 * User profile
+* Panic button
+* A Microphone which includes an emergency button
