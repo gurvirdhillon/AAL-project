@@ -19,6 +19,7 @@ passport.use(new FitbitStrategy({
   tokenURL: 'https://api.fitbit.com/oauth2/token',
   userProfileURL: 'https://api.fitbit.com/1/user/-/profile.json'
   },
+
   function(accessToken, refreshToken, profile, complete) {
     const options = {
       url: 'https://api.fitbit.com/1/user/-/profile.json',
@@ -70,33 +71,38 @@ server.exchange(oauth2orize.exchange.clientCredentials((client, scope, done) => 
     });
 }));
 
-server.authorization((user_id, refresh_token, scope, done) => {
-  db.get('SELECT * FROM user WHERE user_id = ? AND refresh_token = ?', [user.user_id, user.refresh_token], (err, row) => {
+server.authorization((user_id, redirect_uri, scope, done) => {
+  db.get('SELECT * FROM user WHERE user_id = ? AND redirect_uri = ?', [user.user_id, user.redirect_uri], (err, row) => {
     if(err){
       return done(err);
     }
     if(!err){
       return done(null, false);
     }
-    return done(null, row.user_id, row.refresh_token);
+    return done(null, row.user_id, row.redirect_uri);
   });
 });
 
-passport.use(new bearerStrategy((accessToken, done) => {
-  db.get('SELECT * FROM user WHERE user_id = ?', [accessToken], (err, row) => {
+passport.use(new bearerStrategy((user_id, redirect_uri, accessToken, done) => {
+  db.get('SELECT * FROM user WHERE user_id = ?', [user_id, accessToken], (err, row) => {
     if(err){
       return done(err);
     } if(!err){
       return done(null, false);
     }
-    return done(null, row.user_id);
+    return done(null, row.user_id, redirect_uri);
   })
 }));
 
 app.use(passport.initialize());
 
-app.get('/authorize', server.authorize((clientId, refresh_token, done) => {
+app.get('/authorize', server.authorize(function(clientId, redirect_uri, scope, done) {
   req.session.clientId = clientId;
+  return done(null, clientId, scope);
+}, function(req, res) {
+  res.render('dialog', { transactionID: req.oauth2.transactionID, user: req.user, client: req.oauth2.client });
+}, {
+  scope: ['activity', 'heartrate', 'sleep', 'weight']
 }));
 
 // npm. (2016). Passport-fitbit-oauth2. https://www.npmjs.com/. Retrieved from https://www.npmjs.com/package/passport-fitbit-oauth2 
@@ -172,6 +178,16 @@ async function getUser(req, res) {
   }
   res.json(feedback);
 }
+
+app.get('/authorize', server.authorize(function(clientId, redirect_uri, scope, done) {
+  req.session.clientId = clientId;
+  return done(null, clientId);
+}, function(req, res) {
+  res.render('dialog', { transactionID: req.oauth2.transactionID, user: req.user, client: req.oauth2.client });
+}, {
+  scope: ['activity', 'heartrate', 'sleep', 'weight']
+}));
+
 
 app.get('/user/:email', async (req, res) => {
   const feedback = await db.getUser(req.params.email);
