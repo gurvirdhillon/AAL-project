@@ -28,6 +28,9 @@ npm i sqlite3
 npm i express
 npm i sqlite
 npm i twilio
+npm i passport
+npm i oauth2orize
+npm i passport-http-bearer
 ```
 
 ## Features implemented
