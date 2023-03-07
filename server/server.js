@@ -17,10 +17,13 @@ passport.use(new FitbitStrategy({
   callbackURL: 'http://localhost:8080/auth/fitbit/callback',
   authorizationURL: 'https://www.fitbit.com/oauth2/authorize',
   tokenURL: 'https://api.fitbit.com/oauth2/token',
-  userProfileURL: 'https://api.fitbit.com/1/user/-/profile.json'
-  },
+  userProfileURL: 'https://api.fitbit.com/1/user/-/profile.json',
+  redirect_uri: 'http://localhost:8080/auth/fitbit/callback&scope=activity%20heartrate%20profile',
+  scope: ['activity','heartrate','location','profile'],
+  passReqToCallback: true,
+},
 
-  function(accessToken, refreshToken, profile, complete) {
+  function(req, accessToken, refreshToken, profile, done) {
     const options = {
       url: 'https://api.fitbit.com/1/user/-/profile.json',
       headers: {
@@ -33,7 +36,7 @@ passport.use(new FitbitStrategy({
       }
       const data = JSON.parse(body);
       User.findOrCreate({ fitbitId: data.user.encodedId }, function (err, user) {
-        return complete(err, user);
+        return done(err, user);
       });
     });
   }  
@@ -59,7 +62,7 @@ server.exchange(oauth2orize.exchange.clientCredentials((client, scope, done) => 
       return done(err);
     } if(!err){
       return done(null, false);
-    }
+  }
     const token = generateToken();
     db.run('INSERT INTO tokens (user_id, access_token, refresh_token) VALUES (?, ?, ?)', [tokens.user_id, tokens.access_token, tokens.refresh_token], (err) => {
       if(err){
@@ -72,14 +75,14 @@ server.exchange(oauth2orize.exchange.clientCredentials((client, scope, done) => 
 }));
 
 server.authorization((user_id, redirect_uri, scope, done) => {
-  db.get('SELECT * FROM user WHERE user_id = ? AND redirect_uri = ?', [user.user_id, user.redirect_uri], (err, row) => {
+  db.get('SELECT * FROM user WHERE user_id = ? AND redirect_uri = ?', [user.user_id, redirect_uri], (err, row) => {
     if(err){
       return done(err);
     }
-    if(!err){
+    if(!row){
       return done(null, false);
     }
-    return done(null, row.user_id, row.redirect_uri);
+    return done(null, row.user_id, redirect_uri);
   });
 });
 
@@ -100,10 +103,20 @@ app.get('/authorize', server.authorize(function(clientId, redirect_uri, scope, d
   req.session.clientId = clientId;
   return done(null, clientId, scope);
 }, function(req, res) {
-  res.render('dialog', { transactionID: req.oauth2.transactionID, user: req.user, client: req.oauth2.client });
+ res.render('dialog', { transactionID: req.oauth2.transactionID, user: req.user, client: req.oauth2.client });
 }, {
-  scope: ['activity', 'heartrate', 'sleep', 'weight']
+ scope: ['activity', 'heartrate', 'sleep', 'weight']
 }));
+
+server.authorization(function(clientId, redirectUri, scope, type, cb) {
+  db.getClient(clientId, function(err, client) {
+    if (err) { return cb(err); }
+    if (client.redirectUri !== redirectUri) {
+      return cb(new Error('Invalid redirectUri'));
+    }
+    return cb(null, client, redirectUri, scope);
+  });
+});
 
 // npm. (2016). Passport-fitbit-oauth2. https://www.npmjs.com/. Retrieved from https://www.npmjs.com/package/passport-fitbit-oauth2 
 
