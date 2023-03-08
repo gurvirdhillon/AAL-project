@@ -9,6 +9,9 @@ h1{
     vertical-align: middle;
 }
 
+.parentHeader{
+    border-bottom: #111 thin solid;
+}
 
 #login, #logout{
     float: right;
