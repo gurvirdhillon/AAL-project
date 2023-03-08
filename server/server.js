@@ -18,8 +18,9 @@ passport.use(new FitbitStrategy({
   authorizationURL: 'https://www.fitbit.com/oauth2/authorize',
   tokenURL: 'https://api.fitbit.com/oauth2/token',
   userProfileURL: 'https://api.fitbit.com/1/user/-/profile.json',
-  redirect_uri: 'http://localhost:8080/auth/fitbit/callback&scope=activity%20heartrate%20profile',
+  redirect_uri: 'http://localhost:8080/auth/fitbit/callback',
   scope: ['activity','heartrate','location','profile'],
+  accessToken: '',
   passReqToCallback: true,
 },
 
@@ -64,7 +65,7 @@ server.exchange(oauth2orize.exchange.clientCredentials((client, scope, done) => 
       return done(null, false);
   }
     const token = generateToken();
-    db.run('INSERT INTO tokens (user_id, access_token, refresh_token) VALUES (?, ?, ?)', [tokens.user_id, tokens.access_token, tokens.refresh_token], (err) => {
+    db.run('INSERT INTO tokens (user_id, accessToken, refresh_token) VALUES (?, ?, ?)', [tokens.user_id, tokens.accessToken, tokens.refresh_token], (err) => {
       if(err){
         return done(err);
       } if(!err){
@@ -108,13 +109,13 @@ app.get('/authorize', server.authorize(function(clientId, redirect_uri, scope, d
  scope: ['activity', 'heartrate', 'sleep', 'weight']
 }));
 
-server.authorization(function(clientId, redirectUri, scope, type, cb) {
+server.authorization(function(clientId, redirect_uri, scope, type, cb) {
   db.getClient(clientId, function(err, client) {
     if (err) { return cb(err); }
-    if (client.redirectUri !== redirectUri) {
-      return cb(new Error('Invalid redirectUri'));
+    if (client.redirect_uri !== redirect_uri) {
+      return cb(new Error('Invalid redirect_uri'));
     }
-    return cb(null, client, redirectUri, scope);
+    return cb(null, client, redirect_uri, scope);
   });
 });
 
