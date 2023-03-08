@@ -150,3 +150,15 @@ recognition.addEventListener('end', () => {
   recognition.start();
 });
 });
+
+// dark and light mode feature
+
+document.addEventListener('DOMContentLoaded', () => {
+  const checkbox = document.querySelector('#chk');
+  checkbox.addEventListener('change', () => {
+    document.body.classList.toggle('dark');
+  });
+});
+
+const contextDarkMode = document.querySelector('#contextDarkMode');
+

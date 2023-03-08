@@ -97,7 +97,6 @@ h1{
     background-color: rgb(225, 225, 27); 
     width: 80%;
     position: relative;
-    /* padding: 1.25em; */
 }
 
 #createList{
@@ -111,7 +110,6 @@ h1{
 }
 
 #showMessages{
-    /* padding: 10%; */
     font-size: larger;
     font-weight: bolder;
 }
@@ -128,9 +126,60 @@ h1{
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
     font-size: larger;
-    /* background-color: grey; */
-    /* border-radius: 40%; */
-    /* width: 50%; */
-    /* padding: 4%; */
 }
 
+
+/* dark mode/light mode */
+
+body.dark{
+    background-color: #292c35;
+    color: #fff;
+}
+
+.checkbox{
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox:checked + .placeHolder .ball{
+    transform: translateX(11em);
+}
+
+.sun{
+    color: #f39c12;
+}
+
+.placeHolder{
+    background-color: #111;
+    display: flex;
+    border-radius: 5em;
+    align-items: center;
+    justify-content: space-between;
+    height: 5em;
+    width: 15em;
+}
+
+.moon-icon{
+background-image: url('https://as1.ftcdn.net/jpg/01/13/72/84/500_F_113728476_BBmWp4hJWny4mR2jp9GSL4UvzSUxCROE.jpg');
+background-size: 120%;
+height: 7vh;
+width: 5vw;
+color: #f1c40f;
+}
+
+
+.sun-icon{
+    background-image: url('https://i.pinimg.com/originals/66/f9/f2/66f9f2496e22c1cff36aa2f9f1e57754.jpg');
+    background-size: 100%;
+    width: 5vw;
+    height: 7vh;
+}
+
+.ball{
+background-color: #fff;
+position: absolute;
+height: 10%;
+width: 5%;
+border-radius: 10%;
+transition: transform linear 0.2s;
+}
