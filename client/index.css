@@ -165,12 +165,11 @@ body.dark{
 
 .moon-icon{
 background-image: url('https://as1.ftcdn.net/jpg/01/13/72/84/500_F_113728476_BBmWp4hJWny4mR2jp9GSL4UvzSUxCROE.jpg');
-background-size: 120%;
+background-size: 92%;
 height: 7vh;
-width: 5vw;
+width: 3vw;
 color: #f1c40f;
 }
-
 
 .sun-icon{
     background-image: url('https://i.pinimg.com/originals/66/f9/f2/66f9f2496e22c1cff36aa2f9f1e57754.jpg');

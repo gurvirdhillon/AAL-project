@@ -160,5 +160,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-const contextDarkMode = document.querySelector('#contextDarkMode');
+document.addEventListener('DOMContentLoaded', () => {
+  const revelio = document.querySelector('#revelio');
+  revelio.addEventListener('click', () => {
+    const getTemplate = document.querySelector('#contextDarkMode');
+    const placeContext = document.querySelector('#placeContext');
+    placeContext.innerHTML = getTemplate.innerHTML;
+  });
+});
 
+document.addEventListener('DOMContentLoaded', () => {
+  const revelio2 = document.querySelector('#revelio2');
+  revelio2.addEventListener('click', () => {
+    const audioContext = document.querySelector('#contextAudio');
+    const placeContext2 = document.querySelector('#placeContext2');
+    placeContext2.innerHTML = audioContext.innerHTML;
+  });
+});
