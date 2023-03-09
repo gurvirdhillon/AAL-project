@@ -1,3 +1,36 @@
+// the navigation bar for the whole page
+document.addEventListener('DOMContentLoaded', () => {
+  const reminderBtn = document.querySelector('#reminder');
+  reminderBtn.addEventListener('click', function() {
+    window.location.href = 'reminder.html';
+  });
+
+  const medsBtn = document.querySelector('#meds');
+  medsBtn.addEventListener('click', function() {
+    window.location.href = 'medication.html';
+  });
+
+  const chatClicked = document.querySelector('#chatSystem');
+  chatClicked.addEventListener('click', function() {
+    window.location.href = 'chat.html';
+  });
+
+const buttonStngs = document.querySelector('#settings');
+buttonStngs.addEventListener('click', function() {
+  window.location.href = 'settings.html';
+});
+
+  const homeBtn = document.querySelector('#home');
+  homeBtn.addEventListener('click', function() {
+    window.location.href = 'index.html';
+  });
+
+  const UAbtn = document.querySelector('#UA');
+  UAbtn.addEventListener('click', function() {
+    window.location.href = 'activity.html';
+  });
+});
+
 window.addEventListener('click', function () {
   const handleProfileClick = document.querySelector('#UserProfileBtn');
   const getUserProfile = document.querySelector('#targetBdy');
