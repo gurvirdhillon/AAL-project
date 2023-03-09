@@ -177,3 +177,13 @@ document.addEventListener('DOMContentLoaded', () => {
     placeContext2.innerHTML = audioContext.innerHTML;
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const reader = document.querySelector('.reader');
+  reader.addEventListener('click', () =>{
+  const synthesis = window.speechSynthesis;
+    const getGreeting = document.querySelector('#greeting');
+    const vocal = new SpeechSynthesisUtterance(getGreeting.textContent);
+  synthesis.speak(vocal);
+});
+});

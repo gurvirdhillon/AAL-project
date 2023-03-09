@@ -25,6 +25,11 @@ h1{
     justify-content: space-between;
 }
 
+.greetingsPage h2, .greetingsPage button {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .navChild{
     padding: 1% 3%;
     display: inline-block;
@@ -98,9 +103,14 @@ h1{
 }
 
 #StickyNote{
-    background-color: rgb(225, 225, 27); 
     width: 80%;
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#yellowStickyNote{
+    background-color: rgb(225, 225, 27);
 }
 
 #createList{
