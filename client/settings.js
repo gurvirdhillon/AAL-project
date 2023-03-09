@@ -164,3 +164,16 @@ document.addEventListener('DOMContentLoaded', () => {
   synthesis.speak(vocal);
 });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const activateVoice = document.querySelector('#activitySummaryVoiceOver');
+  activateVoice.addEventListener('click', () => {
+    const syntehsis = window.speechSynthesis;
+    const gatherMetaData = document.querySelector('#analyseData');
+    const vocal = new SpeechSynthesisUtterance(gatherMetaData.textContent);
+    syntehsis.speak(vocal);
+  });
+});
+
+
+// activitySummaryVoiceOver

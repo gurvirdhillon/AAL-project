@@ -58,3 +58,16 @@ window.addEventListener('load', function () {
     localStorage.setItem('medicationList', medicationList.id);
   });
 });
+
+const medParentOutput = document.querySelector('#medParentOutput');
+const readMedication = document.querySelector('#readMedication');
+
+document.addEventListener('DOMContentLoaded', () => {
+  const readMedication = document.querySelector('#readMedication');
+  readMedication.addEventListener('click', () => {
+    const synthesis = window.speechSynthesis;
+    const getMedication = document.querySelector('#medicationList');
+    const vocal = new SpeechSynthesisUtterance(getMedication.textContent);
+    synthesis.speak(vocal);
+  });
+});
