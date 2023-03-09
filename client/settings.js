@@ -146,8 +146,15 @@ recognition.addEventListener('result', async (e) => {
       })
     });
     alert('panic button activated');
+  } if (voiceInput === 'medication'){
+    window.location.href = 'medication.html';
+  } if (voiceInput === 'reminders'){
+    window.location.href = 'reminder.html';
+  } if (voiceInput === 'activity'){
+    window.location.href = 'activity.html';
+  } if (voiceInput === 'chat'){
+    window.location.href = 'chat.html';
   }
-  // get the input bar to display whatever is being said
 });
 
 if(microphoneButton !== null) {
@@ -170,6 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// dark mode hint button so when the ? is clicked it will show the user what dark mode does.
+
 document.addEventListener('DOMContentLoaded', () => {
   const revelio = document.querySelector('#revelio');
   revelio.addEventListener('click', () => {
@@ -178,6 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
     placeContext.innerHTML = getTemplate.innerHTML;
   });
 });
+
+// similar to above but it tells the user what the text to speech does
 
 document.addEventListener('DOMContentLoaded', () => {
   const revelio2 = document.querySelector('#revelio2');
@@ -207,6 +218,3 @@ document.addEventListener('DOMContentLoaded', () => {
     syntehsis.speak(vocal);
   });
 });
-
-
-// activitySummaryVoiceOver

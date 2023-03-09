@@ -47,24 +47,24 @@ app.post('/send-message', (req, res) => {
 
 // accept the reminder.html page as a url parameter when type in localhost:8080/reminder.html
 
-app.post('/call', (req, res) =>{
-  if(client){
-    console.log('Call has been requested');
-  }
-  client.messages.create(
-    {
-      body: 'A call has been requested',
-      from: '+447893943882',
-      to: '+447908632941'
-    }
-  ).then(message => {
-    console.log(message.sid);
-    res.send({ message: 'Message sent' });
-  }).catch(err => {
-  console.log(err);
-  res.status(500).send({ error: 'Failed to send message' });
-})
-});
+// app.post('/call', (req, res) =>{
+//   if(client){
+//     console.log('Call has been requested');
+//   }
+//   client.messages.create(
+//     {
+//       body: 'A call has been requested',
+//       from: '+447893943882',
+//       to: '+447908632941'
+//     }
+//   ).then(message => {
+//     console.log(message.sid);
+//     res.send({ message: 'Message sent' });
+//   }).catch(err => {
+//   console.log(err);
+//   res.status(500).send({ error: 'Failed to send message' });
+// })
+// });
 
 async function getUser(req, res) {
   const feedback = await db.getUser(req.params.user_email);
