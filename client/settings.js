@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const reader = document.querySelector('.reader');
-  reader.addEventListener('click', () =>{
+  reader.addEventListener('click', () => {
   const synthesis = window.speechSynthesis;
     const getGreeting = document.querySelector('#greeting');
     const vocal = new SpeechSynthesisUtterance(getGreeting.textContent);
@@ -219,25 +219,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// storing the user's name and surname in local storage
 
-const storeName = document.querySelector('#fname');
-const storeSurname = document.querySelector('#lname');
-const phoneNo = document.querySelector('#phone');
+document.addEventListener('DOMContentLoaded', function() {
+  const storeName = document.querySelector('#fname');
+  const storeSurname = document.querySelector('#lname');
 
-document.addEventListener('DOMContentLoaded', () => {
-const submitForm = document.querySelector('#submitContact');
-submitForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-  detailStorage();
-  console.log('Form submitted');
-  console.log('First name:', storeName.value);
-  console.log('Last name:', storeSurname.value);
-  console.log('Phone:', phoneNo.value);
+  const submitForm = document.querySelector('#submitContact');
+  submitForm.addEventListener('submit', saveDetails);
+
+  function saveDetails(event) {
+    event.preventDefault();
+    localStorage.setItem('fname', storeName.value);
+    localStorage.setItem('lname', storeSurname.value);
+    const firstName = localStorage.getItem('fname');
+    console.log(firstName);
+  }
 });
-});
 
-function detailStorage() {
-  localStorage.setItem('fname', storeName.value);
-  localStorage.setItem('lname', storeSurname.value);
-  localStorage.setItem('phone', phoneNo.value);
-}
