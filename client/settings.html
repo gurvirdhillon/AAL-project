@@ -86,4 +86,30 @@ This mode will change the contrast of the background and the text to make it eas
 
 <!-- </template> -->
 
+<h3>Emergency Contact Details: </h3>
+<form>
+<p>
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname">
+</p>
+<p>
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname">
+</p>
+<p>
+  <label for="phone">Phone number:</label>
+  <input type="text" id="phone" name="phone">
+</p>
+<label for="relation">Relation:</label>
+    <select id="relationOptions">
+      <option>Family</option>
+      <option>Friend</option>
+      <option>Carer</option>
+      <option>Other</option>
+    </select>
+
+<button type="submit" id="submitContact">Submit</button>
+<!-- need to make something so when it is submitted they can only edit the data that has been put down -->
+
+</form>
 </body>

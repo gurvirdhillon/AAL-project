@@ -89,6 +89,7 @@ h1{
 
 #readMedication, #activitySummaryVoiceOver, .reader{
     background-color: #111;
+    border: #fff thick solid;
 }
 
 #panicBtn{

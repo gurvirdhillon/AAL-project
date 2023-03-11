@@ -218,3 +218,26 @@ document.addEventListener('DOMContentLoaded', () => {
     syntehsis.speak(vocal);
   });
 });
+
+
+const storeName = document.querySelector('#fname');
+const storeSurname = document.querySelector('#lname');
+const phoneNo = document.querySelector('#phone');
+
+document.addEventListener('DOMContentLoaded', () => {
+const submitForm = document.querySelector('#submitContact');
+submitForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+  detailStorage();
+  console.log('Form submitted');
+  console.log('First name:', storeName.value);
+  console.log('Last name:', storeSurname.value);
+  console.log('Phone:', phoneNo.value);
+});
+});
+
+function detailStorage() {
+  localStorage.setItem('fname', storeName.value);
+  localStorage.setItem('lname', storeSurname.value);
+  localStorage.setItem('phone', phoneNo.value);
+}
