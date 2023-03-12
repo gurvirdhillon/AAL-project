@@ -219,21 +219,68 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// storing the user's name and surname in local storage
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('form');
+  const fnameInput = document.querySelector('#fname');
+  const lnameInput = document.querySelector('#lname');
+  const phoneInput = document.querySelector('#phone');
+  const relationOptions = document.querySelector('#relationOptions');
 
-document.addEventListener('DOMContentLoaded', function() {
-  const storeName = document.querySelector('#fname');
-  const storeSurname = document.querySelector('#lname');
-
-  const submitForm = document.querySelector('#submitContact');
-  submitForm.addEventListener('submit', saveDetails);
-
-  function saveDetails(event) {
-    event.preventDefault();
-    localStorage.setItem('fname', storeName.value);
-    localStorage.setItem('lname', storeSurname.value);
-    const firstName = localStorage.getItem('fname');
-    console.log(firstName);
+  if (!form || !fnameInput || !lnameInput || !phoneInput || !relationOptions) {
+    console.error('One or more form elements could not be found.');
+    return;
   }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const fname = fnameInput.value;
+    const lname = lnameInput.value;
+    const phone = phoneInput.value;
+    const relation = relationOptions.value;
+
+    localStorage.setItem('fname', fname);
+    localStorage.setItem('lname', lname);
+    localStorage.setItem('phone', phone);
+    localStorage.setItem('relation', relation);
+
+
+    // the form will be cleared and a success message will be displayed
+    form.innerHTML = '';
+
+    // can make a form again if the user wants to update details via a button
+    const updateForm = document.createElement('button');
+    updateForm.textContent = 'Update Details';
+    form.appendChild(updateForm);
+    updateForm.addEventListener('click', () => {
+      const createForm = document.createElement('form');
+      createForm.innerHTML = `
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="fname" value="${localStorage.getItem('fname')}">
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lname" value="${localStorage.getItem('lname')}">
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" value="${localStorage.getItem('phone')}">
+      <label for="relationOptions">Relationship</label>
+      <select id="relationOptions">
+        <option>Family</option>
+        <option>Friend</option>
+        <option>Carer</option>
+        <option>Other</option>
+      </select>
+      <button type="submit" id="submitContact">Submit</button>`;
+      form.appendChild(createForm);
+    });
+
+    const createSuccess = document.createElement('h3');
+    createSuccess.textContent = 'Details have been saved';
+    form.appendChild(createSuccess);
+
+
+    // fnameInput.value = '';
+    // lnameInput.value = '';
+    // phoneInput.value = '';
+    // relationOptions.selectedIndex = 0;
+  });
 });
 
