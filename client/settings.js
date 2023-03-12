@@ -226,11 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const phoneInput = document.querySelector('#phone');
   const relationOptions = document.querySelector('#relationOptions');
 
-  if (!form || !fnameInput || !lnameInput || !phoneInput || !relationOptions) {
-    console.error('One or more form elements could not be found.');
-    return;
-  }
-
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -243,9 +238,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('lname', lname);
     localStorage.setItem('phone', phone);
     localStorage.setItem('relation', relation);
-
-
-    // the form will be cleared and a success message will be displayed
     form.innerHTML = '';
 
     // can make a form again if the user wants to update details via a button
@@ -254,21 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.appendChild(updateForm);
     updateForm.addEventListener('click', () => {
       const createForm = document.createElement('form');
-      createForm.innerHTML = `
-      <label for="fname">First Name</label>
-      <input type="text" id="fname" name="fname" value="${localStorage.getItem('fname')}">
-      <label for="lname">Last Name</label>
-      <input type="text" id="lname" name="lname" value="${localStorage.getItem('lname')}">
-      <label for="phone">Phone Number</label>
-      <input type="text" id="phone" name="phone" value="${localStorage.getItem('phone')}">
-      <label for="relationOptions">Relationship</label>
-      <select id="relationOptions">
-        <option>Family</option>
-        <option>Friend</option>
-        <option>Carer</option>
-        <option>Other</option>
-      </select>
-      <button type="submit" id="submitContact">Submit</button>`;
       form.appendChild(createForm);
     });
 
@@ -276,11 +253,21 @@ document.addEventListener('DOMContentLoaded', () => {
     createSuccess.textContent = 'Details have been saved';
     form.appendChild(createSuccess);
 
+// stores the local storage data on the screen to show the user
+    const firstName = document.createElement('p');
+    firstName.textContent = `First Name: ${fname}`;
+    form.appendChild(firstName);
+    const lastName = document.createElement('p');
+    lastName.textContent = `Last Name: ${lname}`;
+    form.appendChild(lastName);
+    const phoneNumber = document.createElement('p');
+    phoneNumber.textContent = `Phone Number: ${phone}`;
+    form.appendChild(phoneNumber);
+    const relationShip = document.createElement('p');
+    relationShip.textContent = `Relationship: ${relation}`;
+    form.appendChild(relationShip);
+    // it stores the above data shown on the screen in local storage and keeps it on the screen
 
-    // fnameInput.value = '';
-    // lnameInput.value = '';
-    // phoneInput.value = '';
-    // relationOptions.selectedIndex = 0;
   });
 });
 
