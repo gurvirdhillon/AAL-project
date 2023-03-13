@@ -152,13 +152,13 @@ recognition.addEventListener('result', async (e) => {
       })
     });
     alert('panic button activated');
-  } if (voiceInput === 'medication'){
+  } if (voiceInput === 'medication' || voiceInput === 'meds' || voiceInput === 'medicine' || voiceInput === 'tablets' || voiceInput === 'pills'){
     window.location.href = 'medication.html';
-  } if (voiceInput === 'reminders'){
+  } if (voiceInput === 'reminders' || voiceInput === 'reminder'){
     window.location.href = 'reminder.html';
-  } if (voiceInput === 'activity'){
+  } if (voiceInput === 'activity' || voiceInput === 'fitness'){
     window.location.href = 'activity.html';
-  } if (voiceInput === 'chat'){
+  } if (voiceInput === 'chat' || voiceInput === 'message' || voiceInput === 'messages'){
     window.location.href = 'chat.html';
   }
 });
