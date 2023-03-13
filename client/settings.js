@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const buttonStngs = document.querySelector('#settings');
 buttonStngs.addEventListener('click', function() {
-  const confirm = window.prompt('Are you sure you want to enter the settings page?');
+  const confirm = window.prompt('Are you sure you want to enter the settings page? Type yes for confirmation.');
   if (confirm === 'yes' || confirm === 'Yes' || confirm === 'YES' || confirm === 'y' || confirm === 'Y') {
     window.location.href = 'settings.html';
   } else {
-    alert('You have been redirected to the home page');
+    alert('You have not been redirected to the settings page');
     window.location.href = '';
   }
 });
@@ -276,4 +276,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 });
-

@@ -34,76 +34,49 @@
   <button class="navChild" id="home">Home</button>
   <button class="navChild" id="reminder">Remind Me</button>
   <button class="navChild" id="meds">Medication</button>
-  <!-- <button class="navChild" id="home">Home</button> -->
   <button class="navChild" id="UA">My Activity</button>
   <button class="navChild" id="chatSystem">Chat</button>
   <button class="navChild" id="settings">Settings</button>
 </nav>
 
-<h1>Settings: </h1>
-<p>
-<button>Edit Profile</button>
-</p>
+<div class="settingsContainer">
+<div class="settingsMenu">
+<h3>Your settings:</h3>
+<button>Profile</button>
+<button>Appearance</button>
 <button>Accessibility</button>
-<p>
-<button>Contact Details</button>
-</p>
+</div>
 
-<h2>Accessibility: </h2>
-  <!-- implement a dark and light mode -->
+<div id="mainSettingsPage">
+<article>
 
-<label>Dark/Light mode</label>
-<button id="revelio">?</button>
-<p></p>
-<article id="placeContext"></article>
-
-<template id="contextDarkMode">
-This mode will change the contrast of the background and the text to make it easier to read.
-</template>
-
-<input type="checkbox" id="chk" class="checkbox">
-  <label class="placeHolder" for="chk">
-		<i class="moon-icon"></i>
-		<i class="sun-icon"></i>
-		<div class="ball"></div>
-</label>
-
-<p></p>
-<label>Speech to text: </label>
-<button id="revelio2">?</button>
-<p></p>
-
-<article id="placeContext2"></article>
-
-<template id="contextAudio">
-  <p>This will allow any text presented on screen to be read out loud by the app. </p>
-  <p>Once ticked, the app will read the text out loud.</p>
-</template>
-
-<h3>Emergency Contact Details: </h3>
-<form>
-<p>
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname" required>
-</p>
-<p>
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname">
-</p>
-<p>
-  <label for="phone">Phone number:</label>
-  <input type="text" id="phone" name="phone" required>
-</p>
+  <h3>Emergency Contact Details: </h3>
+  <form>
+  <p>
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname" required>
+  </p>
+  <p>
+    <label for="lname">Last name:</label>
+    <input type="text" id="lname" name="lname">
+  </p>
+  <p>
+    <label for="phone">Phone number:</label>
+    <input type="text" id="phone" name="phone" required>
+  </p>
 <label for="relation">Relation:</label>
-    <select id="relationOptions">
-      <option>Family</option>
-      <option>Friend</option>
-      <option>Carer</option>
-      <option>Other</option>
-    </select>
-
+  <select id="relationOptions">
+    <option>Family</option>
+    <option>Friend</option>
+    <option>Carer</option>
+    <option>Other</option>
+  </select>
+  
 <button type="submit" id="submitContact">Submit</button>
-<!-- need to make something so when it is submitted they can only edit the data that has been put down -->
 
-</form>
+</article>
+</div>
+</div>
+
+
 </body>
