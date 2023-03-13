@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 const buttonStngs = document.querySelector('#settings');
 buttonStngs.addEventListener('click', function() {
   const confirm = window.prompt('Are you sure you want to enter the settings page?');
-  if (confirm === 'yes') {
+  if (confirm === 'yes' || confirm === 'Yes' || confirm === 'YES' || confirm === 'y' || confirm === 'Y') {
     window.location.href = 'settings.html';
-  } if(confirm === 'no'){
+  } else {
     alert('You have been redirected to the home page');
     window.location.href = '';
   }
