@@ -17,7 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const buttonStngs = document.querySelector('#settings');
 buttonStngs.addEventListener('click', function() {
-  window.location.href = 'settings.html';
+  const confirm = window.prompt('Are you sure you want to enter the settings page?');
+  if (confirm === 'yes') {
+    window.location.href = 'settings.html';
+  } if(confirm === 'no'){
+    alert('You have been redirected to the home page');
+    window.location.href = '';
+  }
 });
 
   const homeBtn = document.querySelector('#home');
