@@ -31,7 +31,7 @@ passport.use(new FitbitStrategy({
         'Authorization': 'Bearer ' + accessToken
       }
     };
-    request.get(options, function(err, response, body) {
+    req.get(options, function(err, response, body) {
       if (err) {
         return done(err);
       }
