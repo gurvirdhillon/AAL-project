@@ -45,9 +45,33 @@
 <button>Profile</button>
 <button>Appearance</button>
 <button>Accessibility</button>
+<button>Emergency Contact</button>
 </div>
 
-<div id="mainSettingsPage">
+<div id="profileUser">
+  <h3>Profile:</h3>
+  <form>
+  <p>
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname" required>
+  </p>
+  <p>
+    <label for="lname">Last name:</label>
+    <input type="text" id="lname" name="lname">
+  </p>
+  <p>
+    <!-- let the user put a photo in of them -->
+    <label for="photo">Photo:</label>
+    <input type="file" id="photo" name="photo" accept="image/png, image/gif, image/jpeg">
+  </p>
+  <p>
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="4" cols="50"></textarea>
+  </p>
+  <button type="submit" id="submitProfile">Submit</button>
+</div>
+
+<div class="mainSettingsPage">
 <article>
 
   <h3>Emergency Contact Details: </h3>
@@ -78,5 +102,43 @@
 </div>
 </div>
 
+<div id="AppearanceVisuals">
+<div class="darkModeLightMode">
+  <input type="checkbox" id="chk" class="checkbox">
+    <label class="placeHolder" for="chk">
+          <i class="moon-icon"></i>
+          <i class="sun-icon"></i>
+          <div class="ball"></div>
+  </label>
+  </div>  
+</div>
+<!-- put this into a drop down box instead -->
+
+<div>
+  <h3>Accessibility:</h3>
+
+  <label>Speech to text:</label>
+  <button id="revelio">?</button>
+
+  <template id="contextAudio">
+    <p>This will allow any text presented on screen to be read out loud by the app. </p>
+    <p>Once ticked, the app will read the text out loud.</p>
+  </template>
+
+<article id="placeContext">
+
+</article>
+
+<p>
+  <label>Enable speech to text:</label>
+  <input type="checkbox" id="">
+</p>
+
+<template id="contextAudio">
+  <p>This will allow any text presented on screen to be read out loud by the app. </p>
+  <p>Once ticked, the app will read the text out loud.</p>
+</template>
+
+</div>
 
 </body>

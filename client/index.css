@@ -205,6 +205,7 @@ height: 10%;
 width: 5%;
 border-radius: 10%;
 transition: transform linear 0.2s;
+padding: 10%;
 }
 
 #formEmergency{
@@ -217,33 +218,21 @@ transition: transform linear 0.2s;
 
 .darkModeLightMode{
     position: absolute;
+    top: 50%;
     right: 0;
     margin: 1em;
 }
 
 /* css for the settings page */
 
-.settingsContainer {
-    display: flex;
-    margin: 8% auto;
-    max-width: 84%;
-  }
-
-  /* settings menu on the left */
-  .settingsMenu {
-    width: 20%;
-    margin-right: 32%;
-  }
-
-  /* settings menu buttons */
-  .settingsMenu button {
+.settingsMenu button {
     display: block;
-    width: 100%;
+    width: 12%;
     text-align: left;
-    padding: 10% 12%;
+    padding: 2%;
     border: none;
-    border-radius: 8%;
-    margin-bottom: 4%;
+    border-radius: 5px;
+    margin-bottom: 2%;
     font-size: 100%;
     font-weight: bolder;
     color: #fff;
@@ -252,62 +241,5 @@ transition: transform linear 0.2s;
     transition: background-color 0.2s ease-in-out;
   }
 
-  .settingsMenu button:hover {
-    background-color: #292c35;
-  }
 
-  /* main content on the right */
-  #mainSettingsPage {
-    width: 100%;
-  }
 
-  /* form styling */
-  #mainSettingsPage form {
-    display: flex;
-    flex-direction: column;
-    padding: 2%;
-    border: 1px solid #e1e4e8;
-    border-radius: 4%;
-  }
-
-  #mainSettingsPage h3 {
-    margin-top: 0;
-    font-weight: bolder;
-  }
-
-  #mainSettingsPage label {
-    font-size: 100%;
-    font-weight: bolder;
-    margin-bottom: 2%;
-  }
-
-  #mainSettingsPage input[type="text"], #mainSettingsPage select {
-    padding: 2%;
-    border: thin solid #e1e4e8;
-    border-radius: 4%;
-    font-size: 100%;
-  }
-
-  #mainSettingsPage input[type="checkbox"] {
-    margin-right: 3%;
-  }
-
-  #mainSettingsPage .form-group {
-    margin-bottom: 3%;
-  }
-
-  #mainSettingsPage button[type="submit"] {
-    padding: 1%;
-    border: none;
-    border-radius: 6px;
-    font-size: 100%;
-    font-weight: bolder;
-    color: #fff;
-    background-color: #2ea44f;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-
-  #mainSettingsPage button[type="submit"]:hover {
-    background-color: #22863a;
-  }
