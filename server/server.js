@@ -20,8 +20,9 @@ passport.use(new FitbitStrategy({
   userProfileURL: 'https://api.fitbit.com/1/user/-/profile.json',
   redirect_uri: 'http://localhost:8080/auth/fitbit/callback',
   scope: ['activity','heartrate','location','profile'],
-  accessToken: '',
+  accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzk4SFYiLCJzdWIiOiJCREdNQkoiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd3RlbSB3c2xlIHdlY2cgd2NmIHdhY3Qgd294eSB3cmVzIiwiZXhwIjoxNjc4OTMxNjg2LCJpYXQiOjE2Nzg5MDI4ODZ9.bzipxRU3B4uUNS5VjCNpmYVF5a6NeBXP8alB-aXnPuc',
   passReqToCallback: true,
+  refreshToken: 'af273178a163ce70102fa232465efe2f158554f867b5362ae2f495fe7e996b38'
 },
 
   function(req, accessToken, refreshToken, profile, done) {
@@ -31,7 +32,7 @@ passport.use(new FitbitStrategy({
         'Authorization': 'Bearer ' + accessToken
       }
     };
-    req.get(options, function(err, response, body) {
+    req.get(options, function(err, response, body, name) {
       if (err) {
         return done(err);
       }
