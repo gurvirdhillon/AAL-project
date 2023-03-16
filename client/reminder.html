@@ -11,7 +11,7 @@
         <script src="settings.js"></script>
         <script defer src="chat.js"></script>
         <!-- <script src="medication.js" type="module"></script> -->
-        <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
+        <!-- <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script> -->
         <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
     <link rel="stylesheet" href="index.css">
 
@@ -44,6 +44,11 @@
 
 <div class="reminderFeature">
   <h1>Reminder:</h1>
+  <button id="reminderHelperIcon">?</button>
+  <div class="reminderContext"></div>
+  <template id="reminderTemplate">
+    <p>This section will remind you on key events and information that is upcoming.</p>
+  </template>
   <form id="reminderFrm">
     <input placeholder="remind me" class="" name="reminder" id="reminderInput" required method="POST">
     <p></p>

@@ -8,4 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+function reminderIcon() {
+  const readQuestionMark = document.querySelector('#reminderHelperIcon');
+  readQuestionMark.addEventListener('click', () => {
+    const reminderTemplate = document.querySelector('#reminderTemplate');
+    const reminderContext = document.querySelector('.reminderContext');
+    if (reminderContext) {
+      reminderContext.innerHTML = reminderTemplate.innerHTML;
+    }
+  });
+}
 
+window.addEventListener('load', reminderIcon);

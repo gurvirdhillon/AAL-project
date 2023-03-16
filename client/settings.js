@@ -274,3 +274,38 @@ document.addEventListener('DOMContentLoaded', () => {
     form.appendChild(relationShip);
   });
 });
+
+function redirectPageProfile() {
+  const profileBtn = document.querySelector('#profileBtn');
+  profileBtn.addEventListener('click', () => {
+    window.location.href = 'profile.html';
+  });
+}
+window.addEventListener('load', redirectPageProfile);
+
+
+function accessPage() {
+  const accessibilityBtn = document.querySelector('#accessibilityBtn');
+  accessibilityBtn.addEventListener('click', () => {
+    window.location.href = 'accessibility.html';
+  });
+}
+window.addEventListener('load', accessPage);
+
+function appearancePage() {
+  const appearanceButton = document.querySelector('#appearanceBtn');
+  if(appearanceButton){
+  appearanceButton.addEventListener('click', () => {
+    window.location.href = 'appearance.html';
+    });
+  }
+}
+window.addEventListener('load', appearancePage);
+
+function emergencyContactDetails() {
+  const emergencyContactBtn = document.querySelector('#emergencyBtn');
+  emergencyContactBtn.addEventListener('click', () => {
+    window.location.href = 'settings.html';
+  });
+}
+window.addEventListener('load', emergencyContactDetails);

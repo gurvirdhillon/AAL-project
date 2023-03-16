@@ -71,3 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
     synthesis.speak(vocal);
   });
 });
+
+function medicationIconPrompt() {
+  const medicationIconHelper = document.querySelector('.medicationIconHelper');
+  medicationIconHelper.addEventListener('click', () => {
+    const medicationTemplate = document.querySelector('#medicationTemplate');
+    const medicationContext = document.querySelector('.medicationContext');
+    if (medicationContext) {
+      medicationContext.innerHTML = medicationTemplate.innerHTML;
+    }
+  });
+}
