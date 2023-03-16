@@ -4,10 +4,7 @@ import url, { fileURLToPath } from 'url';
 import authConfig from './auth-config.js';
 import { openDB } from './db-sqlite.mjs';
 const app = express();
-// need to import medication.js
-
 import twilio from 'twilio';
-// import twilio from 'twilio'.twiml.voiceResponse;
 
 const db = openDB();
 const port = process.env.port || 8080;
