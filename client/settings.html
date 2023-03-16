@@ -42,13 +42,13 @@
 <div class="settingsContainer">
 <div class="settingsMenu">
 <h3>Your settings:</h3>
-<button>Profile</button>
-<button>Appearance</button>
-<button>Accessibility</button>
-<button>Emergency Contact</button>
+<button id="profileBtn">Profile</button>
+<button id="apperanceBtn">Appearance</button>
+<button id="accessibilityBtn">Accessibility</button>
+<button id="emergencyBtn">Emergency Contact</button>
 </div>
 
-<div id="profileUser">
+<!-- <div id="profileUser">
   <h3>Profile:</h3>
   <form>
   <p>
@@ -60,7 +60,6 @@
     <input type="text" id="lname" name="lname">
   </p>
   <p>
-    <!-- let the user put a photo in of them -->
     <label for="photo">Photo:</label>
     <input type="file" id="photo" name="photo" accept="image/png, image/gif, image/jpeg">
   </p>
@@ -69,7 +68,8 @@
     <textarea id="description" name="description" rows="4" cols="50"></textarea>
   </p>
   <button type="submit" id="submitProfile">Submit</button>
-</div>
+  </form>
+</div> -->
 
 <div class="mainSettingsPage">
 <article>
@@ -98,6 +98,25 @@
   
 <button type="submit" id="submitContact">Submit</button>
 
+<div>
+  <h3>Accessibility:</h3>
+
+  <label>Speech to text:</label>
+  <button id="revelio">?</button>
+  <template id="contextAudio">
+    <p>This will allow any text presented on screen to be read out loud by the app. </p>
+    <p>Once ticked, the app will read the text out loud.</p>
+  </template>
+  <p>
+    <label>Enable speech to text:</label>
+    <input type="checkbox" id="">
+  </p>
+
+<article id="placeContext">
+
+</article>
+</form>
+
 </article>
 </div>
 </div>
@@ -113,26 +132,6 @@
   </div>  
 </div>
 <!-- put this into a drop down box instead -->
-
-<div>
-  <h3>Accessibility:</h3>
-
-  <label>Speech to text:</label>
-  <button id="revelio">?</button>
-
-  <template id="contextAudio">
-    <p>This will allow any text presented on screen to be read out loud by the app. </p>
-    <p>Once ticked, the app will read the text out loud.</p>
-  </template>
-
-<article id="placeContext">
-
-</article>
-
-<p>
-  <label>Enable speech to text:</label>
-  <input type="checkbox" id="">
-</p>
 
 <template id="contextAudio">
   <p>This will allow any text presented on screen to be read out loud by the app. </p>

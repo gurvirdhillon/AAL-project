@@ -183,12 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// dark mode hint button so when the ? is clicked it will show the user what dark mode does.
+// when the user clicks on the button, it will reveal what is the functionality of text to speech feature
 
 document.addEventListener('DOMContentLoaded', () => {
   const revelio = document.querySelector('#revelio');
   revelio.addEventListener('click', () => {
-    const getTemplate = document.querySelector('#contextDarkMode');
+    const getTemplate = document.querySelector('#contextAudio');
     const placeContext = document.querySelector('#placeContext');
     placeContext.innerHTML = getTemplate.innerHTML;
   });
@@ -196,14 +196,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // similar to above but it tells the user what the text to speech does
 
-document.addEventListener('DOMContentLoaded', () => {
-  const revelio2 = document.querySelector('#revelio2');
-  revelio2.addEventListener('click', () => {
-    const audioContext = document.querySelector('#contextAudio');
-    const placeContext2 = document.querySelector('#placeContext2');
-    placeContext2.innerHTML = audioContext.innerHTML;
-  });
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   const revelio2 = document.querySelector('#revelio2');
+//   revelio2.addEventListener('click', () => {
+//     const audioContext = document.querySelector('#contextAudio');
+//     const placeContext2 = document.querySelector('#placeContext2');
+//     placeContext2.innerHTML = audioContext.innerHTML;
+//   });
+// });
 
 document.addEventListener('DOMContentLoaded', () => {
   const reader = document.querySelector('.reader');
@@ -272,7 +272,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const relationShip = document.createElement('p');
     relationShip.textContent = `Relationship: ${relation}`;
     form.appendChild(relationShip);
-    // it stores the above data shown on the screen in local storage and keeps it on the screen
-
   });
 });

@@ -227,7 +227,7 @@ padding: 10%;
 
 .settingsMenu button {
     display: block;
-    width: 12%;
+    width: 50%;
     text-align: left;
     padding: 2%;
     border: none;
@@ -235,11 +235,67 @@ padding: 10%;
     margin-bottom: 2%;
     font-size: 100%;
     font-weight: bolder;
+    background-color: #292c35;
     color: #fff;
-    background-color: #24292e;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
-  }
+}
 
+body.dark .settingsMenu button {
+    background-color: #fff;
+    color: #292c35;
+}
 
+/* cgpt */
 
+.settingsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.settingsMenu {
+    width: 25%;
+}
+  
+.mainSettingsPage {
+    border: #292c35 thin solid;
+    width: 70%;
+}
+  
+.mainSettingsPage label{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.mainSettingsPage input {
+    padding: 2%;
+    border: thin solid #e1e4e8;
+    border-radius: 4%;
+    font-size: 100%;
+    font-weight: bolder;
+}
+
+#AppearanceVisuals {
+    width: 25%;
+    text-align: right;
+}
+  
+#profileBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+#apperanceBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+#accessibilityBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+#emergencyBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
