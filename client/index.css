@@ -82,6 +82,52 @@ h1{
     justify-content: space-between;
 }
 
+#medicationInput{
+    width: 50%;
+    height: 10%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationDosage{
+    width: 10%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+label{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#consumptionMethod{
+    /* width: 100%; */
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationStrength{
+    width: 20%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationAmount{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#freqMed{
+    /* width: 20%; */
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationTime{
+    font-size: larger;
+    font-weight: bolder;
+}
+
 .setHeader{
     display: flex;
     align-items: center;
@@ -110,6 +156,24 @@ h1{
     width: 75%;
     position: left;
     border:  thin solid black;
+}
+
+.reminderContext{
+    background-color: rgb(44, 192, 242);
+    width: 70%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#reminderInput{
+    width: 60%;
+    /* height: 100%; */
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#reminderDate, #reminderTime{
+    padding: 0.5%;
 }
 
 #StickyNote{
@@ -246,7 +310,7 @@ body.dark .settingsMenu button {
     color: #292c35;
 }
 
-/* cgpt */
+/*  */
 
 .settingsContainer {
     display: flex;
@@ -316,3 +380,32 @@ body.dark .settingsMenu button {
     max-width: 100%;
     max-height: 400px;
 }
+
+#fileInput {
+    display: none;
+}
+.custom-file-upload {
+    border: thin solid #ccc;
+    display: inline-block;
+    padding: 15% 10%;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+.custom-file-upload:hover {
+    background-color: #e1e1e1;
+}
+.custom-file-upload:active {
+    background-color: #d1d1d1;
+}
+
+#uploadedImage {
+    display: none;
+    max-width: 100%;
+    max-height: 400px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
