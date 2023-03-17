@@ -309,3 +309,6 @@ function emergencyContactDetails() {
   });
 }
 window.addEventListener('load', emergencyContactDetails);
+
+// get the image to be uploaded of medicine
+

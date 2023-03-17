@@ -63,7 +63,7 @@
             <option>Patch</option>
             <option>Other</option>
           </select>
-          <p></p>
+              <p></p>
           <label>Dosage: </label>
             <input placeholder="40mg" id="medicationStrength" type="number" min="0" required>
             <select id="medicationDosage">
@@ -77,11 +77,14 @@
             <select>
               <option>Once a day</option>
               <option>Twice a day</option>
-  <!-- need to review how i would handle this  -->
             </select>
           <p></p>
             <label>Time reminder: </label>
           <input type="time" id="medicationTime" required>
+            <p></p>
+            <label for="fileInput" class="custom-file-upload">Upload Picture of Medication:</label>
+            <input type="file" id="fileInput">
+            <img id="uploadedImage" alt="Uploaded Image">
             <p></p>
           <button type="submit" id="submitBtn">Set Reminder</button>
         </form>
@@ -104,3 +107,21 @@
 </footer>
 
 </body>
+
+<script>
+const fileInput = document.getElementById('fileInput');
+const uploadedImage = document.getElementById('uploadedImage');
+
+fileInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  
+  const reader = new FileReader();
+  reader.onload = () => {
+    uploadedImage.src = reader.result;
+    uploadedImage.style.display = 'block';
+  };
+  
+  reader.readAsDataURL(file);
+});
+
+</script>
