@@ -299,3 +299,13 @@ body.dark .settingsMenu button {
     background-color: darkgrey;
     color: #111;
 }
+
+/* accessibility feature page */
+
+#accessibilityParent{
+    display: grid;
+}
+
+#revelio{
+    width: 3em;
+}
