@@ -75,6 +75,7 @@
 const getInput = document.querySelector('#reminderInput');
 const reminderDate = document.querySelector('#reminderDate');
 const getSubmit = document.querySelector('#submitBtn');
+const getTime = document.querySelector('#reminderTime');
 const targetContent = document.querySelector('#createList');
 const getForm = document.querySelector('#reminderFrm');
 
@@ -88,12 +89,13 @@ if (getForm) {
     e.preventDefault();
     const context = getInput.value;
     const date = reminderDate.value;
+    const time = getTime.value;
     reminderInput.value = '';
     reminderDate.value = '';
 
     const giveList = document.createElement('li');
     giveList.className = 'list-group-item';
-    giveList.textContent = `Reminder to: ${context} at ${date}`;
+    giveList.textContent = `Reminder to: ${context} at ${date} at ${time}`;
     targetContent.appendChild(giveList);
     const getDate = document.createElement('span');
     getDate.classList.add('reminderDate');
@@ -115,23 +117,6 @@ if (getForm) {
   });
 }
 
-// const getMsgForm = document.querySelector('#msgForm');
-// const input = document.querySelector('#inputBar');
-// const sendMsg = document.querySelector('#sendMsg');
-// const displayMessages = document.querySelector('#showMessages');
 
-// // prevent the default of the event
-
-// function getMessageOnScreen(e) {
-//   e.preventDefault();
-//   const msg = input.value;
-//   const makeMsg = document.createElement('li');
-//   makeMsg.classList.add('userMsg');
-//   makeMsg.textContent = msg;
-//   displayMessages.appendChild(makeMsg);
-//   input.value = '';
-// }
-
-// getMsgForm.addEventListener('submit', getMessageOnScreen);
 
 </script>
