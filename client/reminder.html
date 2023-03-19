@@ -104,7 +104,8 @@ if (getForm) {
     const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
     reminders.push({
       reminder: context,
-      date: date
+      date: date,
+      time: time
     });
     const del = document.createElement('button');
     del.classList.add('delete');
@@ -116,7 +117,5 @@ if (getForm) {
     });
   });
 }
-
-
 
 </script>
