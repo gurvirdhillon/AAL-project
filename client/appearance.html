@@ -39,7 +39,7 @@
   <button class="navChild" id="settings">Settings</button>
 </nav>
 
-<div class="settingsContainer">
+<!-- <div class="settingsContainer"> -->
 <div class="settingsMenu">
 <h3>Your settings:</h3>
 <button id="profileBtn">Profile</button>
@@ -50,4 +50,58 @@
 
 <h2>Appearance:</h2>
 
+<!-- make something that changes the font -->
+<!-- make a feature that changes the size of the text -->
+
+<label>Change font type: </label>
+<select class="parentFontType">
+  <option value="Arial" id="arial">Arial</option>
+  <option value="Times New Roman" id="timesNewRoman">Times New Roman</option>
+  <option value="Courier New" id="courierNew">Courier New</option>
+  <option value="Verdana" id="verdana">Verdana</option>
+  <option value="Georgia" id="georgia">Georgia</option>
+  <option value="Palatino Linotype" id="palatinoLinotype">Palatino Linotype</option>
+  <option value="Tahoma" id="tahoma">Tahoma</option>
+  <option value="Sans Serif" id="SansSerif">Sans Serif</option>
+</select>
+
+<p></p>
+
+<label>Change font size: </label>
+<select class="parentFontSize">  
+  <option value="medium">Medium</option>
+  <option value="large">Large</option>
+  <option value="x-large">Extra Large</option>
+  <option value="xx-large">XX-Large</option>
+</select>
+
+<!-- </div> -->
+
 </body>
+
+<script>
+const fontTypeDropDown = document.querySelector('.parentFontType');
+console.log(fontTypeDropDown);
+if(fontTypeDropDown){
+fontTypeDropDown.addEventListener('change', changeFont);
+}
+
+function changeFont() {
+  const selectFont = this.value;
+  document.body.style.fontFamily = selectFont;
+}
+
+window.addEventListener('load', changeFont);
+
+const fontSizeDropDown = document.querySelector('.parentFontSize');
+console.log(fontSizeDropDown);
+if(fontSizeDropDown){
+fontSizeDropDown.addEventListener('change', changeFontSize);
+}
+
+function changeFontSize() {
+  const selectFontSize = this.value;
+  document.body.style.fontSize = selectFontSize;
+}
+
+</script>

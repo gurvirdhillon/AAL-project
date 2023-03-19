@@ -409,3 +409,6 @@ body.dark .settingsMenu button {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
+.parentFontType, .parentFontSize{
+    padding: 2%;
+}
