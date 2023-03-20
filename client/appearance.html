@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+    <title>Ambient assisted living</title>
+    <script src="reminder.js"></script>
+        <script src="index.js"></script>
+        <script src="panic.mjs"></script>
+        <script src="app.js"></script>
+        <script src="settings.js"></script>
+        <!-- <script defer src="chat.js"></script> -->
+        <script src="chat.js"></script>
+        <script src="medication.js" type="module"></script>
+        <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
+        <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+          <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="parentHeader">
+<h1>ElderAAL</h1>
+<input type="search" placeholder="search" class="searchEngine" id="searchInput">
+<input type="button" value="🎙️" class="searchEngine" id="microphone">
+<input type="submit" value="🔎" class="searchEngine" id="searchSubmit">
+
+<button id="login">Login</button>
+<button id="logout">Logout</button>
+</div>
+
+<div class="greetingsPage">
+<h2 id="greeting">Welcome</h2>
+<button class="reader">🔊</button>
+</div>
+
+<nav id="headerNavigator">
+  <button class="navChild" id="home">Home</button>
+  <button class="navChild" id="reminder">Remind Me</button>
+  <button class="navChild" id="meds">Medication</button>
+  <button class="navChild" id="UA">My Activity</button>
+  <button class="navChild" id="chatSystem">Chat</button>
+  <button class="navChild" id="settings">Settings</button>
+</nav>
+
+<!-- <div class="settingsContainer"> -->
+<div class="settingsMenu">
+<h3>Your settings:</h3>
+<button id="profileBtn">Profile</button>
+<button id="apperanceBtn">Appearance</button>
+<button id="accessibilityBtn">Accessibility</button>
+<button id="emergencyBtn">Emergency Contact</button>
+</div>
+
+<h2>Appearance:</h2>
+
+<!-- make something that changes the font -->
+<!-- make a feature that changes the size of the text -->
+
+<label>Change font type: </label>
+<select class="parentFontType">
+  <option value="Arial" id="arial">Arial</option>
+  <option value="Times New Roman" id="timesNewRoman">Times New Roman</option>
+  <option value="Courier New" id="courierNew">Courier New</option>
+  <option value="Verdana" id="verdana">Verdana</option>
+  <option value="Georgia" id="georgia">Georgia</option>
+  <option value="Palatino Linotype" id="palatinoLinotype">Palatino Linotype</option>
+  <option value="Tahoma" id="tahoma">Tahoma</option>
+  <option value="Sans Serif" id="SansSerif">Sans Serif</option>
+</select>
+
+<p></p>
+
+<label>Change font size: </label>
+<select class="parentFontSize">  
+  <option value="medium">Medium</option>
+  <option value="large">Large</option>
+  <option value="x-large">Extra Large</option>
+  <option value="xx-large">XX-Large</option>
+</select>
+
+<!-- </div> -->
+
+</body>
+
+<script>
+const fontTypeDropDown = document.querySelector('.parentFontType');
+console.log(fontTypeDropDown);
+if(fontTypeDropDown){
+fontTypeDropDown.addEventListener('change', changeFont);
+}
+
+function changeFont() {
+  const selectFont = this.value;
+  document.body.style.fontFamily = selectFont;
+}
+
+window.addEventListener('load', changeFont);
+
+const fontSizeDropDown = document.querySelector('.parentFontSize');
+console.log(fontSizeDropDown);
+if(fontSizeDropDown){
+fontSizeDropDown.addEventListener('change', changeFontSize);
+}
+
+function changeFontSize() {
+  const selectFontSize = this.value;
+  document.body.style.fontSize = selectFontSize;
+}
+
+</script>

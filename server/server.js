@@ -6,7 +6,6 @@ import { openDB } from './db-sqlite.mjs';
 
 import twilio from 'twilio';
 const app = express();
-// need to import medication.js
 
 const db = openDB();
 const port = process.env.port || 8080;
@@ -15,12 +14,13 @@ app.use(express.static('client'));
 
 app.listen(port, () => console.log(`The application is running on port ${port}!`));
 
-app.get('/auth-config', (req, res) => {
-  res.json(authConfig);
+app.get('/auth-config', (req, res)=> {
+    res.json(authConfig)
 });
 
-const accountSid = 'ACf25d4feac6b0fd768188a7f2d54f5583';
-const authToken = '3562338dc6f76a2f6a83f6a4eddddec4';
+const accountSid = "ACf25d4feac6b0fd768188a7f2d54f5583";
+const authToken = "3562338dc6f76a2f6a83f6a4eddddec4";
+// const authToken = "229f30978777f329164493cc79491671";
 const client = twilio(accountSid, authToken);
 
 app.post('/send-message', (req, res) => {
@@ -42,6 +42,27 @@ app.post('/send-message', (req, res) => {
       res.status(500).send({ error: 'Failed to send message' });
     });
 });
+
+// accept the reminder.html page as a url parameter when type in localhost:8080/reminder.html
+
+// app.post('/call', (req, res) =>{
+//   if(client){
+//     console.log('Call has been requested');
+//   }
+//   client.messages.create(
+//     {
+//       body: 'A call has been requested',
+//       from: '+447893943882',
+//       to: '+447908632941'
+//     }
+//   ).then(message => {
+//     console.log(message.sid);
+//     res.send({ message: 'Message sent' });
+//   }).catch(err => {
+//   console.log(err);
+//   res.status(500).send({ error: 'Failed to send message' });
+// })
+// });
 
 async function getUser(req, res) {
   const feedback = await db.getUser(req.params.user_email);
@@ -71,6 +92,14 @@ function catchError(catchErr) {
       .catch((e) => next(e || new Error()));
   };
 }
+
+app.post('/reminder', (req, res) => {
+  const sqlite = { reminder_desc, reminder_date} = req.body;
+  const reminder = {
+    reminder_desc: reminder.reminder_desc,
+    reminder_date: reminder.reminder_date
+  };
+});
 
 app.get('/api/getUser/:user_email', catchError(getUser));
 

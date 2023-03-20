@@ -1,2 +1,4 @@
 #depdendencies
 node_modules
+# ignore puml folder
+# PUML

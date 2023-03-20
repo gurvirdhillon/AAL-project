@@ -1,102 +1,376 @@
 body{
-    background-color: aliceblue;
+    /* background-color: white; */
+    background-color: #F5F5DC;
+    color: black;
 }
 
-.greetingsPage{
-    /* find out how to make the buttons smaller than the  h1 */
+h1{
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.parentHeader{
+    border-bottom: #111 thin solid;
+}
+
+#login, #logout{
+    float: right;
+    font-size: larger;
+}
+
+#headerNavigator{
+    text-align: center;
+    justify-content: space-evenly;
+    display: flex;
+    justify-content: space-between;
+}
+
+.greetingsPage h2, .greetingsPage button {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.navChild{
+    padding: 1% 3%;
+    display: inline-block;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+#searchInput, #searchSubmit, #microphone{
+    padding: 0.25%;
+    font-size: large;
+}
+
+#home:hover{
+    background-color: yellow;
+}
+
+#reminder:hover{
+    background-color: rgb(217, 217, 40);
+}
+
+#meds:hover{
+    background-color: rgb(230, 153, 230);
+}
+
+#UA:hover{
+    background-color: orange;
+}
+
+#chatSystem:hover{
+    background-color: lime;
+}
+
+#settings:hover{
+    background-color: rgb(44, 192, 242);
+}
+
+#pageStart{
+    display: flex;
+}
+
+.startingImg{
+    width: 80%;
+    height: 100%;
+}
+
+#medicationReminder{
+    border: thick solid black;
+    display: flex;
+    padding: 4% 10%;
+    justify-content: space-between;
+}
+
+#medicationInput{
+    width: 50%;
+    height: 10%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationDosage{
+    width: 10%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+label{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#consumptionMethod{
+    /* width: 100%; */
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationStrength{
+    width: 20%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationAmount{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#freqMed{
+    /* width: 20%; */
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationTime{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.setHeader{
     display: flex;
     align-items: center;
 }
 
-#headerNavigator{
-    /* put all divs in one line */
-    background-color: blueviolet;
-    padding: 0.2%;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-}
-
-.navChild{
-    display: inline-block;
-    padding: 10px 20px;
-}
-
-
-#startingImg{
-    width: 100%;
-    height: 100%;
-}
-
-.settingsBar{
-    padding: 1%;
-}
-
-#parentSettings{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-
-    /* turn it into a settings look with one button under the other */
-}
-
-#StickyNote{
-    background-color: rgb(225, 225, 27); 
-    padding: 1.25em;
-    width: 18.75em;
-    position: relative;
-}
-
-.note-header {
-    padding: 10%;
-}
-
-.note-header h2 {
-    margin: 0;
-}
-
-#reminderSetter{
-    background-color: grey;
-    padding: 1.25em;
-    width: 50%;
-    display: flex;
+#readMedication, #activitySummaryVoiceOver, .reader{
+    background-color: #111;
+    border: #fff thick solid;
 }
 
 #panicBtn{
     background-color: red;
     border-radius: 40%;
     padding: 4em;
-    position: absolute;
+    float: right;
+    font-weight: bolder;
     left: 45%;
 }
 
-#chat{
+#panicBtn:hover{
+    background-color: orangered;
+}
+
+.reminderFeature{
+    margin: 0;
+    width: 75%;
+    position: left;
+    border:  thin solid black;
+}
+
+.reminderContext{
+    background-color: rgb(44, 192, 242);
+    width: 70%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#reminderInput{
+    width: 60%;
+    /* height: 100%; */
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#reminderDate, #reminderTime{
+    padding: 0.5%;
+}
+
+#StickyNote{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#yellowStickyNote{
+    background-color: rgb(225, 225, 27);
+}
+
+#createList{
+    height: 10%;
+}
+
+#messageSection{
     border: thin solid black;
-    display: grid;
-    padding: 1.25em;
-    width: 25%;
-    height: 40%;
+    width: 50%;
+    padding: 10% 1%;
+}
+
+#showMessages{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.userMsg{
+    background-color: lightblue;
+    color: black;
+    width: 50%;
+    padding: 4%;
+    border-radius: 20%;
+}
+
+.list-group-item{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+
+/* dark mode/light mode */
+
+body.dark{
+    background-color: #292c35;
+    color: #fff;
+}
+
+.checkbox{
+    opacity: 0;
     position: absolute;
 }
 
-#chatSendBtn{
-    grid-area: btn;
-    height: 50%;
+.checkbox:checked + .placeHolder .ball{
+    transform: translateX(11em);
 }
 
-#inputMsg{
-    
-    height: 50%;
+.sun{
+    color: #f39c12;
 }
 
-input:required + label:after{
-    content: ' *';
-    color: red;
+.placeHolder{
+    background-color: #111;
+    display: flex;
+    border-radius: 5em;
+    align-items: center;
+    justify-content: space-between;
+    height: 5em;
+    width: 15em;
 }
 
+.moon-icon{
+background-image: url('https://as1.ftcdn.net/jpg/01/13/72/84/500_F_113728476_BBmWp4hJWny4mR2jp9GSL4UvzSUxCROE.jpg');
+background-size: 92%;
+height: 7vh;
+width: 3vw;
+color: #f1c40f;
+}
+
+.sun-icon{
+    background-image: url('https://i.pinimg.com/originals/66/f9/f2/66f9f2496e22c1cff36aa2f9f1e57754.jpg');
+    background-size: 100%;
+    width: 5vw;
+    height: 7vh;
+}
+
+.ball{
+background-color: #fff;
+position: absolute;
+height: 10%;
+width: 5%;
+border-radius: 10%;
+transition: transform linear 0.2s;
+padding: 10%;
+}
+
+<<<<<<<<< Temporary merge branch 1
 .displayUsersData{
     display: flex;
-    /* put this on the right of the page */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* padding: 5%; */
+}
+
+.darkModeLightMode{
     position: absolute;
+    top: 50%;
     right: 0;
+    margin: 1em;
+}
+
+/* css for the settings page */
+
+.settingsMenu button {
+    display: block;
+    width: 50%;
+    text-align: left;
+    padding: 2%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 2%;
+    font-size: 100%;
+    font-weight: bolder;
+    background-color: #292c35;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+body.dark .settingsMenu button {
+    background-color: #fff;
+    color: #292c35;
+}
+
+/*  */
+
+.settingsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.settingsMenu {
+    width: 25%;
+}
+  
+.mainSettingsPage {
+    border: #292c35 thin solid;
+    width: 70%;
+}
+  
+.mainSettingsPage label{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.mainSettingsPage input {
+    padding: 2%;
+    border: thin solid #e1e4e8;
+    border-radius: 4%;
+    font-size: 100%;
+    font-weight: bolder;
+}
+
+#AppearanceVisuals {
+    width: 25%;
+    text-align: right;
+}
+  
+#profileBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+#apperanceBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+#accessibilityBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+#emergencyBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+/* accessibility feature page */
+
+#accessibilityParent{
+    display: grid;
+}
+
+#revelio{
+    width: 3em;
 }

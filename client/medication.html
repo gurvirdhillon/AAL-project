@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<head>
+    <title>Ambient assisted living</title>
+    <!-- <script src="reminder.js"></script> -->
+        <script src="index.js"></script>
+        <script src="panic.mjs"></script>
+        <script src="app.js"></script>
+        <script src="settings.js"></script>
+        <!-- <script defer src="chat.js"></script> -->
+        <script src="chat.js"></script>
+        <script src="medication.js" type="module"></script>
+        <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
+        <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+          <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="parentHeader">
+<h1>ElderAAL</h1>
+<input type="search" placeholder="search" class="searchEngine" id="searchInput">
+<input type="button" value="🎙️" class="searchEngine" id="microphone">
+<input type="submit" value="🔎" class="searchEngine" id="searchSubmit">
+
+<button id="login">Login</button>
+<button id="logout">Logout</button>
+</div>
+
+<div class="greetingsPage">
+<h2 id="greeting">Welcome</h2>
+<button class="reader">🔊</button>
+</div>
+
+<nav id="headerNavigator">
+    <button class="navChild" id="home">Home</button>
+    <button class="navChild" id="reminder">Remind Me</button>
+    <button class="navChild" id="meds">Medication</button>
+    <!-- <button class="navChild" id="home">Home</button> -->
+    <button class="navChild" id="UA">My Activity</button>
+    <button class="navChild" id="chatSystem">Chat</button>
+    <button class="navChild" id="settings">Settings</button>
+</nav>
+
+<div id="medicationReminder">
+    <form id="medicationFrm">
+      <h1 id="medHeader">Medication reminder:</h1>
+      <p>This section allows you to share information about medicaiton that you are taking.</p>
+      <p>It will remind you at a set time(chosen by yourself) and it will notify you accordingly!</p>
+      <p></p>
+          <label>Medication reminder: </label>
+          <input placeholder="Enter medication name" id="medicationInput" required>
+          <p></p>
+          <label>Amount: </label>
+          <input placeholder="e.g 2 pills" id="medicationDosage" required>
+          <p></p>
+          <label>Consumption method: </label>
+          <select id="consumptionMethod">
+            <option>Pills</option>
+            <option>Drops</option>
+            <option>Injection</option>
+            <option>Inhaler</option>
+            <option>Spray</option>
+            <option>Cream</option>
+            <option>Patch</option>
+            <option>Other</option>
+          </select>
+              <p></p>
+          <label>Dosage: </label>
+            <input placeholder="40mg" id="medicationStrength" type="number" min="0" required>
+            <select id="medicationAmount">
+                <option value="mg">mg</option>
+                <option value="ml">ml</option>
+                <option value="%">%</option>
+                <option value="units">units</option>
+            </select>
+            <p></p>
+            <label>Frequency: </label>
+            <select id="freqMed">
+              <option>Once a day</option>
+              <option>Twice a day</option>
+            </select>
+          <p></p>
+            <label>Time reminder: </label>
+          <input type="time" id="medicationTime" required>
+            <p></p>
+            <label for="fileInput" class="custom-file-upload">Click to upload picture of the medication</label>
+            <input type="file" id="fileInput">
+            <img id="uploadedImage" alt="Uploaded Image">
+            <p></p>
+          <button type="submit" id="submitBtn">Set Reminder</button>
+        </form>
+  <div id="medParentOutput">
+        <h2>Medication List:</h2>
+        <button id="readMedication">🔊</button>
+        <ul id="medicationList">
+        </ul>
+    </div>
+  </div>
+
+
+<!-- change user activity to my activity -->
+<!-- write panic button instead of panic -->
+<!-- description for the med reminder -->
+
+
+<footer>
+    <input id="panicBtn" type="submit" value="PANIC BUTTON">
+</footer>
+
+</body>
+
+<script>
+const fileInput = document.getElementById('fileInput');
+const uploadedImage = document.getElementById('uploadedImage');
+
+fileInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  
+  const reader = new FileReader();
+  reader.onload = () => {
+    uploadedImage.src = reader.result;
+    uploadedImage.style.display = 'block';
+  };
+  
+  reader.readAsDataURL(file);
+});
+
+</script>

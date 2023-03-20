@@ -6,176 +6,45 @@
         <script src="panic.mjs"></script>
         <script src="app.js"></script>
         <script src="settings.js"></script>
-        <script defer src="http://localhost:8080/socket.io/socket.io.js"></script>
-        <script defer src="chat.js"></script>
-        <script src="send_sms.mjs"></script>
+        <!-- <script defer src="chat.js"></script> -->
+        <script src="chat.js"></script>
+        <script src="medication.js" type="module"></script>
         <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
         <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
-            <link rel="stylesheet" href="index.css">
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.0/socket.io.js"></script> -->
+          <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-<div class="greetingsPage">
-<h1 id="greeting">Welcome</h1>
+<div class="parentHeader">
+<h1>ElderAAL</h1>
+<input type="search" placeholder="search" class="searchEngine" id="searchInput">
+<input type="button" value="🎙️" class="searchEngine" id="microphone">
+<input type="submit" value="🔎" class="searchEngine" id="searchSubmit">
+
 <button id="login">Login</button>
 <button id="logout">Logout</button>
 </div>
 
+<div class="greetingsPage">
+<h2 id="greeting">Welcome</h2>
+<button class="reader">🔊</button>
+</div>
+
 <nav id="headerNavigator">
-    <button class="navChild" id="reminder">Remind Me</button>
+    <button class="navChild" id="home">Home</button>
+    <button class="navChild" id="reminder">Reminders</button>
     <button class="navChild" id="meds">Medication</button>
-    <button class="navChild" id="UA">User Activity</button>
+    <button class="navChild" id="UA">My Activity</button>
+    <button class="navChild" id="chatSystem">Chat</button>
     <button class="navChild" id="settings">Settings</button>
 </nav>
 
-<img src="https://userguiding.com/wp-content/uploads/2020/12/elderly-technology.jpg" alt="elderly people using technology" id="startingImg">
-
-<article>
-    
-</article>
-
-<p id="targetBdy"></p>
-
-<input id="panicBtn" type="submit" value="PANIC">
-
-<template id="remindTab">
-<h1>Reminder:</h1>
-
-<div id="reminderSetter">
-<form id="reminderFrm">
-<input placeholder="remind me" class="" id="reminderInput" required>
-<p></p>
-<input type="date" id="reminderDate" required>
-<button type="submit" id="submitBtn">Submit</button>
-</div>
-</form>
-
-<p></p>
-
-<div id="StickyNote">
-<h2 class="note-header">Sticky notes:</h2>
-
-<ul id="createList">
-
-</ul>
+<div id="pageStart">
+<img src="./img/elderly-technology.jpg" alt="elderly people using technology" id="startingPage" class="startingImg">
 </div>
 
-</template>
-
-
-<template id="medicationTab">
-
-<h1>Medication:</h1>
-
-<form>
-<label for="medName">Medication Name </label><input type="text" placeholder="Medication name" id="medName" required><label></label>
-<p></p>
-<label for="medDosage">Dosage Amount </label><input type="text" placeholder="Dosage" id="medDosage" required type="number" min="0"><label>mg</label>
-<p></p>
-<label for="medTime">Medication time </label><input type="text" placeholder="Time" id="medTime" required><label></label>
-<p></p>
-<input id="medSubmit" type="submit" value="Submit">
-</form>
-
-</template>
-
-<template id="UserActivityTab">
-<h1>User activity:</h1>
-<!-- i reckon add in emergency call -->
-<!-- add emergency text where you have a web plugin where you can text someone on the application and sends a notification to email or SMS -->
-<!-- then maybe a graph of the users activity - if they've fallen etc -->
-
-<button>Call someone?</button>
-
-<p></p>
-
-<button id="txtOpen">Text someone?</button>
-
-<div id="PutChatHere">
-
-</div>
-
-<template id="openChat">
-    <div id="chat">
-        <h1>Chat</h1>
-        <p id="chatDisplay"></p>
-            <form id="MsgForm">
-                <input type="text" placeholder="Type your message here" class="comContent" id="inputMsg">
-                <button id="chatSendBtn" class="comContent" type="submit">Send</button>
-            </form>
-        <!-- add in a microphone option too -->
-    </div>
-</template>
-
-<article class="displayUsersData">
-    <h1>Users Data</h1>
-    <p></p>
-    <div id="usersData">
-        <p></p>
-    </div>
-</article>
-
-</template>
-
-<template id="settingsTab">
-<h1>Settings: </h1>
-<div id="parentSettings">
-
-<button class="settingsBar" id="UserProfileBtn">User Profile</button>
-
-<div id="userProfileHere"></div>
-
-<template id="UserProfileReveal">
-lorem ipsum
-</template>
-
-<button class="settingsBar" id="NotifyBtn">Notifications</button>
-<div id="NotificationsHere"></div>
-
-
-<template id="NotificationsSettings">
-<p>preffered notification setting:</p>
-
-</template>
-
-
-<button class="settingsBar" id="accessBtn">Accessibility</button>
-
-<div id="accessHere"></div>
-
-<template id="accessSettings"></template>
-
-<button class="settingsBar" id="detailsBtn">Change contact details</button>
-
-<div id="changeDetailsHere"></div>
-
-<template id="nextOfKinDetails">
-<h1>Next Of Kin Details</h1>
-
-<form>
-<label>Next of Kin First Name: </label><input type="text" placeholder="Name" id="nextOfKinName" required><label></label>
-<p></p>
-<label>Next of Kin Last Name: </label><input type="text" placeholder="Surname" id="nextOfKinSurname" required><label></label>
-<p></p>
-<label>Next of Kin Telephone: </label><input type="text" placeholder="Telephone" id="nextOfKinTel" required pattern="\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}"><label></label>
-<!-- Ravi K Thapliyal, Francis Gagnon, Puneet Lamba, Avinash Lad, Yevhen Kotliar, Amitesh Bharti, Vedran Šego, 
-Kiran Bhattarai, Harvey KadyanjiHarvey Kadyanji, &amp; Glenn S. 
-(1960, May 1). Regular expression to match standard 10 digit phone number. Stack Overflow. Retrieved from
-https://stackoverflow.com/questions/16699007/regular-expression-to-match-standard-10-digit-phone-number  -->
-
-<p></p>
-<label>Next of Kin Email address: </label><input type="text" placeholder="Email" id="nextOfKinEmail" required><label></label>
-<p></p>
-<label>Relation to user:</label><input type="text" placeholder="mother, father etc..." id="nextOfKinRelation" required><label></label>
-<p></p>
-<input type="submit" value="Submit" id="nextOfKinSubmit">
-</form>
-
-</template>
-</div>
-<p id="placeContent"></p>
-
-</template>
+<footer>
+  <input id="panicBtn" type="submit" value="PANIC BUTTON">
+</footer>
 
 </body>
