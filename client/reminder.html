@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+    <title>Ambient assisted living</title>
+    <!-- <script src="reminder.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="panic.mjs"></script> -->
+    <script src="reminder.js"></script>
+        <script src="index.js"></script>
+        <script src="panic.mjs"></script>
+        <script src="app.js"></script>
+        <script src="settings.js"></script>
+        <script defer src="chat.js"></script>
+        <!-- <script src="medication.js" type="module"></script> -->
+        <!-- <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script> -->
+        <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+
+<div class="parentHeader">
+    <h1>ElderAAL</h1>
+    <input type="search" placeholder="search" class="searchEngine" id="searchInput">
+    <input type="button" value="🎙️" class="searchEngine" id="microphone">
+    <input type="submit" value="🔎" class="searchEngine" id="searchSubmit">
+    
+    <button id="login">Login</button>
+    <button id="logout">Logout</button>
+</div>
+
+<div class="greetingsPage">
+    <h2 id="greeting">Welcome</h2>
+    <button class="reader">🔊</button>
+</div>
+
+<nav id="headerNavigator">
+    <button class="navChild" id="home">Home</button>
+    <button class="navChild" id="reminder">Remind Me</button>
+    <button class="navChild" id="meds">Medication</button>
+    <button class="navChild" id="UA">My Activity</button>
+    <button class="navChild" id="chatSystem">Chat</button>
+    <button class="navChild" id="settings">Settings</button>
+</nav>
+
+<div class="reminderFeature">
+  <h1>Reminder:</h1>
+  <button id="reminderHelperIcon">?</button>
+  <div class="reminderContext"></div>
+  <template id="reminderTemplate">
+    <p>This section will remind you on key events and information that is upcoming.</p>
+  </template>
+  <form id="reminderFrm">
+    <input placeholder="remind me" class="" name="reminder" id="reminderInput" required method="POST">
+    <input type="date" id="reminderDate" min="" required>
+    <input type="time" id="reminderTime">
+    <button type="submit" id="submitBtn">Submit</button>
+</form>
+
+<button id="readReminders">🔊</button>
+<div id="yellowStickyNote">
+  <div id="StickyNote">
+    <h2 class="note-header">Sticky notes:</h2>
+  </div>
+  <ul id="createList">
+    <p id="update">You are up to date!</p>
+  </ul>
+</div>
+</div>
+
+<input id="panicBtn" type="submit" value="PANIC BUTTON">
+
+</body>
+
+<script>
+const getInput = document.querySelector('#reminderInput');
+const reminderDate = document.querySelector('#reminderDate');
+const getSubmit = document.querySelector('#submitBtn');
+const getTime = document.querySelector('#reminderTime');
+const targetContent = document.querySelector('#createList');
+const getForm = document.querySelector('#reminderFrm');
+
+let savedReminders = localStorage.getItem('reminders');
+if (savedReminders) {
+  targetContent.innerHTML = savedReminders;
+}
+
+if (getForm) {
+  getForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const context = getInput.value;
+    const date = reminderDate.value;
+    const time = getTime.value;
+    reminderInput.value = '';
+    reminderDate.value = '';
+
+    const giveList = document.createElement('li');
+    giveList.className = 'list-group-item';
+    giveList.textContent = `Reminder to: ${context} at ${date} at ${time}`;
+    targetContent.appendChild(giveList);
+    const getDate = document.createElement('span');
+    getDate.classList.add('reminderDate');
+    giveList.appendChild(getDate);
+    localStorage.setItem('reminders', targetContent.innerHTML);
+    const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
+    reminders.push({
+      reminder: context,
+      date: date,
+      time: time
+    });
+    const del = document.createElement('button');
+    del.classList.add('delete');
+    del.textContent = '-';
+    giveList.appendChild(del);
+    del.addEventListener('click', (e) => {
+      e.target.parentNode.remove();
+      localStorage.setItem('reminders', targetContent.innerHTML);
+    });
+  });
+}
+
+</script>

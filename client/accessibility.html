@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+    <title>Ambient assisted living</title>
+    <script src="reminder.js"></script>
+        <script src="index.js"></script>
+        <script src="panic.mjs"></script>
+        <script src="app.js"></script>
+        <script src="settings.js"></script>
+        <!-- <script defer src="chat.js"></script> -->
+        <script src="chat.js"></script>
+        <script src="medication.js" type="module"></script>
+        <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
+        <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+          <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="parentHeader">
+<h1>ElderAAL</h1>
+<input type="search" placeholder="search" class="searchEngine" id="searchInput">
+<input type="button" value="🎙️" class="searchEngine" id="microphone">
+<input type="submit" value="🔎" class="searchEngine" id="searchSubmit">
+
+<button id="login">Login</button>
+<button id="logout">Logout</button>
+</div>
+
+<div class="greetingsPage">
+<h2 id="greeting">Welcome</h2>
+<button class="reader">🔊</button>
+</div>
+
+<nav id="headerNavigator">
+  <button class="navChild" id="home">Home</button>
+  <button class="navChild" id="reminder">Remind Me</button>
+  <button class="navChild" id="meds">Medication</button>
+  <button class="navChild" id="UA">My Activity</button>
+  <button class="navChild" id="chatSystem">Chat</button>
+  <button class="navChild" id="settings">Settings</button>
+</nav>
+
+<div class="settingsContainer">
+<div class="settingsMenu">
+<h3>Your settings:</h3>
+<button id="profileBtn">Profile</button>
+<button id="apperanceBtn">Appearance</button>
+<button id="accessibilityBtn">Accessibility</button>
+<button id="emergencyBtn">Emergency Contact</button>
+</div>
+
+<!-- look at accessibility changes -->
+
+<div id="accessibilityParent">
+<h2>Accessibility:</h2>
+
+<label>Speech to text:</label>
+<button id="revelio">?</button>
+<template id="contextAudio">
+  <p>This will allow any text presented on screen to be read out loud by the app. </p>
+  <p>Once ticked, the app will read the text out loud.</p>
+</template>
+<p>
+  <label>Enable speech to text:</label>
+  <input type="checkbox" id="">
+</p>
+
+<article id="placeContext"></article>
+</div>
+
+<template id="contextAudio">
+  <p>This will allow any text presented on screen to be read out loud by the app. </p>
+  <p>Once ticked, the app will read the text out loud.</p>
+</template>
+
+</body>

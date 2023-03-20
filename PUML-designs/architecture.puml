@@ -1,0 +1,38 @@
+@startuml architecture
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Architectural design for the Ambient assisted living application
+
+' Person(user, "User", "A person who uses the application to find recipes based on their ingredients and allergies")
+
+System_Boundary(c1, "Client"){
+    Container(html, "HTML", "web browser")
+    Container(javascript, "Javascript", "Javascript")
+    Container(css, "CSS", "CSS")
+}
+
+System_Boundary(c2, "Server"){
+    Container("Node.js", "Node.js", "Backend")
+    Container("ExpressJS", "ExpressJS", "Server hosting")
+    Container("SQLite", "SQLite", "Database")
+    ' Container("TwilioAPI", "TwilioAPI", "SMS API")
+    Container("TwilioAPI", "TwilioAPI", "Voice call API/SMS")
+    Container("FitbitAPI", "FitbitAPI", "Gets data from Fitbit")
+}
+
+Rel(javascript, html, "")
+Rel(css, html, "")
+Rel(html, "Node.js", "")
+Rel("Node.js", "ExpressJS", "")
+Rel_Back_Neighbor("Node.js", "ExpressJS", "")
+Rel("Node.js", SQLite, "")
+Rel_Back_Neighbor("Node.js", SQLite, "")
+Rel("Node.js", "TwilioAPI", "")
+Rel_Back_Neighbor("Node.js", "TwilioAPI", "")
+Rel("Node.js", "FitbitAPI", "")
+Rel_Back_Neighbor("Node.js", "FitbitAPI", "")
+
+
+@enduml

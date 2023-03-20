@@ -1,17 +1,22 @@
-const createList = document.querySelector('#createList');
-const reminderDate = document.querySelector('#reminderDate');
-const handleSubmitBtn = document.querySelector('#submitBtn');
+document.addEventListener('DOMContentLoaded', () => {
+  const readReminder = document.querySelector('#readReminders');
+  readReminder.addEventListener('click', () => {
+    const synthesis = window.speechSynthesis;
+    const getReminder = document.querySelector('#yellowStickyNote');
+    const vocal = new SpeechSynthesisUtterance(getReminder.textContent);
+    synthesis.speak(vocal);
+  });
+});
 
-handleSubmitBtn.addEventListener('click', dateValidator);
-
-// find the list of reminders for that day and add those reminders
-
-function dateValidator() {
-  const inputDate = new Date(document.querySelector('#reminderDate').value);
-  const today = new Date();
-  if (inputDate < today) {
-    return false;
-  } else {
-    return true;
-  }
+function reminderIcon() {
+  const readQuestionMark = document.querySelector('#reminderHelperIcon');
+  readQuestionMark.addEventListener('click', () => {
+    const reminderTemplate = document.querySelector('#reminderTemplate');
+    const reminderContext = document.querySelector('.reminderContext');
+    if (reminderContext) {
+      reminderContext.innerHTML = reminderTemplate.innerHTML;
+    }
+  });
 }
+
+window.addEventListener('load', reminderIcon);
