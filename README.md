@@ -33,7 +33,10 @@ npm i twilio
 ## Features implemented
 
 * Reminder feature
-* Watch monitoring
+* Fitbit dual compatibility
 * User activity monitoring and alerting caregivers
 * Medication management
 * User profile
+* Ability to adjust the settings to users preference
+* Chat feature
+
