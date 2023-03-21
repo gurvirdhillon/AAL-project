@@ -176,11 +176,36 @@ recognition.addEventListener('end', () => {
 
 // dark and light mode feature
 
+// document.addEventListener('DOMContentLoaded', () => {
+//   const checkbox = document.querySelector('#chk');
+//   checkbox.addEventListener('change', () => {
+//     document.body.classList.toggle('dark');
+//     // when the user clicks on the dark mode and refreshes the page, it will remember the dark mode
+//     if(document.body.classList.contains('dark')){
+//       localStorage.setItem('theme', 'dark');
+//     } else{
+//       localStorage.setItem('theme', 'light');
+//     }
+//   });
+// });
+
 document.addEventListener('DOMContentLoaded', () => {
   const checkbox = document.querySelector('#chk');
   checkbox.addEventListener('change', () => {
     document.body.classList.toggle('dark');
+    // when the user clicks on the dark mode and refreshes the page, it will remember the dark mode
+    if (document.body.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
   });
+
+  // set class of body based on value in localStorage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.body.classList.add(savedTheme);
+  }
 });
 
 // when the user clicks on the button, it will reveal what is the functionality of text to speech feature
@@ -282,7 +307,6 @@ function redirectPageProfile() {
   });
 }
 window.addEventListener('load', redirectPageProfile);
-
 
 function accessPage() {
   const accessibilityBtn = document.querySelector('#accessibilityBtn');

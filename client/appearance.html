@@ -89,6 +89,14 @@ fontTypeDropDown.addEventListener('change', changeFont);
 function changeFont() {
   const selectFont = this.value;
   document.body.style.fontFamily = selectFont;
+  // stort the font to local storage and once refreshed it stays the same
+  if(localStorage.getItem('font')){
+    document.body.style.fontFamily = localStorage.getItem('font');
+  } else {
+    localStorage.setItem('font', selectFont);
+  }
+  localStorage.setItem('font', selectFont);
+  document.body.style.fontSize = localStorage.getItem('fontSize');
 }
 
 window.addEventListener('load', changeFont);
@@ -102,6 +110,13 @@ fontSizeDropDown.addEventListener('change', changeFontSize);
 function changeFontSize() {
   const selectFontSize = this.value;
   document.body.style.fontSize = selectFontSize;
-}
+  if(localStorage.getItem('fontSize')){
+    document.body.style.fontSize = localStorage.getItem('fontSize');
+  } else {
+    localStorage.setItem('fontSize', selectFontSize);
+  }
+  localStorage.setItem('fontSize', selectFontSize);
+  document.body.style.fontFamily = localStorage.getItem('font');
+ }
 
 </script>
