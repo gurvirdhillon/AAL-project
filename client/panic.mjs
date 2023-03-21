@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const panicBtn = document.querySelector('#panicBtn');
     panicBtn.addEventListener('click', async () => {
+      const check = confirm('Are you sure you want to send a message to your next of kin?');
+      if (check) {
       const response = await fetch('/send-message', {
         method: 'POST',
         headers: {
@@ -14,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       alert('Message sent to next of kin');
       const data = await response.json();
-      console.log(data);
+    } else {
+      alert('Message not sent');
+    };
     });
   });
 
