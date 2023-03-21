@@ -19,10 +19,14 @@ passport.use(new FitbitStrategy({
   tokenURL: 'https://api.fitbit.com/oauth2/token',
   userProfileURL: 'https://api.fitbit.com/1/user/-/profile.json',
   redirect_uri: 'http://localhost:8080/auth/fitbit/callback',
-  scope: ['activity','heartrate','location','profile'],
-  accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzk4SFYiLCJzdWIiOiJCREdNQkoiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd3RlbSB3c2xlIHdlY2cgd2NmIHdhY3Qgd294eSB3cmVzIiwiZXhwIjoxNjc4OTMxNjg2LCJpYXQiOjE2Nzg5MDI4ODZ9.bzipxRU3B4uUNS5VjCNpmYVF5a6NeBXP8alB-aXnPuc',
+  scope: ['respiratory_rate','cardio_fitness','oxygen_saturation','electrocardiogram', 'heartrate', 'sleep'],
+  accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzk4SFYiLCJzdWIiOiJCREdNQkoiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd3NsZSB3ZWNnIHdjZiB3b3h5IHdyZXMiLCJleHAiOjE2Nzk0MjI3MTQsImlhdCI6MTY3OTM5MzkxNH0.XbMiTA0FDsIqZbbaEiZ1c5CwYFglfkIy69Pmk8GMg1M',
   passReqToCallback: true,
-  refreshToken: 'af273178a163ce70102fa232465efe2f158554f867b5362ae2f495fe7e996b38'
+  expires_in: 28800,
+  refresh_token: '45b04d3f66e23466ff697112751d8a7e5e5a205b9758190201d01a1036a4dc02 ',
+  scope: 'electrocardiogram sleep oxygen_saturation respiratory_rate cardio_fitness social ',
+  token_type: 'Bearer',
+  user_id: 'BDGMBJ '
 },
 
   function(req, accessToken, refreshToken, profile, done) {
@@ -107,7 +111,7 @@ app.get('/authorize', server.authorize(function(clientId, redirect_uri, scope, d
 }, function(req, res) {
  res.render('dialog', { transactionID: req.oauth2.transactionID, user: req.user, client: req.oauth2.client });
 }, {
- scope: ['activity', 'heartrate', 'sleep', 'weight']
+ scope: ['respiratory_rate','cardio_fitness','oxygen_saturation','electrocardiogram', 'heartrate', 'sleep']
 }));
 
 server.authorization(function(clientId, redirect_uri, scope, type, cb) {
@@ -200,7 +204,7 @@ app.get('/authorize', server.authorize(function(clientId, redirect_uri, scope, d
 }, function(req, res) {
   res.render('dialog', { transactionID: req.oauth2.transactionID, user: req.user, client: req.oauth2.client });
 }, {
-  scope: ['activity', 'heartrate', 'sleep', 'weight']
+  scope: ['respiratory_rate','cardio_fitness','oxygen_saturation','electrocardiogram', 'heartrate', 'sleep']
 }));
 
 
@@ -214,7 +218,7 @@ app.get('/user/:email', async (req, res) => {
   }
 })
 
-app.get('/auth/fitbit', passport.authenticate('fitbit', { scope: ['activity', 'heartrate', 'sleep', 'weight'] }));
+app.get('/auth/fitbit', passport.authenticate('fitbit', { scope: ['respiratory_rate','cardio_fitness','oxygen_saturation','electrocardiogram', 'heartrate', 'sleep'] }));
 
 app.get('/auth/fitbit/callback',
   passport.authenticate('fitbit', { failureRedirect: '/login' }),

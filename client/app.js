@@ -1,6 +1,6 @@
 const access_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzk4SFYiLCJzdWIiOiJCREdNQkoiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd251dCB3cHJvIHd0ZW0gd3NsZSB3d2VpIHdlY2cgd2NmIHdhY3Qgd3JlcyB3b3h5IiwiZXhwIjoxNjc0MzMyNjQ4LCJpYXQiOjE2NzQzMDM4NDh9.g1QM5YsATpxbaAF1duM_meEFxtVQeeHEZWEFn8G7sw8";
 
-fetch('https://api.fitbit.com//1/user/-/profile.json', {
+fetch('https://api.fitbit.com/1/user/-/profile.json', {
     method: "GET",
     headers: {"Authorization": "Bearer " + access_token}
 })
