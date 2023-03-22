@@ -52,7 +52,7 @@
   <form id="reminderFrm">
     <input placeholder="remind me" class="" name="reminder" id="reminderInput" required method="POST">
     <input type="date" id="reminderDate" min="" required>
-    <input type="time" id="reminderTime">
+    <input type="time" id="reminderTime" required>
     <button type="submit" id="submitBtn">Submit</button>
 </form>
 
@@ -67,55 +67,43 @@
 </div>
 </div>
 
+<details>
+  <div id="AppearanceVisuals">
+    <div class="darkModeLightMode">
+      <input type="checkbox" id="chk" class="checkbox">
+        <label class="placeHolder" for="chk">
+              <i class="moon-icon"></i>
+              <i class="sun-icon"></i>
+              <div class="ball"></div>
+      </label>
+      </div>  
+  </div>
+
+  <label>Change font type: </label>
+<select class="parentFontType">
+  <option value="Arial" id="arial">Arial</option>
+  <option value="Times New Roman" id="timesNewRoman">Times New Roman</option>
+  <option value="Courier New" id="courierNew">Courier New</option>
+  <option value="Verdana" id="verdana">Verdana</option>
+  <option value="Georgia" id="georgia">Georgia</option>
+  <option value="Palatino Linotype" id="palatinoLinotype">Palatino Linotype</option>
+  <option value="Tahoma" id="tahoma">Tahoma</option>
+  <option value="Sans Serif" id="SansSerif">Sans Serif</option>
+</select>
+
+<p></p>
+
+<label>Change font size: </label>
+<select class="parentFontSize">  
+  <option value="medium">Medium</option>
+  <option value="large">Large</option>
+  <option value="x-large">Extra Large</option>
+  <option value="xx-large">XX-Large</option>
+</select>
+
+
+</details>
+
 <input id="panicBtn" type="submit" value="PANIC BUTTON">
 
 </body>
-
-<script>
-const getInput = document.querySelector('#reminderInput');
-const reminderDate = document.querySelector('#reminderDate');
-const getSubmit = document.querySelector('#submitBtn');
-const getTime = document.querySelector('#reminderTime');
-const targetContent = document.querySelector('#createList');
-const getForm = document.querySelector('#reminderFrm');
-
-let savedReminders = localStorage.getItem('reminders');
-if (savedReminders) {
-  targetContent.innerHTML = savedReminders;
-}
-
-if (getForm) {
-  getForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const context = getInput.value;
-    const date = reminderDate.value;
-    const time = getTime.value;
-    reminderInput.value = '';
-    reminderDate.value = '';
-
-    const giveList = document.createElement('li');
-    giveList.className = 'list-group-item';
-    giveList.textContent = `Reminder to: ${context} at ${date} at ${time}`;
-    targetContent.appendChild(giveList);
-    const getDate = document.createElement('span');
-    getDate.classList.add('reminderDate');
-    giveList.appendChild(getDate);
-    localStorage.setItem('reminders', targetContent.innerHTML);
-    const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
-    reminders.push({
-      reminder: context,
-      date: date,
-      time: time
-    });
-    const del = document.createElement('button');
-    del.classList.add('delete');
-    del.textContent = '-';
-    giveList.appendChild(del);
-    del.addEventListener('click', (e) => {
-      e.target.parentNode.remove();
-      localStorage.setItem('reminders', targetContent.innerHTML);
-    });
-  });
-}
-
-</script>

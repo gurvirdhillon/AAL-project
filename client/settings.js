@@ -126,8 +126,6 @@ window.speechRecognition = window.speechRecognition || window.webkitSpeechRecogn
 const recognition = new window.speechRecognition();
 recognition.interimResults = true;
 
-// let transcript = document.createElement('p');
-
 const getInput = document.querySelector('#searchInput');
 const microphoneButton = document.querySelector('#microphone');
 
@@ -176,12 +174,28 @@ recognition.addEventListener('end', () => {
 
 // dark and light mode feature
 
-document.addEventListener('DOMContentLoaded', () => {
+function darkMode() {
   const checkbox = document.querySelector('#chk');
   checkbox.addEventListener('change', () => {
     document.body.classList.toggle('dark');
+    // when the user clicks on the dark mode and refreshes the page, it will remember the dark mode
+    if (document.body.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+      // apply it to other html pages
+      document.querySelector('#chk').checked = true;
+
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
   });
-});
+  // set class of body based on value in localStorage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.body.classList.add(savedTheme);
+  }
+};
+
+window.addEventListener('load', darkMode);
 
 // when the user clicks on the button, it will reveal what is the functionality of text to speech feature
 
@@ -195,15 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // similar to above but it tells the user what the text to speech does
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const revelio2 = document.querySelector('#revelio2');
-//   revelio2.addEventListener('click', () => {
-//     const audioContext = document.querySelector('#contextAudio');
-//     const placeContext2 = document.querySelector('#placeContext2');
-//     placeContext2.innerHTML = audioContext.innerHTML;
-//   });
-// });
 
 document.addEventListener('DOMContentLoaded', () => {
   const reader = document.querySelector('.reader');
@@ -283,7 +288,6 @@ function redirectPageProfile() {
 }
 window.addEventListener('load', redirectPageProfile);
 
-
 function accessPage() {
   const accessibilityBtn = document.querySelector('#accessibilityBtn');
   accessibilityBtn.addEventListener('click', () => {
@@ -309,4 +313,48 @@ function emergencyContactDetails() {
   });
 }
 window.addEventListener('load', emergencyContactDetails);
+
+// change font of the page
+
+document.addEventListener('DOMContentLoaded', () => {
+  const fontTypeDropDown = document.querySelector('.parentFontType');
+  if (fontTypeDropDown) {
+    fontTypeDropDown.addEventListener('change', changeFontType);
+  }
+
+  // Retrieve the font type from localStorage and apply it to the page
+  const storedFontType = localStorage.getItem('fontType');
+  if (storedFontType) {
+    document.body.style.fontFamily = storedFontType;
+    fontTypeDropDown.value = storedFontType;
+  }
+});
+
+function changeFontType() {
+  const selectedFontType = this.value;
+  document.body.style.fontFamily = selectedFontType;
+  localStorage.setItem('fontType', selectedFontType);
+}
+
+// change the font size of the page
+
+document.addEventListener('DOMContentLoaded', () => {
+  const fontSizeDropDown = document.querySelector('.parentFontSize');
+  if (fontSizeDropDown) {
+    fontSizeDropDown.addEventListener('change', changeFontSize);
+  }
+
+  // Retrieve the font size from localStorage and apply it to the page
+  const storedFontSize = localStorage.getItem('fontSize');
+  if (storedFontSize) {
+    document.body.style.fontSize = storedFontSize;
+    fontSizeDropDown.value = storedFontSize;
+  }
+});
+
+function changeFontSize() {
+  const selectedFontSize = this.value;
+  document.body.style.fontSize = selectedFontSize;
+  localStorage.setItem('fontSize', selectedFontSize);
+}
 
