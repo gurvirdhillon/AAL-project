@@ -18,11 +18,16 @@ h1{
     font-size: larger;
 }
 
+
+
 #headerNavigator{
     text-align: center;
     justify-content: space-evenly;
     display: flex;
     justify-content: space-between;
+    border: #111 thin solid;
+    padding: 1%;
+    background-color: #ccc;
 }
 
 .greetingsPage h2, .greetingsPage button {
