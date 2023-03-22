@@ -174,7 +174,7 @@ recognition.addEventListener('end', () => {
 
 // dark and light mode feature
 
-document.addEventListener('DOMContentLoaded', () => {
+function darkMode() {
   const checkbox = document.querySelector('#chk');
   checkbox.addEventListener('change', () => {
     document.body.classList.toggle('dark');
@@ -193,7 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedTheme) {
     document.body.classList.add(savedTheme);
   }
-});
+};
+
+window.addEventListener('load', darkMode);
 
 // when the user clicks on the button, it will reveal what is the functionality of text to speech feature
 
@@ -207,15 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // similar to above but it tells the user what the text to speech does
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const revelio2 = document.querySelector('#revelio2');
-//   revelio2.addEventListener('click', () => {
-//     const audioContext = document.querySelector('#contextAudio');
-//     const placeContext2 = document.querySelector('#placeContext2');
-//     placeContext2.innerHTML = audioContext.innerHTML;
-//   });
-// });
 
 document.addEventListener('DOMContentLoaded', () => {
   const reader = document.querySelector('.reader');
@@ -321,3 +314,65 @@ function emergencyContactDetails() {
 }
 window.addEventListener('load', emergencyContactDetails);
 
+// change font of the page
+
+const fontTypeDropDown = document.querySelector('.parentFontType');
+console.log(fontTypeDropDown);
+if(fontTypeDropDown){
+fontTypeDropDown.addEventListener('change', changeFont);
+}
+
+function changeFont() {
+  const selectFont = this.value;
+  document.body.style.fontFamily = selectFont;
+  // stort the font to local storage and once refreshed it stays the same
+  if(localStorage.getItem('font')){
+    document.body.style.fontFamily = localStorage.getItem('font');
+  } else {
+    localStorage.setItem('font', selectFont);
+  }
+  localStorage.setItem('font', selectFont);
+  document.body.style.fontSize = localStorage.getItem('fontSize');
+}
+
+window.addEventListener('load', changeFont);
+
+// change font size
+
+document.addEventListener('DOMContentLoaded', () => {
+  const fontTypeDropDown = document.querySelector('.parentFontType');
+  if (fontTypeDropDown) {
+    fontTypeDropDown.addEventListener('change', changeFontType);
+  }
+
+  function changeFontType() {
+    const selectedFontType = this.value;
+    document.body.style.fontFamily = selectedFontType;
+    if (localStorage.getItem('fontType')) {
+      document.body.style.fontFamily = localStorage.getItem('fontType');
+    } else {
+      localStorage.setItem('fontType', selectedFontType);
+    }
+    localStorage.setItem('fontType', selectedFontType);
+  }
+  
+  const fontSizeDropDown = document.querySelector('.parentFontSize');
+  if (fontSizeDropDown) {
+    fontSizeDropDown.addEventListener('change', changeFontSize);
+  }
+
+  function changeFontSize() {
+    const selectedFontSize = this.value;
+    document.body.style.fontSize = selectedFontSize;
+    if (localStorage.getItem('fontSize')) {
+      document.body.style.fontSize = localStorage.getItem('fontSize');
+    } else {
+      localStorage.setItem('fontSize', selectedFontSize);
+    }
+  }
+
+  // Set the font type and font size on page load
+  if (localStorage.getItem('fontType')) {
+    document.body.style.fontFamily = localStorage.getItem('fontType');
+  }
+});

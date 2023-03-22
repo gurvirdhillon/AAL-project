@@ -46,6 +46,13 @@ function reminderFeature() {
       const giveList = document.createElement('li');
       giveList.className = 'list-group-item';
       giveList.textContent = `Reminder to: ${context} at ${date} at ${time}`;
+      // add notifications
+      if (Notification.permission !== 'granted') {
+        Notification.requestPermission();
+      }
+      setTimeout(function () {
+        new Notification(`Reminder to: ${context} at ${date} at ${time}`);
+      }, time - new Date());
       targetContent.appendChild(giveList);
       const getDate = document.createElement('span');
       getDate.classList.add('reminderDate');
@@ -57,14 +64,16 @@ function reminderFeature() {
         date: date,
         time: time
       });
-      const del = document.createElement('button');
-      del.classList.add('delete');
-      del.textContent = '-';
-      giveList.appendChild(del);
-      del.addEventListener('click', (e) => {
-        e.target.parentNode.remove();
+      // make a delete all reminders button which removes all the reminders
+      const deleteAll = document.createElement('button');
+      deleteAll.classlist.add('deleteAll');
+      deleteAll.textContent = 'Delete All';
+      giveList.appendChild(deleteAll);
+      deleteAll.addEventListener('click', () => {
+        giveList.remove();
         localStorage.setItem('reminders', targetContent.innerHTML);
       });
+      
     });
   }  
 }
