@@ -358,4 +358,3 @@ function changeFontSize() {
   localStorage.setItem('fontSize', selectedFontSize);
 }
 
-
