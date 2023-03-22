@@ -126,8 +126,6 @@ window.speechRecognition = window.speechRecognition || window.webkitSpeechRecogn
 const recognition = new window.speechRecognition();
 recognition.interimResults = true;
 
-// let transcript = document.createElement('p');
-
 const getInput = document.querySelector('#searchInput');
 const microphoneButton = document.querySelector('#microphone');
 
@@ -176,19 +174,6 @@ recognition.addEventListener('end', () => {
 
 // dark and light mode feature
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const checkbox = document.querySelector('#chk');
-//   checkbox.addEventListener('change', () => {
-//     document.body.classList.toggle('dark');
-//     // when the user clicks on the dark mode and refreshes the page, it will remember the dark mode
-//     if(document.body.classList.contains('dark')){
-//       localStorage.setItem('theme', 'dark');
-//     } else{
-//       localStorage.setItem('theme', 'light');
-//     }
-//   });
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
   const checkbox = document.querySelector('#chk');
   checkbox.addEventListener('change', () => {
@@ -196,11 +181,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // when the user clicks on the dark mode and refreshes the page, it will remember the dark mode
     if (document.body.classList.contains('dark')) {
       localStorage.setItem('theme', 'dark');
+      // apply it to other html pages
+      document.querySelector('#chk').checked = true;
+
     } else {
       localStorage.setItem('theme', 'light');
     }
   });
-
   // set class of body based on value in localStorage
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) {

@@ -71,7 +71,7 @@ h1{
 }
 
 .startingImg{
-    width: 80%;
+    width: 100%;
     height: 100%;
 }
 
@@ -227,6 +227,10 @@ body.dark{
 .checkbox{
     opacity: 0;
     position: absolute;
+}
+
+details{
+    display: none;
 }
 
 .checkbox:checked + .placeHolder .ball{
