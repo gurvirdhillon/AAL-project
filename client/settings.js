@@ -316,63 +316,46 @@ window.addEventListener('load', emergencyContactDetails);
 
 // change font of the page
 
-const fontTypeDropDown = document.querySelector('.parentFontType');
-console.log(fontTypeDropDown);
-if(fontTypeDropDown){
-fontTypeDropDown.addEventListener('change', changeFont);
-}
-
-function changeFont() {
-  const selectFont = this.value;
-  document.body.style.fontFamily = selectFont;
-  // stort the font to local storage and once refreshed it stays the same
-  if(localStorage.getItem('font')){
-    document.body.style.fontFamily = localStorage.getItem('font');
-  } else {
-    localStorage.setItem('font', selectFont);
-  }
-  localStorage.setItem('font', selectFont);
-  document.body.style.fontSize = localStorage.getItem('fontSize');
-}
-
-window.addEventListener('load', changeFont);
-
-// change font size
-
 document.addEventListener('DOMContentLoaded', () => {
   const fontTypeDropDown = document.querySelector('.parentFontType');
   if (fontTypeDropDown) {
     fontTypeDropDown.addEventListener('change', changeFontType);
   }
 
-  function changeFontType() {
-    const selectedFontType = this.value;
-    document.body.style.fontFamily = selectedFontType;
-    if (localStorage.getItem('fontType')) {
-      document.body.style.fontFamily = localStorage.getItem('fontType');
-    } else {
-      localStorage.setItem('fontType', selectedFontType);
-    }
-    localStorage.setItem('fontType', selectedFontType);
+  // Retrieve the font type from localStorage and apply it to the page
+  const storedFontType = localStorage.getItem('fontType');
+  if (storedFontType) {
+    document.body.style.fontFamily = storedFontType;
+    fontTypeDropDown.value = storedFontType;
   }
-  
+});
+
+function changeFontType() {
+  const selectedFontType = this.value;
+  document.body.style.fontFamily = selectedFontType;
+  localStorage.setItem('fontType', selectedFontType);
+}
+
+// change the font size of the page
+
+document.addEventListener('DOMContentLoaded', () => {
   const fontSizeDropDown = document.querySelector('.parentFontSize');
   if (fontSizeDropDown) {
     fontSizeDropDown.addEventListener('change', changeFontSize);
   }
 
-  function changeFontSize() {
-    const selectedFontSize = this.value;
-    document.body.style.fontSize = selectedFontSize;
-    if (localStorage.getItem('fontSize')) {
-      document.body.style.fontSize = localStorage.getItem('fontSize');
-    } else {
-      localStorage.setItem('fontSize', selectedFontSize);
-    }
-  }
-
-  // Set the font type and font size on page load
-  if (localStorage.getItem('fontType')) {
-    document.body.style.fontFamily = localStorage.getItem('fontType');
+  // Retrieve the font size from localStorage and apply it to the page
+  const storedFontSize = localStorage.getItem('fontSize');
+  if (storedFontSize) {
+    document.body.style.fontSize = storedFontSize;
+    fontSizeDropDown.value = storedFontSize;
   }
 });
+
+function changeFontSize() {
+  const selectedFontSize = this.value;
+  document.body.style.fontSize = selectedFontSize;
+  localStorage.setItem('fontSize', selectedFontSize);
+}
+
+
