@@ -39,13 +39,47 @@
   <button class="navChild" id="settings">Settings</button>
 </nav>
 
-<h1>Settings: </h1>
-<p>
-<button>Edit Profile</button>
-</p>
-<button>Accessibility</button>
-<p>
-<button>Contact Details</button>
-</p>
+<div class="settingsContainer">
+  <div class="settingsMenu">
+  <h3>Your settings:</h3>
+  <button id="profileBtn">Profile</button>
+  <button id="appearanceBtn">Appearance</button>
+  <button id="accessibilityBtn">Accessibility</button>
+  <button id="emergencyBtn">Emergency Contact</button>
+  </div>
+  
+  <div class="mainSettingsPage">
+  <article>
+  
+    <h3>Emergency Contact Details: </h3>
+    <form>
+    <p>
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname" required>
+    </p>
+    <p>
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname">
+    </p>
+    <p>
+      <label for="phone">Phone number:</label>
+      <input type="text" id="phone" name="phone" required>
+    </p>
+  <label for="relation">Relation:</label>
+    <select id="relationOptions">
+      <option>Family</option>
+      <option>Friend</option>
+      <option>Carer</option>
+      <option>Other</option>
+    </select>
+    
+  <button type="submit" id="submitContact">Submit</button>
+  
+  <div>
+  </form>
+  
+  </article>
+  </div>
+  </div>  
 
 </body>
