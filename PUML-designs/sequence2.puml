@@ -6,11 +6,21 @@ participant "user" as user
 participant "application" as app
 participant "server" as server
 participant "Fitbit API" as fitbit
+participant "token" as token
+participant "refreshToken" as refreshToken
 
 user --> app: connects fitbit account
-app --> server: makes request to the server
+app --> server: makes req to the server to get data
 server --> fitbit: server requests data from Fitbit API
-fitbit --> server: Fitbit API returns data
-server --> app: displays fitbit data to the user
-
+fitbit --> token: fitbit API authenticates token
+token --> fitbit: Token is fetched from the FitbitAPI
+fitbit --> server: FitbitAPI returns the data to the server side
+server --> app: server presents data to the client
+alt if token has expired(after 8 hours)
+token --> refreshToken: FitbitAPI requests a new token;
+refreshToken --> token: FitbitAPI returns new token;
+fitbit --> server: Fitbit API returns data to the server;
+token --> fitbit: FitbitAPI returns data;
+server --> app: displays fitbit data to the user;
+end
 @enduml
