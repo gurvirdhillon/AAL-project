@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<div>
+<div class="parentHeader">
 <h1>ElderAAL</h1>
 <input type="search" placeholder="search" class="searchEngine" id="searchInput">
 <input type="button" value="🎙️" class="searchEngine" id="microphone">
@@ -27,108 +27,25 @@
 
 <div class="greetingsPage">
 <h2 id="greeting">Welcome</h2>
+<button class="reader">🔊</button>
 </div>
 
 <nav id="headerNavigator">
   <button class="navChild" id="home">Home</button>
   <button class="navChild" id="reminder">Remind Me</button>
   <button class="navChild" id="meds">Medication</button>
-  <!-- <button class="navChild" id="home">Home</button> -->
   <button class="navChild" id="UA">My Activity</button>
   <button class="navChild" id="chatSystem">Chat</button>
   <button class="navChild" id="settings">Settings</button>
 </nav>
 
 <h1>Settings: </h1>
-<div id="settingsBar">
-<h3>User Settings:</h3>
 <p>
-<button id="editUserBtn">Edit Profile</button>
+<button>Edit Profile</button>
 </p>
-<button id="UserAccess">Accessibility</button>
+<button>Accessibility</button>
 <p>
-<button id="ContactInfoBtn">Contact Details</button>
+<button>Contact Details</button>
 </p>
-</div>
-
-<template>
-  <form>
-    <label>Image: </label>
-    <input type="file" accept="image/*">
-    <!-- find out what info i can store and what i cannot -->
-  </form>
-</template>
-
-<template>
-  <form>
-    <label>Dark/light mode:</label>
-    <input type="checkbox" id="darkMode"><button>i</button>
-    <p>
-      <label>Text size:</label>
-      <input type="range">
-    </p>
-  </form>
-</template>
-
-<template>
-  <form>
-    <label>Contact Name:</label><input type="text">
-    <label>Relation to user:</label>
-    <select id="relation">
-      <option>Mother</option>
-      <option>Father</option>
-      <option>Sister</option>
-      <option>Brother</option>
-      <option>Friend</option>
-      <option>Carer</option>
-      <option>Other/prefer not to specify</option>
-    <label></label>
-    </select>
-  </form>
-</template>
 
 </body>
-<script>
-  const reminderBtn = document.querySelector('#reminder');
-      if (reminderBtn) {
-        reminderBtn.addEventListener('click', function() {
-          window.location.href = 'reminder.html';
-    });
-}
-
-const medsBtn = document.querySelector('#meds');
-      if (medsBtn) {
-        medsBtn.addEventListener('click', function() {
-          window.location.href = 'medication.html';
-    });
-}
-
-const chatClicked = document.querySelector('#chatSystem');
-if(chatClicked) {
-  chatClicked.addEventListener('click', function() {
-    window.location.href = 'chat.html';
-  });
-}
-
-const buttonStngs = document.querySelector('#settings');
-if(buttonStngs) {
-  buttonStngs.addEventListener('click', function() {
-    window.location.href = 'settings.html';
-  });
-}
-
-const homeBtn = document.querySelector('#home');
-      if (homeBtn) {
-        homeBtn.addEventListener('click', function() {
-          window.location.href = 'index.html';
-    });
-}
-
-const UAbtn = document.querySelector('#UA');
-      if (UAbtn) {
-        UAbtn.addEventListener('click', function() {
-          window.location.href = 'activity.html';
-    });
-}
-
-</script>

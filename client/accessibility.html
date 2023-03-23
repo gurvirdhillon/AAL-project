@@ -34,35 +34,43 @@
   <button class="navChild" id="home">Home</button>
   <button class="navChild" id="reminder">Remind Me</button>
   <button class="navChild" id="meds">Medication</button>
-  <!-- <button class="navChild" id="home">Home</button> -->
   <button class="navChild" id="UA">My Activity</button>
   <button class="navChild" id="chatSystem">Chat</button>
   <button class="navChild" id="settings">Settings</button>
 </nav>
 
-
-<div>
-
-<p></p>
-
-<button>Get FitBit Data</button>
-
-<p></p>
-<div class="setHeader">
-  <h2>Activity Analysis</h2>
-  <button id="activitySummaryVoiceOver">🔊</button>
+<div class="settingsContainer">
+<div class="settingsMenu">
+<h3>Your settings:</h3>
+<button id="profileBtn">Profile</button>
+<button id="apperanceBtn">Appearance</button>
+<button id="accessibilityBtn">Accessibility</button>
+<button id="emergencyBtn">Emergency Contact</button>
 </div>
-  <div id="analyseData">
-    <p>Congratulations! Here is your fitbit analysis:</p>
-    <p>Steps: <span>0</span></p>
-    <p>Distance: <span>0</span></p>
-    <p>Calories: <span>0</span></p>
-    <p>Active Minutes: <span>0</span></p>
-    <p>Floors: <span>0</span></p>
-    <p>Heart Rate: <span>0</span></p>
-    <p>Sleep: <span>0</span></p>
-  </div>  
+
+<!-- look at accessibility changes -->
+
+<div id="accessibilityParent">
+<h2>Accessibility:</h2>
+
+<label>Speech to text:</label>
+<button id="revelio">?</button>
+<template id="contextAudio">
+  <p>This will allow any text presented on screen to be read out loud by the app. </p>
+  <p>Once ticked, the app will read the text out loud.</p>
+</template>
+<p>
+  <label>Enable speech to text:</label>
+  <input type="checkbox" id="">
+</p>
+
+<article id="placeContext"></article>
 </div>
+
+<template id="contextAudio">
+  <p>This will allow any text presented on screen to be read out loud by the app. </p>
+  <p>Once ticked, the app will read the text out loud.</p>
+</template>
 
 <details>
   <div id="AppearanceVisuals">
@@ -96,7 +104,8 @@
     <option value="large">Large</option>
     <option value="x-large">Extra Large</option>
     <option value="xx-large">XX-Large</option>
-  </select>  
+  </select>
+  
 
 </details>
 

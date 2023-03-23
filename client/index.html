@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<div>
+<div class="parentHeader">
 <h1>ElderAAL</h1>
 <input type="search" placeholder="search" class="searchEngine" id="searchInput">
 <input type="button" value="🎙️" class="searchEngine" id="microphone">
@@ -27,6 +27,7 @@
 
 <div class="greetingsPage">
 <h2 id="greeting">Welcome</h2>
+<button class="reader">🔊</button>
 </div>
 
 <nav id="headerNavigator">
@@ -42,63 +43,44 @@
 <img src="./img/elderly-technology.jpg" alt="elderly people using technology" id="startingPage" class="startingImg">
 </div>
 
-<article>
-
-</article>
-
 <footer>
   <input id="panicBtn" type="submit" value="PANIC BUTTON">
 </footer>
 
+<details>
+<div id="AppearanceVisuals">
+  <div class="darkModeLightMode">
+    <input type="checkbox" id="chk" class="checkbox">
+      <label class="placeHolder" for="chk">
+            <i class="moon-icon"></i>
+            <i class="sun-icon"></i>
+            <div class="ball"></div>
+    </label>
+    </div>  
+</div>
+
+<label>Change font type: </label>
+<select class="parentFontType">
+  <option value="Arial" id="arial">Arial</option>
+  <option value="Times New Roman" id="timesNewRoman">Times New Roman</option>
+  <option value="Courier New" id="courierNew">Courier New</option>
+  <option value="Verdana" id="verdana">Verdana</option>
+  <option value="Georgia" id="georgia">Georgia</option>
+  <option value="Palatino Linotype" id="palatinoLinotype">Palatino Linotype</option>
+  <option value="Tahoma" id="tahoma">Tahoma</option>
+  <option value="Sans Serif" id="SansSerif">Sans Serif</option>
+</select>
+
+<p></p>
+
+<label>Change font size: </label>
+<select class="parentFontSize">  
+  <option value="medium">Medium</option>
+  <option value="large">Large</option>
+  <option value="x-large">Extra Large</option>
+  <option value="xx-large">XX-Large</option>
+</select>
+
+</details>
+
 </body>
-
-<script>
-const reminderBtn = document.querySelector('#reminder');
-      if (reminderBtn) {
-        reminderBtn.addEventListener('click', function() {
-          window.location.href = 'reminder.html';
-    });
-}
-
-const medsBtn = document.querySelector('#meds');
-      if (medsBtn) {
-        medsBtn.addEventListener('click', function() {
-          window.location.href = 'medication.html';
-    });
-}
-
-const chatClicked = document.querySelector('#chatSystem');
-if(chatClicked) {
-  chatClicked.addEventListener('click', function() {
-    window.location.href = 'chat.html';
-  });
-}
-
-const buttonStngs = document.querySelector('#settings');
-if(buttonStngs) {
-  buttonStngs.addEventListener('click', function() {
-    // get a prompt that asks them to type "yes" that they want to go onto settings otherwise keep them on the page
-    const confirm = window.prompt("Are you sure you want to go to settings? Type 'yes' to confirm");
-    if (confirm === 'yes' || confirm === 'Yes' || confirm === 'YES' || confirm === 'y' || confirm === 'Y'){
-      window.location.href = 'settings.html';
-    } else {
-      alert("You have not been redirected to settings");
-    }
-  });
-}
-
-const homeBtn = document.querySelector('#home');
-      if (homeBtn) {
-        homeBtn.addEventListener('click', function() {
-          window.location.href = 'index.html';
-    });
-}
-
-const UAbtn = document.querySelector('#UA');
-      if (UAbtn) {
-        UAbtn.addEventListener('click', function() {
-          window.location.href = 'activity.html';
-    });
-}
-
-</script>

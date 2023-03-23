@@ -11,25 +11,26 @@
         <script src="settings.js"></script>
         <script defer src="chat.js"></script>
         <!-- <script src="medication.js" type="module"></script> -->
-        <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script>
+        <!-- <script src="https://www.twilio.com/libs/twilio/2.0.0/twilio.min.js"></script> -->
         <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
     <link rel="stylesheet" href="index.css">
 
 </head>
 <body>
 
-<div>
+<div class="parentHeader">
     <h1>ElderAAL</h1>
     <input type="search" placeholder="search" class="searchEngine" id="searchInput">
     <input type="button" value="🎙️" class="searchEngine" id="microphone">
     <input type="submit" value="🔎" class="searchEngine" id="searchSubmit">
-
+    
     <button id="login">Login</button>
     <button id="logout">Logout</button>
 </div>
 
 <div class="greetingsPage">
     <h2 id="greeting">Welcome</h2>
+    <button class="reader">🔊</button>
 </div>
 
 <nav id="headerNavigator">
@@ -43,6 +44,11 @@
 
 <div class="reminderFeature">
   <h1>Reminder:</h1>
+  <button id="reminderHelperIcon">?</button>
+  <div class="reminderContext"></div>
+  <template id="reminderTemplate">
+    <p>This section will remind you on key events and information that is upcoming.</p>
+  </template>
   <form id="reminderFrm">
     <input placeholder="remind me" class="" name="reminder" id="reminderInput" required method="POST">
     <input type="date" id="reminderDate" min="" required>
@@ -50,127 +56,54 @@
     <button type="submit" id="submitBtn">Submit</button>
 </form>
 
+<button id="readReminders">🔊</button>
+<div id="yellowStickyNote">
   <div id="StickyNote">
     <h2 class="note-header">Sticky notes:</h2>
-    <ul id="createList">
-      <p id="update">You are up to date!</p>
-    </ul>
   </div>
+  <ul id="createList">
+    <p id="update">You are up to date!</p>
+  </ul>
 </div>
+</div>
+
+<details>
+  <div id="AppearanceVisuals">
+    <div class="darkModeLightMode">
+      <input type="checkbox" id="chk" class="checkbox">
+        <label class="placeHolder" for="chk">
+              <i class="moon-icon"></i>
+              <i class="sun-icon"></i>
+              <div class="ball"></div>
+      </label>
+      </div>  
+  </div>
+
+  <label>Change font type: </label>
+<select class="parentFontType">
+  <option value="Arial" id="arial">Arial</option>
+  <option value="Times New Roman" id="timesNewRoman">Times New Roman</option>
+  <option value="Courier New" id="courierNew">Courier New</option>
+  <option value="Verdana" id="verdana">Verdana</option>
+  <option value="Georgia" id="georgia">Georgia</option>
+  <option value="Palatino Linotype" id="palatinoLinotype">Palatino Linotype</option>
+  <option value="Tahoma" id="tahoma">Tahoma</option>
+  <option value="Sans Serif" id="SansSerif">Sans Serif</option>
+</select>
+
+<p></p>
+
+<label>Change font size: </label>
+<select class="parentFontSize">  
+  <option value="medium">Medium</option>
+  <option value="large">Large</option>
+  <option value="x-large">Extra Large</option>
+  <option value="xx-large">XX-Large</option>
+</select>
+
+
+</details>
 
 <input id="panicBtn" type="submit" value="PANIC BUTTON">
 
 </body>
-
-<script>
-const reminderBtn = document.querySelector('#reminder');
-      if (reminderBtn) {
-        reminderBtn.addEventListener('click', function() {
-          window.location.href = 'reminder.html';
-    });
-}
-
-const medsBtn = document.querySelector('#meds');
-      if (medsBtn) {
-        medsBtn.addEventListener('click', function() {
-          window.location.href = 'medication.html';
-    });
-}
-
-const chatClicked = document.querySelector('#chatSystem');
-if(chatClicked) {
-  chatClicked.addEventListener('click', function() {
-    window.location.href = 'chat.html';
-  });
-}
-
-const buttonStngs = document.querySelector('#settings');
-if(buttonStngs) {
-  buttonStngs.addEventListener('click', function() {
-    // get a prompt that asks them to type "yes" that they want to go onto settings otherwise keep them on the page
-    const confirm = window.prompt("Are you sure you want to go to settings? Type 'yes' to confirm");
-    if (confirm === 'yes' || confirm === 'Yes' || confirm === 'YES' || confirm === 'y' || confirm === 'Y'){
-      window.location.href = 'settings.html';
-    } else {
-      alert("You have not been redirected to settings");
-    }
-  });
-}
-
-const homeBtn = document.querySelector('#home');
-      if (homeBtn) {
-        homeBtn.addEventListener('click', function() {
-          window.location.href = 'index.html';
-    });
-}
-
-const UAbtn = document.querySelector('#UA');
-      if (UAbtn) {
-        UAbtn.addEventListener('click', function() {
-          window.location.href = 'activity.html';
-    });
-}
-
-const getInput = document.querySelector('#reminderInput');
-const reminderDate = document.querySelector('#reminderDate');
-const getSubmit = document.querySelector('#submitBtn');
-const targetContent = document.querySelector('#createList');
-const getForm = document.querySelector('#reminderFrm');
-
-let savedReminders = localStorage.getItem('reminders');
-if (savedReminders) {
-  targetContent.innerHTML = savedReminders;
-}
-
-if (getForm) {
-  getForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const context = getInput.value;
-    const date = reminderDate.value;
-    reminderInput.value = '';
-    reminderDate.value = '';
-
-    const giveList = document.createElement('li');
-    giveList.className = 'list-group-item';
-    giveList.textContent = `Reminder to: ${context} at ${date}`;
-    targetContent.appendChild(giveList);
-    const getDate = document.createElement('span');
-    getDate.classList.add('reminderDate');
-    giveList.appendChild(getDate);
-    localStorage.setItem('reminders', targetContent.innerHTML);
-    const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
-    reminders.push({
-      reminder: context,
-      date: date
-    });
-    const del = document.createElement('button');
-    del.classList.add('delete');
-    del.textContent = '-';
-    giveList.appendChild(del);
-    del.addEventListener('click', (e) => {
-      e.target.parentNode.remove();
-      localStorage.setItem('reminders', targetContent.innerHTML);
-    });
-  });
-}
-
-// const getMsgForm = document.querySelector('#msgForm');
-// const input = document.querySelector('#inputBar');
-// const sendMsg = document.querySelector('#sendMsg');
-// const displayMessages = document.querySelector('#showMessages');
-
-// // prevent the default of the event
-
-// function getMessageOnScreen(e) {
-//   e.preventDefault();
-//   const msg = input.value;
-//   const makeMsg = document.createElement('li');
-//   makeMsg.classList.add('userMsg');
-//   makeMsg.textContent = msg;
-//   displayMessages.appendChild(makeMsg);
-//   input.value = '';
-// }
-
-// getMsgForm.addEventListener('submit', getMessageOnScreen);
-
-</script>

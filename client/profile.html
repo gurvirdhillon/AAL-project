@@ -34,34 +34,41 @@
   <button class="navChild" id="home">Home</button>
   <button class="navChild" id="reminder">Remind Me</button>
   <button class="navChild" id="meds">Medication</button>
-  <!-- <button class="navChild" id="home">Home</button> -->
   <button class="navChild" id="UA">My Activity</button>
   <button class="navChild" id="chatSystem">Chat</button>
   <button class="navChild" id="settings">Settings</button>
 </nav>
 
-
-<div>
-
-<p></p>
-
-<button>Get FitBit Data</button>
-
-<p></p>
-<div class="setHeader">
-  <h2>Activity Analysis</h2>
-  <button id="activitySummaryVoiceOver">🔊</button>
+<div class="settingsContainer">
+<div class="settingsMenu">
+<h3>Your settings:</h3>
+<button id="profileBtn">Profile</button>
+<button id="apperanceBtn">Appearance</button>
+<button id="accessibilityBtn">Accessibility</button>
+<button id="emergencyBtn">Emergency Contact</button>
 </div>
-  <div id="analyseData">
-    <p>Congratulations! Here is your fitbit analysis:</p>
-    <p>Steps: <span>0</span></p>
-    <p>Distance: <span>0</span></p>
-    <p>Calories: <span>0</span></p>
-    <p>Active Minutes: <span>0</span></p>
-    <p>Floors: <span>0</span></p>
-    <p>Heart Rate: <span>0</span></p>
-    <p>Sleep: <span>0</span></p>
-  </div>  
+
+<div id="profileUser">
+  <h3>Profile:</h3>
+  <form>
+  <p>
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname" required>
+  </p>
+  <p>
+    <label for="lname">Last name:</label>
+    <input type="text" id="lname" name="lname">
+  </p>
+  <p>
+    <label for="photo">Photo:</label>
+    <input type="file" id="photo" name="photo" accept="image/png, image/gif, image/jpeg">
+  </p>
+  <p>
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="4" cols="50"></textarea>
+  </p>
+  <button type="submit" id="submitProfile">Submit</button>
+  </form>
 </div>
 
 <details>

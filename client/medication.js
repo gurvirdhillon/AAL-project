@@ -59,19 +59,41 @@ window.addEventListener('load', function () {
   });
 });
 
-const helpButton = document.querySelector('#medInfo');
-helpButton.addEventListener('click', assistanceQuestion);
+const medParentOutput = document.querySelector('#medParentOutput');
+const readMedication = document.querySelector('#readMedication');
 
-const grabTemplate = document.querySelector('#furtherMedInfo');
-const textInfo = document.querySelector('#articleMed');
-
-function assistanceQuestion() {
-  const template = grabTemplate.innerHTML;
-  const div = document.createElement('div');
-  div.classList.add('checkedMedInfo');
-  div.innerHTML = template;
-  textInfo.appendChild(div);
-  helpButton.addEventListener('click', function(){
-    textInfo.removeChild(div);
+document.addEventListener('DOMContentLoaded', () => {
+  const readMedication = document.querySelector('#readMedication');
+  readMedication.addEventListener('click', () => {
+    const synthesis = window.speechSynthesis;
+    const getMedication = document.querySelector('#medicationList');
+    const vocal = new SpeechSynthesisUtterance(getMedication.textContent);
+    synthesis.speak(vocal);
   });
-};
+});
+
+function medicationIconPrompt() {
+  const medicationIconHelper = document.querySelector('.medicationIconHelper');
+  medicationIconHelper.addEventListener('click', () => {
+    const medicationTemplate = document.querySelector('#medicationTemplate');
+    const medicationContext = document.querySelector('.medicationContext');
+    if (medicationContext) {
+      medicationContext.innerHTML = medicationTemplate.innerHTML;
+    }
+  });
+}
+
+const fileInput = document.getElementById('fileInput');
+const uploadedImage = document.getElementById('uploadedImage');
+
+fileInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  
+  const reader = new FileReader();
+  reader.onload = () => {
+    uploadedImage.src = reader.result;
+    uploadedImage.style.display = 'block';
+  };
+  
+  reader.readAsDataURL(file);
+});

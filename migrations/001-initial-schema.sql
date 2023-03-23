@@ -99,6 +99,14 @@ CREATE TABLE medication(
     consumption_time TIME
 );
 
+CREATE TABLE next_of_kin(
+    next_of_kin_id SERIAL PRIMARY KEY,
+    next_of_kin_name varchar(60) NOT NULL,
+    next_of_kin_lname varchar(60) NOT NULL,
+    next_of_kin_phone varchar(20) NOT NULL,
+    next_of_kin_relation varchar(20) NOT NULL
+);
+
 -- Down
 
 DROP TABLE users;

@@ -9,16 +9,30 @@ h1{
     vertical-align: middle;
 }
 
+.parentHeader{
+    border-bottom: #111 thin solid;
+}
 
 #login, #logout{
     float: right;
     font-size: larger;
 }
 
+
+
 #headerNavigator{
-    /*  */
     text-align: center;
-    
+    justify-content: space-evenly;
+    display: flex;
+    justify-content: space-between;
+    border: #111 thin solid;
+    padding: 1%;
+    background-color: #ccc;
+}
+
+.greetingsPage h2, .greetingsPage button {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .navChild{
@@ -62,7 +76,7 @@ h1{
 }
 
 .startingImg{
-    width: 80%;
+    width: 100%;
     height: 100%;
 }
 
@@ -73,15 +87,60 @@ h1{
     justify-content: space-between;
 }
 
-#medInfo{
-    background-color: lightblue;
-    border-radius: 1%;
+#medicationInput{
+    width: 50%;
+    height: 10%;
+    font-size: larger;
+    font-weight: bolder;
 }
 
-.checkedMedInfo{
-    width: 50%;
-    background-color: lightskyblue;
-    border: thin solid black;
+#medicationDosage{
+    width: 10%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+label{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#consumptionMethod{
+    /* width: 100%; */
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationStrength{
+    width: 20%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationAmount{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#freqMed{
+    /* width: 20%; */
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationTime{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.setHeader{
+    display: flex;
+    align-items: center;
+}
+
+#readMedication, #activitySummaryVoiceOver, .reader{
+    background-color: #111;
+    border: #fff thick solid;
 }
 
 #panicBtn{
@@ -104,32 +163,33 @@ h1{
     border:  thin solid black;
 }
 
+.reminderContext{
+    background-color: rgb(44, 192, 242);
+    width: 70%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
 #reminderInput{
-    width: 40%;
-    padding: 1em;
-    border-radius: 1em;
+    width: 60%;
+    /* height: 100%; */
+    font-size: larger;
+    font-weight: bolder;
 }
 
-#reminderDate{
-    padding: 1em;
-    border-radius: 1em;
-}
-
-#reminderTime{
-    padding: 1em;
-    border-radius: 1em;
-}
-
-#submitBtn{
-    padding: 1em;
-    border-radius: 1em;
+#reminderDate, #reminderTime{
+    padding: 0.5%;
 }
 
 #StickyNote{
-    background-color: rgb(225, 225, 27); 
     width: 80%;
-    position: relative;
-    /* padding: 1.25em; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#yellowStickyNote{
+    background-color: rgb(225, 225, 27);
 }
 
 #createList{
@@ -143,7 +203,6 @@ h1{
 }
 
 #showMessages{
-    /* padding: 10%; */
     font-size: larger;
     font-weight: bolder;
 }
@@ -160,14 +219,205 @@ h1{
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
     font-size: larger;
-    /* background-color: grey; */
-    /* border-radius: 40%; */
-    /* width: 50%; */
-    /* padding: 4%; */
 }
 
 
-#settingsBar{
-    border: black thick solid;
-    width: 20%;
+/* dark mode/light mode */
+
+body.dark{
+    background-color: #292c35;
+    color: #fff;
+}
+
+.checkbox{
+    opacity: 0;
+    position: absolute;
+}
+
+details{
+    display: none;
+}
+
+.checkbox:checked + .placeHolder .ball{
+    transform: translateX(11em);
+}
+
+.sun{
+    color: #f39c12;
+}
+
+.placeHolder{
+    background-color: #111;
+    display: flex;
+    border-radius: 5em;
+    align-items: center;
+    justify-content: space-between;
+    height: 5em;
+    width: 15em;
+}
+
+.moon-icon{
+background-image: url('https://as1.ftcdn.net/jpg/01/13/72/84/500_F_113728476_BBmWp4hJWny4mR2jp9GSL4UvzSUxCROE.jpg');
+background-size: 92%;
+height: 7vh;
+width: 3vw;
+color: #f1c40f;
+}
+
+.sun-icon{
+    background-image: url('https://i.pinimg.com/originals/66/f9/f2/66f9f2496e22c1cff36aa2f9f1e57754.jpg');
+    background-size: 100%;
+    width: 5vw;
+    height: 7vh;
+}
+
+.ball{
+background-color: #fff;
+position: absolute;
+height: 10%;
+width: 5%;
+border-radius: 10%;
+transition: transform linear 0.2s;
+padding: 10%;
+}
+
+#formEmergency{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* padding: 5%; */
+}
+
+.darkModeLightMode{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin: 1em;
+}
+
+/* css for the settings page */
+
+.settingsMenu button {
+    display: block;
+    width: 50%;
+    text-align: left;
+    padding: 2%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 2%;
+    font-size: 100%;
+    font-weight: bolder;
+    background-color: #292c35;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+body.dark .settingsMenu button {
+    background-color: #fff;
+    color: #292c35;
+}
+
+/*  */
+
+.settingsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.settingsMenu {
+    width: 25%;
+}
+  
+.mainSettingsPage {
+    border: #292c35 thin solid;
+    width: 70%;
+}
+  
+.mainSettingsPage label{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.mainSettingsPage input {
+    padding: 2%;
+    border: thin solid #e1e4e8;
+    border-radius: 4%;
+    font-size: 100%;
+    font-weight: bolder;
+}
+
+#AppearanceVisuals {
+    width: 25%;
+    text-align: right;
+}
+  
+#profileBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+#apperanceBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+#accessibilityBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+#emergencyBtn:hover{
+    background-color: darkgrey;
+    color: #111;
+}
+
+/* accessibility feature page */
+
+#accessibilityParent{
+    display: grid;
+}
+
+#revelio{
+    width: 3em;
+}
+
+  
+#uploadedImage {
+    display: none;
+    max-width: 100%;
+    max-height: 400px;
+}
+
+#fileInput {
+    display: none;
+}
+.custom-file-upload {
+    border: thin solid #ccc;
+    display: inline-block;
+    padding: 15% 10%;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+.custom-file-upload:hover {
+    background-color: #e1e1e1;
+}
+.custom-file-upload:active {
+    background-color: #d1d1d1;
+}
+
+#uploadedImage {
+    display: none;
+    max-width: 100%;
+    max-height: 400px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.parentFontType, .parentFontSize{
+    padding: 2%;
 }
