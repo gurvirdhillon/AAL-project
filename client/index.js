@@ -86,3 +86,30 @@ window.addEventListener('load', initialise);
 // GitHub - portsoc/auth0-example. GitHub. (2021). Retrieved 15 January 2023, from https://github.com/portsoc/auth0-example.
 
 // Dhillon, G. (2022, April 29). Gurvirdhillon/Legoworkstation-CW. GitHub. Retrieved from https://github.com/gurvirdhillon/LegoWorkStation-CW
+
+function searchBar() {
+  const searchInput = document.querySelector('#searchInput');
+  const searchSubmit = document.querySelector('#searchSubmit');
+  searchSubmit.addEventListener('click', (e) => {
+    e.preventDefault();
+    const searchValue = searchInput.value;
+    console.log(searchValue);
+    if (searchValue === 'medication' || searchValue === 'meds' || searchValue === 'med' || searchValue === 'tablets' || searchValue === 'pills') {
+      // medicationBtn.click();
+      window.location.href = '/medication'
+    } else if (searchValue === 'user activity' || searchValue === 'fitness') {
+      // userActivityBtn.click();
+      window.location.href = '/activity'
+    } else if (searchValue === 'chat') {
+      // chatBtn.click();
+      window.location.href = '/chat'
+    } else if (searchValue === 'settings' || searchValue === 'setting') {
+      // settingsBtn.click();
+      window.location.href = '/settings'
+    } else if(searchValue === 'appearance' || searchValue === 'preferences' || searchValue === 'preference') {
+      window.location.href = '/appearance'
+    }
+  });    
+}
+
+window.addEventListener('load', searchBar);

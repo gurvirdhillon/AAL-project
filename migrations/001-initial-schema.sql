@@ -4,48 +4,99 @@
 
 -- Up
 
-CREATE TABLE user_profile(
-    user_email VARCHAR(255),
-    first_name varchar(60) NOT NULL,
-    last_name varchar(60) NOT NULL,
-    telephone_no varchar(20) NOT NULL,
-    PRIMARY KEY(user_email)
+CREATE TABLE users(
+    user_id INTEGER PRIMARY KEY,
+    fitbit_id VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    access_token VARCHAR(255) NOT NULL,
+    refresh_token VARCHAR(255) NOT NULL,
+    CONSTRAINT "fk_users.access_token"
+    FOREIGN KEY ("access_token")
+    REFERENCES tokens("access_token")
 );
 
-CREATE TABLE medication(
-    medication_id SERIAL,
-    medication_name varchar(60) NOT NULL,
-    medication_dosage varchar(60) NOT NULL,
-    medication_strength varchar(60) NOT NULL,
-    medication_time TIME NOT NULL,
-    user_email VARCHAR(255) NOT NULL,
-    PRIMARY KEY(medication_id),
-    CONSTRAINT "fk_medication.user_email"
-        FOREIGN KEY ("user_email")
-        REFERENCES "user_profile"("user_email")
+CREATE TABLE tokens(
+    user_id INTEGER NOT NULL,
+    access_token TEXT PRIMARY KEY,
+    refresh_token VARCHAR(255) NOT NULL,
+    CONSTRAINT "fk_tokens.user_id"
+    FOREIGN KEY ("user_id")
+    REFERENCES users("user_id")
 );
 
-CREATE TABLE nextOfKin(
-    nextOfKin_email VARCHAR(255),
-    first_name varchar(60) NOT NULL,
-    last_name varchar(60) NOT NULL,
-    telephone_no varchar(20) NOT NULL,
-    user_email VARCHAR(255) NOT NULL,
-    PRIMARY KEY(nextOfKin_email),
-    CONSTRAINT "fk_nextOfKin.user_email"
-        FOREIGN KEY ("user_email")
-        REFERENCES "user_profile"("user_email")
+CREATE TABLE steps(
+    steps_id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    date DATE NOT NULL,
+    steps INTEGER NOT NULL,
+    CONSTRAINT "fk_steps.user_id"
+    FOREIGN KEY ("user_id")
+    REFERENCES users("user_id")
+);
+
+CREATE TABLE distance(
+    distance_id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    date DATE NOT NULL,
+    distance FLOAT NOT NULL,
+    CONSTRAINT "fk_distance.user_id"
+    FOREIGN KEY ("user_id")
+    REFERENCES users("user_id")
+);
+
+CREATE TABLE calories(
+    calories_id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    date DATE NOT NULL,
+    calories INTEGER NOT NULL,
+    CONSTRAINT "fk_calories.user_id"
+    FOREIGN KEY ("user_id")
+    REFERENCES users("user_id")
+);
+
+CREATE TABLE activity(
+    activity_id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    date DATE NOT NULL,
+    activity_minutes INTEGER NOT NULL,
+    CONSTRAINT "fk_activity.user_id"
+    FOREIGN KEY ("user_id")
+    REFERENCES users("user_id")
+);
+
+CREATE TABLE heartRate(
+    heartRate_id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    date DATE NOT NULL,
+    heartRate INTEGER NOT NULL,
+    CONSTRAINT "fk_heartRate.user_id"
+    FOREIGN KEY ("user_id")
+    REFERENCES users("user_id")
+);
+
+CREATE TABLE sleep(
+    sleep_id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    date DATE NOT NULL,
+    sleep_minutes INTEGER NOT NULL
 );
 
 CREATE TABLE reminder(
-    reminder_id SERIAL,
-    reminder_desc varchar(60) NOT NULL,
-    reminder_date DATE NOT NULL,
-    user_email VARCHAR(255) NOT NULL,
-    PRIMARY KEY(reminder_id),
-    CONSTRAINT "fk_reminder_set.user_email"
-        FOREIGN KEY ("user_email")
-        REFERENCES "user_profile"("user_email")
+    reminder_id UUID PRIMARY KEY,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    reminder VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE medication(
+    medication_id UUID PRIMARY KEY,
+    medication_name VARCHAR(255) NOT NULL,
+    medication_amount VARCHAR(255) NOT NULL,
+    consumption varchar(10),
+    consumption_dosage INTEGER,
+    consumption_metric VARCHAR(10),
+    consumption_time TIME
 );
 
 CREATE TABLE next_of_kin(
@@ -58,9 +109,14 @@ CREATE TABLE next_of_kin(
 
 -- Down
 
-DROP TABLE user_profile;
+DROP TABLE users;
+DROP TABLE steps;
+DROP TABLE distance;
+DROP TABLE calories;
+DROP TABLE activity;
+DROP TABLE heartRate;
+DROP TABLE sleep;
+DROP TABLE reminder;
 DROP TABLE medication;
-DROP TABLE nextOfKin;
-DROP TABLE reminder_set;
 
 -- drop database if exists aal_db;

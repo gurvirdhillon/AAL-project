@@ -40,59 +40,57 @@
 </nav>
 
 <div class="settingsContainer">
-<div class="settingsMenu">
-<h3>Your settings:</h3>
-<button id="profileBtn">Profile</button>
-<button id="appearanceBtn">Appearance</button>
-<button id="accessibilityBtn">Accessibility</button>
-<button id="emergencyBtn">Emergency Contact</button>
-</div>
-
-<div class="mainSettingsPage">
-<article>
-
-  <h3>Emergency Contact Details: </h3>
-  <form>
-  <p>
-    <label for="fname">First name:</label>
-    <input type="text" id="fname" name="fname" required>
-  </p>
-  <p>
-    <label for="lname">Last name:</label>
-    <input type="text" id="lname" name="lname">
-  </p>
-  <p>
-    <label for="phone">Phone number:</label>
-    <input type="text" id="phone" name="phone" required>
-  </p>
-<label for="relation">Relation:</label>
-  <select id="relationOptions">
-    <option>Family</option>
-    <option>Friend</option>
-    <option>Carer</option>
-    <option>Other</option>
-  </select>
+  <div class="settingsMenu">
+  <h3>Your settings:</h3>
+  <button id="profileBtn">Profile</button>
+  <button id="appearanceBtn">Appearance</button>
+  <button id="accessibilityBtn">Accessibility</button>
+  <button id="emergencyBtn">Emergency Contact</button>
+  </div>
   
-<button type="submit" id="submitContact">Submit</button>
+  <div class="mainSettingsPage">
+  <article>
+  
+    <h3>Emergency Contact Details: </h3>
+    <form>
+    <p>
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname" required>
+    </p>
+    <p>
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname">
+    </p>
+    <p>
+      <label for="phone">Phone number:</label>
+      <input type="text" id="phone" name="phone" required>
+    </p>
+  <label for="relation">Relation:</label>
+    <select id="relationOptions">
+      <option>Family</option>
+      <option>Friend</option>
+      <option>Carer</option>
+      <option>Other</option>
+    </select>
+    
+    <div id="AppearanceVisuals">
+      <div class="darkModeLightMode">
+        <input type="checkbox" id="chk" class="checkbox">
+          <label class="placeHolder" for="chk">
+                <i class="moon-icon"></i>
+                <i class="sun-icon"></i>
+                <div class="ball"></div>
+        </label>
+        </div>  
+    </div>
 
-<div>
-</form>
-
-</article>
-</div>
-</div>
-
-<div id="AppearanceVisuals">
-<div class="darkModeLightMode">
-  <input type="checkbox" id="chk" class="checkbox">
-    <label class="placeHolder" for="chk">
-          <i class="moon-icon"></i>
-          <i class="sun-icon"></i>
-          <div class="ball"></div>
-  </label>
+  <button type="submit" id="submitContact">Submit</button>
+  
+  <div>
+  </form>
+  
+  </article>
+  </div>
   </div>  
-</div>
-
-</div>
 
 </body>

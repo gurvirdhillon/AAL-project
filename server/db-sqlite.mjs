@@ -13,9 +13,7 @@ export async function openDB() {
 
 const dbConnect = openDB();
 
-export async function getUser(user_email) {
+export async function getUser(user_id) {
   const db = await dbConnect;
-  return db.get('SELECT * FROM user_profile WHERE user_email = ?', user_email);
+  return db.get('SELECT * FROM user WHERE user_id = ?', user_id);
 }
-
-// the user email is the primary key
