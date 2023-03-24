@@ -1,0 +1,3 @@
+---
+permalink: '/client/index.html'
+---
