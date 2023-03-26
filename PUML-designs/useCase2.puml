@@ -5,7 +5,7 @@
 rectangle "AAL" as AAL {
   left to right direction
 
-ElderlyUser ---> (Add a reminder)
+ElderlyUser ----> (Add a reminder)
 ElderlyUser ---> (Notify reminder)
 ElderlyUser ---> (Get all reminders)
 ElderlyUser ---> (Delete Reminder)
@@ -16,11 +16,11 @@ ElderlyUser --> (Delete Medication)
 ElderlyUser ---> (Call emergency contact)
 ElderlyUser ---> (Send message)
 ElderlyUser ---> (activate panic button)
-ElderlyUser --> (change user details)
+ElderlyUser --> (change profile)
 ElderlyUser --> (Toggle Notifications)
-ElderlyUser ----> (Toggle accessibility tools)
-ElderlyUser --> (change emergency contact)
-ElderlyUser ---> (Get users current Fitbit activity)
+ElderlyUser ---> (Toggle accessibility tools)
+ElderlyUser ---> (change emergency contact)
+ElderlyUser ----> (Get users current Fitbit activity)
 }
 
 rectangle "Twilio" as TwilioAPI
@@ -29,16 +29,16 @@ database "SQLite" as DB
 rectangle "socket.io" as SocketIO
 rectangle "localStorage" as localStorage
 
-(activate panic button) -- TwilioAPI
-(Call emergency contact) -- TwilioAPI
-(Get users current Fitbit activity) -- FitbitAPI
+(activate panic button) <--> TwilioAPI
+(Call emergency contact) <--> TwilioAPI
+(Get users current Fitbit activity) <--> FitbitAPI
 
 (Add a reminder) -- DB
 (Get all reminders) -- DB
 (Delete Reminder) -- DB
 (change emergency contact) -- localStorage
 (Toggle accessibility tools) -- localStorage
-(change user details) -- DB
+(change profile) -- DB
 
 (Add medication) -- DB
 (Delete Medication) -- DB
