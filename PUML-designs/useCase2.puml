@@ -13,7 +13,6 @@ ElderlyUser ---> (Add medication)
 ElderlyUser --> (Notify medication)
 ElderlyUser --> (Get All Medications)
 ElderlyUser --> (Delete Medication)
-ElderlyUser ---> (Call emergency contact)
 ElderlyUser ---> (Send message)
 ElderlyUser ---> (activate panic button)
 ElderlyUser --> (change profile)
@@ -30,7 +29,6 @@ rectangle "socket.io" as SocketIO
 rectangle "localStorage" as localStorage
 
 (activate panic button) <--> TwilioAPI
-(Call emergency contact) <--> TwilioAPI
 (Get users current Fitbit activity) <--> FitbitAPI
 
 (Add a reminder) -- DB
