@@ -41,6 +41,7 @@ rectangle "notification" as notification
 (change profile) -- DB
 (Toggle Notifications) --- notification
 (Notify reminder) --- notification
+(Notify medication) --- notification
 
 (Add medication) -- DB
 (Delete Medication) -- DB
