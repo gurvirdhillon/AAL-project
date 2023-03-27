@@ -27,6 +27,8 @@ rectangle "FitbitAPI" as FitbitAPI
 database "SQLite" as DB
 rectangle "socket.io" as SocketIO
 rectangle "localStorage" as localStorage
+rectangle "webKit" as webKit
+rectangle "notification" as notification
 
 (activate panic button) <--> TwilioAPI
 (Get users current Fitbit activity) <--> FitbitAPI
@@ -37,6 +39,8 @@ rectangle "localStorage" as localStorage
 (change emergency contact) -- localStorage
 (Toggle accessibility tools) -- localStorage
 (change profile) -- DB
+(Toggle Notifications) --- notification
+(Notify reminder) --- notification
 
 (Add medication) -- DB
 (Delete Medication) -- DB
