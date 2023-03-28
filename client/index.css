@@ -11,6 +11,7 @@ h1{
 
 .parentHeader{
     border-bottom: #111 thin solid;
+    background-color: lightgrey;
 }
 
 #login, #logout{
@@ -87,10 +88,55 @@ h1{
     height: 100%;
 }
 
+
 @media only screen and (max-width: 768px) {
+    .searchEngine {
+      height: 25px;
+      font-size: 16px;
+    }
+  
+   #microphone {
+     font-size: 20px;
+  }
+  
+   #searchInput {
+     width: 60%;
+  }
+}
+
+#pageStart {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+  
+#startingPage {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+  
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+  
+  #panicBtn {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+
+  @media only screen and (max-width: 768px) {
     #pageStart {
-      height: 200px;
-    } 
+      height: 500px;
+    }
     
     #startingPage {
       top: 0;
@@ -104,8 +150,8 @@ h1{
     #panicBtn {
       padding: 5px 10px;
       font-size: 12px;
-    }
-  }
+   }
+}
 
 #medicationReminder{
     border: thick solid black;
