@@ -7,11 +7,9 @@ rectangle "AAL" as AAL {
 
 ElderlyUser ----> (Add a reminder)
 ElderlyUser ---> (Notify reminder)
-ElderlyUser ---> (Get all reminders)
 ElderlyUser ---> (Delete Reminder)
 ElderlyUser ---> (Add medication)
 ElderlyUser --> (Notify medication)
-ElderlyUser --> (Get All Medications)
 ElderlyUser --> (Delete Medication)
 ElderlyUser ---> (Send message)
 ElderlyUser ---> (activate panic button)
@@ -34,10 +32,10 @@ rectangle "notification" as notification
 (Get users current Fitbit activity) <--> FitbitAPI
 
 (Add a reminder) -- DB
-(Get all reminders) -- DB
 (Delete Reminder) -- DB
 (change emergency contact) -- localStorage
 (Toggle accessibility tools) -- localStorage
+(Toggle accessibility tools) -- webKit
 (change profile) -- DB
 (Toggle Notifications) --- notification
 (Notify reminder) --- notification
@@ -45,7 +43,6 @@ rectangle "notification" as notification
 
 (Add medication) -- DB
 (Delete Medication) -- DB
-(Get All Medications) -- DB
 
 (Send message) -- SocketIO
 
