@@ -146,7 +146,7 @@ const authToken = '3562338dc6f76a2f6a83f6a4eddddec4';
 const client = twilio(accountSid, authToken);
 
 app.post('/send-message', (req, res) => {
-  if (client) {
+  if (client === 200) {
     console.log('Twilio message has been sent');
   }
   client.messages
