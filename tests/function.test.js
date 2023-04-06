@@ -18,7 +18,8 @@ await test('Testing Twilio endpoint', async () => {
   // as there is no url parameter, the status code should be 404
 });
 
-// test if the reminder input features are fully functional with the notification feature
+// test if the notification feature allows for inputting of notification and the time of the day to send the notification
+
 
 
 
