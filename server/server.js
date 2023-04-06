@@ -9,7 +9,7 @@ import oauth2orize from 'oauth2orize';
 import bearerStrategy from 'passport-http-bearer';
 
 import { FitbitOAuth2Strategy as FitbitStrategy } from 'passport-fitbit-oauth2';
-const app = express();
+export const app = express();
 
 passport.use(new FitbitStrategy({
   clientID: '2398HV',
