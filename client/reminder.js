@@ -82,3 +82,27 @@ function reminderFeature() {
 }
 
 window.addEventListener('load', reminderFeature);
+
+// when list-group-item is not null, then a delete button will be created and can delete all items in the list
+
+function deleteButtonAppear() {
+  const list = document.querySelector('.list-group-item');
+  if (list !== null) {
+    const createDeleteBtn = document.createElement('button');
+    createDeleteBtn.classList.add('deleteAll');
+    createDeleteBtn.textContent = 'Delete All Reminders';
+    const target = document.querySelector('#StickyNote');
+    target.appendChild(createDeleteBtn);
+    createDeleteBtn.addEventListener('click', () => {
+      const list = document.querySelector('.list-group-item');
+      list.remove();
+      if(localStorage.getItem('reminders') !== null
+      && localStorage.getItem('reminders') !== undefined) {
+        localStorage.removeItem('reminders');
+      }
+      // localStorage.clear();
+    });
+  }
+}
+
+window.addEventListener('load', deleteButtonAppear);
