@@ -15,4 +15,14 @@ await test('Testing authorisation configuration endpoint', async () => {
 let twilioTest = await fetch('http://localhost:8080/send-message');
 await test('Testing Twilio endpoint', async () => {
   await expect(twilioTest.status).toEqual(404);
+  // as there is no payload from typing /send-message in the url, it would return a url
 });
+
+// test if the reminder input features are fully functional with the notification feature
+
+
+
+// test if the medication feature allows for inputting of medication and the time of the day to take the medication
+
+
+
