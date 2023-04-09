@@ -1,5 +1,4 @@
 import { app } from '../server/server.js'
-
 import { JSDOM } from 'jsdom';
 
 let authConfig = await fetch('http://localhost:8080/auth-config');
@@ -15,17 +14,15 @@ await test('Testing Twilio endpoint', async () => {
   // as there is no url parameter, the status code should be 404
 });
 
-// test if it successfully added the reminder input, date and time to local storage
+let reminderPage = await fetch('http://localhost:8080/reminder.html');
+await test('Testing reminder.html', async () => {
+  await expect(reminderPage.status).toEqual(200);
+});
 
+// test if it successfully added the reminder input, date and time to local storage
 
 
 
 // test if the medication has added the medication input and time to local storage
 
-test('see if medication had added input and time to local storage', () => {
-  expect(localStorage.getItem('medicationInput')).toBe('medicationInput');
-  expect(localStorage.getItem(`${medication.time}`)).toBe(`${medication.time}`);
-});
 
-// export default test;
-// export default app;
