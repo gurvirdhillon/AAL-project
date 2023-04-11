@@ -1,5 +1,4 @@
 import { app } from '../server/server.js'
-import { JSDOM } from 'jsdom';
 import { } from 'jest-localstorage-mock';
 
 let authConfig = await fetch('http://localhost:8080/auth-config');
