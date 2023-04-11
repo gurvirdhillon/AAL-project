@@ -1,5 +1,6 @@
 import { app } from '../server/server.js'
 import { } from 'jest-localstorage-mock';
+// import { webextension }  from 'jest-webextension-mock';
 
 let authConfig = await fetch('http://localhost:8080/auth-config');
 await test('Testing authorisation configuration endpoint', async () => {
@@ -75,5 +76,29 @@ describe('adding medication to local storage should include the medication name 
 
 // testing if the notification feature works for the medication
 
+// describe('Notification behavior', () => {
+//   test('should display notification when triggered', async () => {
+//     // Set up test data
+//     const title = 'Test Notification';
+//     const message = 'This is a test notification';
+//     const options = {
+//       body: message,
+//       icon: 'test-icon.png'
+//     };
 
+//     // Trigger notification
+//     const notificationId = await webextension.notifications.create(title, options);
 
+//     // Assert that notification was created with correct title and message
+//     expect(webextension.notifications.get(notificationId)).resolves.toEqual(
+//       expect.objectContaining({
+//         type: 'basic',
+//         title: title,
+//         message: message
+//       })
+//     );
+
+//     // Close notification
+//     await webextension.notifications.clear(notificationId);
+//   });
+// });

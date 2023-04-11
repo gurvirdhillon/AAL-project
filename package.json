@@ -33,6 +33,7 @@
     }
   },
   "devDependencies": {
+    "jest-webextension-mock": "^3.8.9",
     "nodemon": "^2.0.20"
   }
 }
