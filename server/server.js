@@ -8,45 +8,56 @@ const app = express();
 import twilio from 'twilio';
 import oauth2orize from 'oauth2orize';
 import bearerStrategy from 'passport-http-bearer';
+import axios from 'axios';
 
 import { FitbitOAuth2Strategy as FitbitStrategy } from 'passport-fitbit-oauth2';
+
+// passport.use(new FitbitStrategy({
+//   clientID: '2398HV',
+//   clientSecret: '229f30978777f329164493cc79491671',
+//   callbackURL: 'http://localhost:8080/auth/fitbit/callback',
+//   authorizationURL: 'https://www.fitbit.com/oauth2/authorize',
+//   access_token:"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzk4SFYiLCJzdWIiOiJCREdNQkoiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd3BybyB3c2xlIHdjZiB3YWN0IHdveHkiLCJleHAiOjE2ODE0NTM0NDAsImlhdCI6MTY4MTQyNDY0MH0.7DcqnG_1JIEdeZDTsyjsT0ETZzqRkd4mZ1ONw-VI8rk",
+//   expires_in:28800,
+//   refresh_token: `69e1246e3dd376db4e94d62e980e4ba2cf6e2e5678061d3c230c8703ae25ef07`,
+//   scope: "activity cardio_fitness heartrate oxygen_saturation profile sleep",
+//   token_type : "Bearer",
+//   user_id: "BDGMBJ"
+// },
 
 passport.use(new FitbitStrategy({
   clientID: '2398HV',
   clientSecret: '229f30978777f329164493cc79491671',
   callbackURL: 'http://localhost:8080/auth/fitbit/callback',
   authorizationURL: 'https://www.fitbit.com/oauth2/authorize',
-  tokenURL: 'https://api.fitbit.com/oauth2/token',
-  userProfileURL: 'https://api.fitbit.com/1/user/-/profile.json',
-  redirect_uri: 'http://localhost:8080/auth/fitbit/callback',
-  scope: ['respiratory_rate','cardio_fitness','oxygen_saturation','electrocardiogram', 'heartrate', 'sleep'],
-  accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzk4SFYiLCJzdWIiOiJCREdNQkoiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd3NsZSB3ZWNnIHdjZiB3b3h5IHdyZXMiLCJleHAiOjE2Nzk0MjI3MTQsImlhdCI6MTY3OTM5MzkxNH0.XbMiTA0FDsIqZbbaEiZ1c5CwYFglfkIy69Pmk8GMg1M',
-  passReqToCallback: true,
-  expires_in: 28800,
-  refresh_token: '45b04d3f66e23466ff697112751d8a7e5e5a205b9758190201d01a1036a4dc02 ',
-  scope: 'electrocardiogram sleep oxygen_saturation respiratory_rate cardio_fitness social ',
-  token_type: 'Bearer',
-  user_id: 'BDGMBJ '
+  scope: "activity cardio_fitness heartrate oxygen_saturation profile sleep"
 },
+function(accessToken, refreshToken, profile, done, user) {
+  User.findOneAndUpdate({ fitbitId: profile.id }, { accessToken, refreshToken }, { upsert: true, new: true }, function(err, user) {
+    return done(err, user);
+  });
+}));
 
-  function(req, accessToken, refreshToken, profile, done) {
-    const options = {
-      url: 'https://api.fitbit.com/1/user/-/profile.json',
-      headers: {
-        'Authorization': 'Bearer ' + accessToken
-      }
-    };
-    req.get(options, function(err, response, body, name) {
-      if (err) {
-        return done(err);
-      }
-      const data = JSON.parse(body);
-      User.findOrCreate({ fitbitId: data.user.encodedId }, function (err, user) {
-        return done(err, user);
-      });
-    });
-  }  
-));
+
+// function (req, accessToken, refreshToken, profile, done) {
+//   const options = {
+//     url: 'https://api.fitbit.com/1/user/-/profile.json',
+//     headers: {
+//       'Authorization': 'Bearer ' + accessToken
+//     }
+//   };
+//   axios.get(options.url, { headers: options.headers })
+//     .then(response => {
+//       const data = response.data;
+//       User.findOrCreate({ fitbitId: data.user.encodedId }, function (err, user) {
+//         return done(err, user);
+//       });
+//     })
+//     .catch(err => {
+//       return done(err);
+//     });
+// }
+// ));
 
 passport.serializeUser((user, done) => {
   done(null, user.user_id);
