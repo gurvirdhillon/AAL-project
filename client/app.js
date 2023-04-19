@@ -59,6 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
     activeMins.textContent = Math.floor(Math.random() * 100);
     floorsCount.textContent = Math.floor(Math.random() * 10);
     heartRate.textContent = Math.floor(Math.random() * 100);
+    if (heartRate.textContent < 60) {
+      heartRate.style.color = 'red';
+      heartRate.style.fontWeight = 'bold';
+    } else if (heartRate.textContent > 60 && heartRate.textContent < 100) {
+      heartRate.style.color = 'green';
+      heartRate.style.fontWeight = 'bold';
+    } else if (heartRate.textContent > 100) {
+      heartRate.style.color = 'red';
+      heartRate.style.fontWeight = 'bold';
+    }
     sleepQuality.textContent = Math.floor(Math.random() * 12);
   });
 });

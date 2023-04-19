@@ -43,24 +43,21 @@
 
 <div>
 
-<p></p>
-
-<button id="getStats">Get fitbit stats</button>
-
-<p></p>
-<div class="setHeader">
+  <div class="setHeader">
   <h2>Activity Analysis</h2>
   <button id="activitySummaryVoiceOver">🔊</button>
 </div>
   <div id="analyseData">
     <p>Congratulations! Here is your fitbit analysis:</p>
+    <p>Date: <span id="date"></span></p>
     <p>Steps: <span id="stepsCount">0</span> steps</p>
     <p>Distance: <span id="distanceCount">0</span>km</p>
     <p>Active Minutes: <span id="activeMins">0</span> mins</p>
     <p>Floors: <span id="floorsCount">0</span> floors</p>
     <p>Heart Rate: <span id="heartRate">0</span>bpm</p>
     <p>Sleep: <span id="sleepQuality">0</span>hrs</p>
-  </div>  
+    <button id="getStats">Get your activity data</button>  
+  </div>
 </div>
 
 <details>
