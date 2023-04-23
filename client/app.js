@@ -51,9 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const floorsCount = document.querySelector('#floorsCount');
   const heartRate = document.querySelector('#heartRate');
   const sleepQuality = document.querySelector('#sleepQuality');
+  const currentDate = document.querySelector('#date');
 
   // when getBtn is clicked it puts random numbers in the span tags
   getBtn.addEventListener('click', () => {
+    currentDate.textContent = new Date().toLocaleDateString();
     stepsCount.textContent = Math.floor(Math.random() * 10000);
     distanceCount.textContent = Math.floor(Math.random() * 10);
     activeMins.textContent = Math.floor(Math.random() * 100);
