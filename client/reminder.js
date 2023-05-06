@@ -83,8 +83,6 @@ function reminderFeature() {
 
 window.addEventListener('load', reminderFeature);
 
-// when list-group-item is not null, then a delete button will be created and can delete all items in the list
-
 function deleteButtonAppear() {
   const list = document.querySelector('.list-group-item');
   if (list !== null) {

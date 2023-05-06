@@ -56,10 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // when getBtn is clicked it puts random numbers in the span tags
   getBtn.addEventListener('click', () => {
     currentDate.textContent = new Date().toLocaleDateString();
+    localStorage.setItem('currentDate', currentDate.textContent);
     stepsCount.textContent = Math.floor(Math.random() * 10000);
+    localStorage.setItem('stepsCount', stepsCount.textContent);
+    
     distanceCount.textContent = Math.floor(Math.random() * 10);
+    localStorage.setItem('distanceCount', distanceCount.textContent);
     activeMins.textContent = Math.floor(Math.random() * 100);
+    localStorage.setItem('activeMins', activeMins.textContent);
     floorsCount.textContent = Math.floor(Math.random() * 10);
+    localStorage.setItem('floorsCount', floorsCount.textContent);
     heartRate.textContent = Math.floor(Math.random() * 100);
     if (heartRate.textContent < 60) {
       heartRate.style.color = 'red';
@@ -71,6 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
       heartRate.style.color = 'red';
       heartRate.style.fontWeight = 'bold';
     }
+    localStorage.setItem('heartRate', heartRate.textContent);
     sleepQuality.textContent = Math.floor(Math.random() * 12);
+    localStorage.setItem('sleepQuality', sleepQuality.textContent);
   });
 });
+
+
+// get the local storage of the above data
