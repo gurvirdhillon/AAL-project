@@ -340,6 +340,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const relationShip = document.createElement('p');
     relationShip.textContent = `Relationship: ${relation}`;
     form.appendChild(relationShip);
+    // if the user wants to delete the details
+    const deleteDetails = document.createElement('button');
+    deleteDetails.textContent = 'Delete Details';
+    form.appendChild(deleteDetails);
+    deleteDetails.addEventListener('click', () => {
+      localStorage.removeItem('fname');
+      localStorage.removeItem('lname');
+      localStorage.removeItem('phone');
+      localStorage.removeItem('relation');
+      form.innerHTML = '';
+      const createSuccess = document.createElement('h3');
+      createSuccess.textContent = 'Details have been deleted';
+      form.appendChild(createSuccess);
+    });
   });
 });
 
