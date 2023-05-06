@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('currentDate', currentDate.textContent);
     stepsCount.textContent = Math.floor(Math.random() * 10000);
     localStorage.setItem('stepsCount', stepsCount.textContent);
-    
     distanceCount.textContent = Math.floor(Math.random() * 10);
     localStorage.setItem('distanceCount', distanceCount.textContent);
     activeMins.textContent = Math.floor(Math.random() * 100);
