@@ -187,12 +187,6 @@ footer {
     border: #fff thick solid;
 }
 
-#analyseData{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
 #getStats{
     /* get the button to have bold text */
     font-weight: bolder;

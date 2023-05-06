@@ -1,38 +1,38 @@
 // the navigation bar for the whole page
 document.addEventListener('DOMContentLoaded', () => {
   const reminderBtn = document.querySelector('#reminder');
-  reminderBtn.addEventListener('click', function() {
+  reminderBtn.addEventListener('click', function () {
     window.location.href = 'reminder.html';
   });
 
   const medsBtn = document.querySelector('#meds');
-  medsBtn.addEventListener('click', function() {
+  medsBtn.addEventListener('click', function () {
     window.location.href = 'medication.html';
   });
 
   const chatClicked = document.querySelector('#chatSystem');
-  chatClicked.addEventListener('click', function() {
+  chatClicked.addEventListener('click', function () {
     window.location.href = 'chat.html';
   });
 
-const buttonStngs = document.querySelector('#settings');
-buttonStngs.addEventListener('click', function() {
-  const confirm = window.prompt('Are you sure you want to enter the settings page? Type yes for confirmation.');
-  if (confirm === 'yes' || confirm === 'Yes' || confirm === 'YES' || confirm === 'y' || confirm === 'Y') {
-    window.location.href = 'settings.html';
-  } else {
-    alert('You have not been redirected to the settings page');
-    window.location.href = '';
-  }
-});
+  const buttonStngs = document.querySelector('#settings');
+  buttonStngs.addEventListener('click', function () {
+    const confirm = window.prompt('Are you sure you want to enter the settings page? Type yes for confirmation.');
+    if (confirm === 'yes' || confirm === 'Yes' || confirm === 'YES' || confirm === 'y' || confirm === 'Y') {
+      window.location.href = 'settings.html';
+    } else {
+      alert('You have not been redirected to the settings page');
+      window.location.href = '';
+    }
+  });
 
   const homeBtn = document.querySelector('#home');
-  homeBtn.addEventListener('click', function() {
+  homeBtn.addEventListener('click', function () {
     window.location.href = 'index.html';
   });
 
   const UAbtn = document.querySelector('#UA');
-  UAbtn.addEventListener('click', function() {
+  UAbtn.addEventListener('click', function () {
     window.location.href = 'activity.html';
   });
 });
@@ -84,92 +84,154 @@ window.addEventListener('click', function () {
 const grabForm = document.querySelector('#user-profile-form');
 const pictureInput = document.querySelector('#user-picture');
 
-if(grabForm){
-grabForm.addEventListener('submit', function(event) {
-  event.preventDefault();
+if (grabForm) {
+  grabForm.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-  const dob = document.querySelector('#dob').value;
-  const description = document.querySelector('#description').value;
+    const dob = document.querySelector('#dob').value;
+    const description = document.querySelector('#description').value;
 
-  const formData = new FormData();
-  formData.append('picture', pictureInput.files[0]);
-  fetch('/upload-picture', { method: 'POST', body: formData })
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(pictureUrl) {
+    const formData = new FormData();
+    formData.append('picture', pictureInput.files[0]);
+    fetch('/upload-picture', { method: 'POST', body: formData })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (pictureUrl) {
       // Update the user profile information in Auth0
-      auth0.users.updateUserMetadata(userId, { pictureUrl, dob, description }, function(err) {
-        if (err) {
-          console.error(err);
-          return;
-        }
-        // Store the user profile information in the SQLite database
-        const sqliteInsert = `
+        auth0.users.updateUserMetadata(userId, { pictureUrl, dob, description }, function (err) {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          // Store the user profile information in the SQLite database
+          const sqliteInsert = `
           INSERT INTO user_profiles (user_id, picture_url, dob, description)
           VALUES (${userId}, ${pictureUrl}, ${dob}, ${description})
         `;
+        });
       });
-    });
-});
+  });
 }
 
 // speech api
 
-// Speech recognition app using Vanilla JavaScript. YouTube. (2020, August 27). 
-// Retrieved from https://youtu.be/-k-PgvbktX4 
+// Speech recognition app using Vanilla JavaScript. YouTube. (2020, August 27).
+// Retrieved from https://youtu.be/-k-PgvbktX4
 
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   window.speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
+
+//   const recognition = new window.speechRecognition();
+//   recognition.interimResults = true;
+
+//   const getInput = document.querySelector('#searchInput');
+//   const microphoneButton = document.querySelector('#microphone');
+
+//   recognition.addEventListener('result', async (e) => {
+//     const voiceInput = Array.from(e.results)
+//       .map((result) => result[0])
+//       .map((result) => result.transcript)
+//       .join('');
+//     getInput.value = voiceInput;
+//     // console.log(voiceInput);
+//     if (voiceInput === 'help me') {
+//     // get the panic button to send a message to the next of kin
+//       await fetch('/send-message', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//           body: 'Help me!',
+//           from: '+447908632941',
+//           to: '+447893943882',
+//         }),
+//       });
+//       alert('panic button activated');
+//     } if (voiceInput === 'medication' || voiceInput === 'meds' || voiceInput === 'medicine' || voiceInput === 'tablets' || voiceInput === 'pills') {
+//       window.location.href = 'medication.html';
+//     } if (voiceInput === 'reminders' || voiceInput === 'reminder') {
+//       window.location.href = 'reminder.html';
+//     } if (voiceInput === 'activity' || voiceInput === 'fitness') {
+//       window.location.href = 'activity.html';
+//     } if (voiceInput === 'chat' || voiceInput === 'message' || voiceInput === 'messages') {
+//       window.location.href = 'chat.html';
+//     }
+//   });
+
+//   if (microphoneButton !== null) {
+//     microphoneButton.addEventListener('click', () => {
+//       recognition.start();
+//     });
+//   }
+
+//   recognition.addEventListener('end', () => {
+//     recognition.start();
+//   });
+// });
 
 document.addEventListener('DOMContentLoaded', () => {
-window.speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
+  window.speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
 
-const recognition = new window.speechRecognition();
-recognition.interimResults = true;
+  const recognition = new window.speechRecognition();
+  recognition.interimResults = true;
 
-const getInput = document.querySelector('#searchInput');
-const microphoneButton = document.querySelector('#microphone');
+  const getInput = document.querySelector('#searchInput');
+  const microphoneButton = document.querySelector('#microphone');
 
-recognition.addEventListener('result', async (e) => {
-  const voiceInput = Array.from(e.results)
-    .map((result) => result[0])
-    .map((result) => result.transcript)
-    .join('');
-    getInput.value = voiceInput;
-  // console.log(voiceInput);
-  if(voiceInput === 'help me'){
-    // get the panic button to send a message to the next of kin
-    await fetch('/send-message', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        body: 'Help me!',
-        from: '+447908632941',
-        to: '+447893943882'
-      })
-    });
-    alert('panic button activated');
-  } if (voiceInput === 'medication' || voiceInput === 'meds' || voiceInput === 'medicine' || voiceInput === 'tablets' || voiceInput === 'pills'){
-    window.location.href = 'medication.html';
-  } if (voiceInput === 'reminders' || voiceInput === 'reminder'){
-    window.location.href = 'reminder.html';
-  } if (voiceInput === 'activity' || voiceInput === 'fitness'){
-    window.location.href = 'activity.html';
-  } if (voiceInput === 'chat' || voiceInput === 'message' || voiceInput === 'messages'){
-    window.location.href = 'chat.html';
-  }
-});
+  let listenEvent = false;
 
-if(microphoneButton !== null) {
-    microphoneButton.addEventListener('click', () => {
-    recognition.start();
+  microphoneButton.addEventListener('click', () => {
+    if (!listenEvent) {
+      recognition.start();
+      microphoneButton.classList.add('active');
+      listenEvent = true;
+    } else {
+      recognition.abort();
+      microphoneButton.classList.remove('active');
+      listenEvent = false;
+    }
   });
-}
 
-recognition.addEventListener('end', () => {
-  recognition.start();
-});
+  recognition.addEventListener('result', async (e) => {
+    const voiceInput = Array.from(e.results)
+      .map((result) => result[0])
+      .map((result) => result.transcript)
+      .join('');
+    getInput.value = voiceInput;
+    // console.log(voiceInput);
+    if (voiceInput === 'help me') {
+      // get the panic button to send a message to the next of kin
+      await fetch('/send-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          body: 'Help me!',
+          from: '+447908632941',
+          to: '+447893943882',
+        }),
+      });
+      alert('panic button activated');
+    } if (voiceInput === 'medication' || voiceInput === 'meds' || voiceInput === 'medicine' || voiceInput === 'tablets' || voiceInput === 'pills') {
+      window.location.href = 'medication.html';
+    } if (voiceInput === 'reminders' || voiceInput === 'reminder') {
+      window.location.href = 'reminder.html';
+    } if (voiceInput === 'activity' || voiceInput === 'fitness') {
+      window.location.href = 'activity.html';
+    } if (voiceInput === 'chat' || voiceInput === 'message' || voiceInput === 'messages') {
+      window.location.href = 'chat.html';
+    }
+  });
+
+  recognition.addEventListener('end', () => {
+    if (listenEvent) {
+      recognition.start();
+    }
+  });
 });
 
 // dark and light mode feature
@@ -183,7 +245,6 @@ function darkMode() {
       localStorage.setItem('theme', 'dark');
       // apply it to other html pages
       document.querySelector('#chk').checked = true;
-
     } else {
       localStorage.setItem('theme', 'light');
     }
@@ -193,7 +254,7 @@ function darkMode() {
   if (savedTheme) {
     document.body.classList.add(savedTheme);
   }
-};
+}
 
 window.addEventListener('load', darkMode);
 
@@ -213,11 +274,11 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   const reader = document.querySelector('.reader');
   reader.addEventListener('click', () => {
-  const synthesis = window.speechSynthesis;
+    const synthesis = window.speechSynthesis;
     const getGreeting = document.querySelector('#greeting');
     const vocal = new SpeechSynthesisUtterance(getGreeting.textContent);
-  synthesis.speak(vocal);
-});
+    synthesis.speak(vocal);
+  });
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -237,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const phoneInput = document.querySelector('#phone');
   const relationOptions = document.querySelector('#relationOptions');
 
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     const fname = fnameInput.value;
@@ -264,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createSuccess.textContent = 'Details have been saved';
     form.appendChild(createSuccess);
 
-// stores the local storage data on the screen to show the user
+    // stores the local storage data on the screen to show the user
     const firstName = document.createElement('p');
     firstName.textContent = `First Name: ${fname}`;
     form.appendChild(firstName);
@@ -298,9 +359,9 @@ window.addEventListener('load', accessPage);
 
 function appearancePage() {
   const appearanceButton = document.querySelector('#appearanceBtn');
-  if(appearanceButton){
-  appearanceButton.addEventListener('click', () => {
-    window.location.href = 'appearance.html';
+  if (appearanceButton) {
+    appearanceButton.addEventListener('click', () => {
+      window.location.href = 'appearance.html';
     });
   }
 }
@@ -357,4 +418,3 @@ function changeFontSize() {
   document.body.style.fontSize = selectedFontSize;
   localStorage.setItem('fontSize', selectedFontSize);
 }
-
