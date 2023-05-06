@@ -224,6 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = 'activity.html';
     } if (voiceInput === 'chat' || voiceInput === 'message' || voiceInput === 'messages') {
       window.location.href = 'chat.html';
+    } if (voiceInput === 'emergency contact' || voiceInput === 'emergency contacts' || voiceInput === 'contact' || voiceInput === 'contacts') {
+      window.location.href = 'settings.html';
     }
   });
 

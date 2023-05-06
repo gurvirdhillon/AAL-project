@@ -370,7 +370,11 @@ body.dark .settingsMenu button {
     color: #292c35;
 }
 
-/*  */
+/* when the dark mode is activated the sticky note is turned grey*/
+
+body.dark #yellowStickyNote{
+    background-color: grey;
+}
 
 .settingsContainer {
     display: flex;
