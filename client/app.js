@@ -53,6 +53,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const sleepQuality = document.querySelector('#sleepQuality');
   const currentDate = document.querySelector('#date');
 
+  // if the user has clicked the getStats button before, the data will be saved in local storage and displayed on the page
+  if (localStorage.getItem('currentDate')) {
+    currentDate.textContent = localStorage.getItem('currentDate');
+  }
+  if (localStorage.getItem('stepsCount')) {
+    stepsCount.textContent = localStorage.getItem('stepsCount');
+  }
+  if (localStorage.getItem('distanceCount')) {
+    distanceCount.textContent = localStorage.getItem('distanceCount');
+  }
+  if (localStorage.getItem('activeMins')) {
+    activeMins.textContent = localStorage.getItem('activeMins');
+  }
+  if (localStorage.getItem('floorsCount')) {
+    floorsCount.textContent = localStorage.getItem('floorsCount');
+  }
+  if (localStorage.getItem('heartRate')) {
+    heartRate.textContent = localStorage.getItem('heartRate');
+  }
+  if (localStorage.getItem('sleepQuality')) {
+    sleepQuality.textContent = localStorage.getItem('sleepQuality');
+  }
   // when getBtn is clicked it puts random numbers in the span tags
   getBtn.addEventListener('click', () => {
     currentDate.textContent = new Date().toLocaleDateString();
@@ -81,6 +103,3 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('sleepQuality', sleepQuality.textContent);
   });
 });
-
-
-// get the local storage of the above data

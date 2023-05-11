@@ -152,6 +152,18 @@ footer {
    }
 }
 
+#medicationInput, #medicationDosage, #consumptionMethod, #freqMed{
+    width: 50%;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#medicationTime, #medicationAmount{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+
 #medicationReminder{
     border: thick solid black;
     display: flex;
