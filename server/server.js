@@ -29,6 +29,8 @@ passport.use(new FitbitStrategy({
   user_id: 'BDGMBJ ',
 },
 
+// Fitbit developer SDK. (n.d.). Fitbit development: Web api. Fitbit. https://dev.fitbit.com/build/reference/web-api/
+
 function (req, accessToken, refreshToken, profile, done) {
   const options = {
     url: 'https://api.fitbit.com/1/user/-/profile.json',

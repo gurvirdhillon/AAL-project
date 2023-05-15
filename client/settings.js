@@ -195,6 +195,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // WEB CIFAR. (2020, August 27). Speech recognition app using Vanilla JavaScript.
+  // YouTube. https://www.youtube.com/watch?v=-k-PgvbktX4
+
   recognition.addEventListener('result', async (e) => {
     const voiceInput = Array.from(e.results)
       .map((result) => result[0])

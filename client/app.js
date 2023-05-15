@@ -7,6 +7,7 @@ fetch('https://api.fitbit.com/1/user/-/profile.json', {
   .then(response => response.json())
   .then(json => console.log(json));
 
+// Fitbit developer SDK. (n.d.). Fitbit development: Web api. Fitbit. https://dev.fitbit.com/build/reference/web-api/
 
 fetch('https://api.fitbit.com/1.2/user/-/sleep.json?date=2023-01-21&startTime=22:00&duration=720000', {
   method: 'GET',
