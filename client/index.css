@@ -169,8 +169,6 @@ footer {
     display: flex;
     padding: 4% 10%;
     justify-content: space-between;
-
-    /* turn it into a settings look with one button under the other */
 }
 
 #medicationAmount{
@@ -200,10 +198,8 @@ footer {
 }
 
 #getStats{
-    /* get the button to have bold text */
     font-weight: bolder;
     font-size: larger;
-    /* display button on the bottom right */
 }
 
 #panicBtn{
@@ -235,7 +231,6 @@ footer {
 
 #reminderInput{
     width: 60%;
-    /* height: 100%; */
     font-size: larger;
     font-weight: bolder;
 }

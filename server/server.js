@@ -128,7 +128,6 @@ server.authorization(function (clientId, redirect_uri, scope, type, cb) {
 
 // npm. (2016). Passport-fitbit-oauth2. https://www.npmjs.com/. Retrieved from https://www.npmjs.com/package/passport-fitbit-oauth2
 
-// need to import medication.js
 // import twilio from 'twilio'.twiml.voiceResponse;
 
 const db = openDB();
@@ -249,3 +248,5 @@ app.get('/api/getUser/:user_email', catchError(getUser));
 
 app.use(express.static('client', { extensions: ['html'] }));
 app.use(express.static(path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../client')));
+
+// Boakes & Dennis, M et al (n.d.). Portsoc/staged-simple-message-board: An express-based message board, built step by step. GitHub. https://github.com/portsoc/staged-simple-message-board 
