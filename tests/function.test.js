@@ -29,33 +29,26 @@ await test('Testing reminder.html if it renders', async () => {
 //     const date = '2023-04-12';
 //     const time = '10:30';
 
-
 //     // Add reminder to local storage
 //     localStorage.setItem('reminder', reminder);
 //     localStorage.setItem('date', date);
 //     localStorage.setItem('time', time);
-
 
 //     // Retrieve reminder from local storage
 //     const storedReminder = localStorage.getItem('reminder');
 //     const storedDate = localStorage.getItem('date');
 //     const storedTime = localStorage.getItem('time');
 
-
 //     // Assert that stored reminder matches input reminder
 //     expect(storedReminder).toEqual(reminder);
 
-
 //     // Assert that stored date matches input date
 //     expect(storedDate).toEqual(date);
-
 
 //     // Assert that stored time matches input time
 //     expect(storedTime).toEqual(time);
 //   });
 // });
-
-// test if the medication has added the medication input and time to local storage
 
 // describe('adding medication to local storage should include the medication name and time', () => {
 //   test('local storage should hold the medication name and time', () => {
@@ -78,8 +71,6 @@ await test('Testing reminder.html if it renders', async () => {
 //     expect(storedTime).toEqual(time);
 //   });
 // });
-
-// testing if the notification feature works for the medication
 
 // describe('Notification behavior', () => {
 //   test('should display notification when triggered', async () => {
