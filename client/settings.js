@@ -145,7 +145,7 @@ if (grabForm) {
 //         },
 //         body: JSON.stringify({
 //           body: 'Help me!',
-//           from: '+447908632941',
+//           from: `${req.body.telephone}`,
 //           to: '+447893943882',
 //         }),
 //       });
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         body: JSON.stringify({
           body: 'Help me!',
-          from: '+447908632941',
+          from: `${req.body.telephone}`,
           to: '+447893943882',
         }),
       });
