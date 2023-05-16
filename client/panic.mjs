@@ -1,4 +1,3 @@
-// document.addEventListener('DOMContentLoaded', () => {
 async function activatePanicButton() {
   const panicBtn = document.querySelector('#panicBtn');
   panicBtn.addEventListener('click', async () => {

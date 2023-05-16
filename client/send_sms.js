@@ -1,4 +1,3 @@
-// import { twilio } from '../twilio';
 // import twilio from 'twilio';
 
 // const accountSid = "ACf25d4feac6b0fd768188a7f2d54f5583";
