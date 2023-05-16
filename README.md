@@ -25,6 +25,8 @@ TwilioAPI was used to integrate messages from the user to their next of kin. Thi
 This project relies on the use of Node as it has been devevloped as a web project.
 
 ```git
+npm init
+npm install
 npm i jest
 npm i sqlite3
 npm i sqlite
@@ -52,3 +54,11 @@ Future works:
 * Cross platform compatibility
 * Fitbit real time data analysis
 * Apple watch compatibility
+
+Getting started:
+
+Once all dependencies are installed please type in:
+```npm start```
+
+For checking how tests work:
+```npm run test```
