@@ -1,13 +1,3 @@
-// const medicationBtn = document.querySelector('#meds');
-
-
-// const userActivityBtn = document.querySelector('#UA');
-
-// const chatBtn = document.querySelector('#chatSystem');
-
-// const settingsBtn = document.querySelector('#settings');
-
-
 async function fetchAuthConfig() {
   const response = await fetch('/auth-config');
   if (response.ok) {
@@ -95,21 +85,17 @@ function searchBar() {
     const searchValue = searchInput.value;
     console.log(searchValue);
     if (searchValue === 'medication' || searchValue === 'meds' || searchValue === 'med' || searchValue === 'tablets' || searchValue === 'pills') {
-      // medicationBtn.click();
       window.location.href = '/medication'
     } else if (searchValue === 'user activity' || searchValue === 'fitness') {
-      // userActivityBtn.click();
-      window.location.href = '/activity'
+      window.location.href = '/activity';
     } else if (searchValue === 'chat') {
-      // chatBtn.click();
-      window.location.href = '/chat'
+      window.location.href = '/chat';
     } else if (searchValue === 'settings' || searchValue === 'setting') {
-      // settingsBtn.click();
-      window.location.href = '/settings'
-    } else if(searchValue === 'appearance' || searchValue === 'preferences' || searchValue === 'preference') {
-      window.location.href = '/appearance'
+      window.location.href = '/settings';
+    } else if (searchValue === 'appearance' || searchValue === 'preferences' || searchValue === 'preference') {
+      window.location.href = '/appearance';
     }
-  });    
+  });
 }
 
 window.addEventListener('load', searchBar);
