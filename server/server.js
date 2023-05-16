@@ -154,7 +154,9 @@ app.post('/send-message', (req, res) => {
     .create({
       body: 'Help me!',
       from: '+447893943882',
-      to: '+447908632941',
+      // the "from" shows the number that twilio had provided.
+      to: `${req.body.number}}`,
+      // the "to" may show an error however it is working. The number is self configured therefore when a phone number is put in, it will send a message to the number.
     })
     .then(message => {
       console.log(message.sid);

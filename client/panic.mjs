@@ -1,4 +1,4 @@
-async function activatePanicButton() {
+async function activatePanicButton(req) {
   const panicBtn = document.querySelector('#panicBtn');
   panicBtn.addEventListener('click', async () => {
     const check = confirm('Are you sure you want to send a message to your next of kin?');
@@ -10,8 +10,8 @@ async function activatePanicButton() {
         },
         body: JSON.stringify({
           body: 'Help me!',
-          from: '+447908632941',
-          to: '+447893943882',
+          from: '447893943882',
+          to: `${req.body.number}`,
         }),
       });
       alert('Message sent to next of kin');

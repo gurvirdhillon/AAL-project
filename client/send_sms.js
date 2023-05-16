@@ -8,7 +8,7 @@
 //   .create({
 //     body: 'Testing',
 //     from : '+447893943882',
-//     to: '+447908632941'
+//     to: `${req.body.number}`
 //   }).then(message => console.log(message.sid));
 
 // button.addEventListener("click", function () {
@@ -17,6 +17,6 @@
 //         body: 'URGENT! THIS USER NEEDS HELP!',
 //         from : '+447893943882',
 //         // twilio trial number above
-//         to: '+447908632941'
+//         to: `${req.body.number}`
 //     }).then(message => console.log(message.sid));
 // });
