@@ -23,7 +23,7 @@
     "path": "^0.12.7",
     "sqlite": "^4.1.2",
     "sqlite3": "^5.1.5",
-    "twilio": "^3.84.1"
+    "twilio": "^5.10.5"
   },
   "eslintConfig": {
     "extends": "portsoc",
